@@ -8,7 +8,7 @@ Welcome to our Open Educational Resource (OER) for **Building DC Energy Systems*
 <img style="padding:30px" src="images/hoou_logo_200px.png" alt="HOOU logo" />
 </div>
 
-The development of this OER started in May 2019. It will be continuously improved and you can contribute directly via GitHub.
+The development of this OER started in May 2019. It will be continuously improved and you can contribute directly [via GitHub](https://github.com/LibreSolar/learn.libre.solar/).
 
 Some chapters of the OER are based on the previous [OER by Collective Open Source Hardware](http://cos-h.cc), which mainly focused on the reproduction of PCBs.
 
