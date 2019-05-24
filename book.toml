@@ -1,0 +1,5 @@
+[book]
+authors = ["Martin Jaeger"]
+multilingual = false
+src = "src"
+title = "Building DC Energy Systems"
