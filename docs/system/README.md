@@ -1,4 +1,4 @@
-# DC Energy System
+# Energy System Layout
 
 ## Advantages of direct current (DC) systems
 
@@ -8,6 +8,6 @@ Most important components based of renewable energy systems like batteries and s
 
 The following picture gives an overview of power converters in a DC energy system:
 
-![DC energy system overview](images/dc_energy_system.png)
+![DC energy system overview](./images/dc_energy_system.png)
 
 The components will be described in more detail in the following chapters.

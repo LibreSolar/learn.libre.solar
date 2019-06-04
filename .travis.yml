@@ -1,26 +1,36 @@
 
-language: rust
-sudo: false
+language: node_js
+node_js:
+    - "10"
+env:
+    - CXX=g++-4.8
 
-cache:
-    - cargo
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.8
 
-rust:
-    - stable
-
-before_script:
-    - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
-    - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.2" mdbook)
-    - cargo install-update -a
+install:
+    - npm install -g vuepress
 
 script:
-    - mdbook build && mdbook test
+    - npm run docs:build
+    - echo learn.libre.solar >> docs/.vuepress/dist/CNAME
+
+cache:
+    directories:
+        - "node_modules"
+
+notifications:
+    email: false
 
 deploy:
     provider: pages
     skip-cleanup: true
     github-token: $GH_REPO_TOKEN
-    local-dir: book
+    local_dir: docs/.vuepress/dist
     keep-history: false
     on:
         branch: master

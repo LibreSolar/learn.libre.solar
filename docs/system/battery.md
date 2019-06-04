@@ -7,3 +7,11 @@ This chapter will cover the following topics:
     - Lithium-ion
 - Charging methods (2-stage, 3-stage, etc.)
 - Battery Management Systems for Li-ion batteries
+
+## Lead-acid
+
+## Lithium-ion
+
+What is special about li-ion?
+
+Battery management system needed

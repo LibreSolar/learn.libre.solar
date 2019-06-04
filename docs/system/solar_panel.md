@@ -1,7 +1,7 @@
 # Solar Panel
 
-This chapter will cover the following topics:
-
+::: warning TODO
 - Characteristic curve
 - Temperature dependency
 - Typical voltage levels for modules
+:::
