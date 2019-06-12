@@ -1,4 +1,3 @@
-
 module.exports = {
     title: 'Building DC Energy Systems',
     description: 'Open Educational Resource (OER) by Libre Solar to explain how to develop, produce and use components for DC energy systems',
@@ -9,16 +8,24 @@ module.exports = {
                 '\\def\\lr#1#2#3{\\left#1#2\\right#3}',
             ],
         },
-        'vuepress-plugin-export':{},
+        'vuepress-plugin-export': {},
     },
     themeConfig: {
-        nav: [
-            { text: 'System Layout', link: '/system/' },
-            { text: 'Component Development', link: '/development/' },
-            { text: 'Production', link: '/production/' },
+        nav: [{
+                text: 'System Layout',
+                link: '/system/'
+            },
+            {
+                text: 'Component Development',
+                link: '/development/'
+            },
+            {
+                text: 'Production',
+                link: '/production/'
+            },
         ],
         sidebar: {
-            '/system/' : [{
+            '/system/': [{
                 title: "Generation",
                 collapsable: false,
                 children: [
@@ -113,4 +120,3 @@ module.exports = {
         lastUpdated: 'Last Updated', // string | boolean
     }
 }
-
