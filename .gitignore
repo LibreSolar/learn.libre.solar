@@ -1,6 +1,2 @@
-node_modules
-
-# vuepress build output
-docs/.vuepress/dist
-
-yarn.lock
+node_modules/
+package-lock.json
