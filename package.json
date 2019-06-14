@@ -1,7 +1,8 @@
 {
     "scripts": {
         "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs"
+        "docs:build": "vuepress build docs",
+	"docs:pdf": "vuepress export docs"
     },
     "dependencies": {
         "vuepress-plugin-export": "^0.2.0",
