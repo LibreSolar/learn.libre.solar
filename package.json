@@ -8,6 +8,6 @@
         "vuepress-plugin-latex": "^0.1.3"
     },
     "devDependencies": {
-        "vuepress": "^0.14.11"
+        "vuepress": "^1.0.0-rc.1"
     }
 }

@@ -55,6 +55,7 @@ module.exports = {
                     'current_measurement',
                     'heat_dissipation',
                     'dcdc_converter',
+                    'load_switch',
                     'mosfets_drivers',
                 ],
             }, {

@@ -13,7 +13,8 @@ addons:
             - g++-4.8
 
 install:
-    - npm install -g vuepress
+    - npm install -g vuepress@next
+    - npm install
 
 script:
     - npm run docs:build
