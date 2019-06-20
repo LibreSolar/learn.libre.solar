@@ -1,8 +1,6 @@
-# Energy System Layout
+# DC Energy System Layout
 
-## Advantages of direct current (DC) systems
-
-Most important components based of renewable energy systems like batteries and solar modules are based on direct current. The conversion to AC includes considerable amount of losses, especially for small systems for off-grid energy access. This is why this OER focuses mainly on DC energy system components and distribution grids.
+Most components in renewable energy systems (solar panels, batteries and loads like LED lights or laptops) are based on direct current (DC). The conversion to alternating current (AC) as used in conventional electricity grids includes considerable amount of losses, especially for small systems for off-grid energy access. This is why this OER focuses mainly on DC energy system components and distribution grids.
 
 ## Component overview
 
