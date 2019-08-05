@@ -2,11 +2,11 @@
     "scripts": {
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
-	"docs:pdf": "vuepress export docs"
+        "docs:pdf": "vuepress export docs"
     },
     "dependencies": {
         "vuepress-plugin-export": "^0.2.0",
-        "vuepress-plugin-latex": "^0.1.3"
+        "vuepress-plugin-mathjax": "^1.2.8"
     },
     "devDependencies": {
         "vuepress": "^1.0.0-rc.1"

@@ -3,7 +3,12 @@ module.exports = {
     description: 'Open Educational Resource (OER) by Libre Solar to explain how to develop, produce and use components for DC energy systems',
     plugins: [
         'vuepress-plugin-export',
-        'vuepress-plugin-latex'
+        ['mathjax', {
+            target: 'svg',
+            macros: {
+              '*': '\\times',
+            },
+          }],
     ],
     themeConfig: {
         nav: [
