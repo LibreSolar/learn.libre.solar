@@ -3,8 +3,14 @@ module.exports = {
     description: 'Open Educational Resource (OER) by Libre Solar to explain how to develop, produce and use components for DC energy systems',
     plugins: [
         'vuepress-plugin-export',
-        'vuepress-plugin-latex'
+        ['mathjax', {
+            target: 'svg',
+            macros: {
+              '*': '\\times',
+            },
+          }],
     ],
+
     themeConfig: {
         nav: [
             { text: 'System Layout', link: '/system/' },
@@ -88,6 +94,8 @@ module.exports = {
                 ],
             }]
         },
+
+
         // Assumes GitHub. Can also be a full GitLab url.
         //repo: 'LibreSolar/learn.libre.solar',
         // Customising the header label

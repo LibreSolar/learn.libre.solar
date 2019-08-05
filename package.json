@@ -5,9 +5,11 @@
         "docs:pdf": "vuepress export docs"
     },
     "dependencies": {
+        "markdown-it-katex": "^2.0.3",
         "mermaid": "^8.2.3",
         "vuepress-plugin-export": "^0.2.0",
-        "vuepress-plugin-latex": "^0.1.3"
+        "vuepress-plugin-latex": "^0.1.3",
+        "vuepress-plugin-mathjax": "^1.2.8"
     },
     "devDependencies": {
         "vuepress": "^1.0.2"
