@@ -5,10 +5,13 @@
         "docs:pdf": "vuepress export docs"
     },
     "dependencies": {
+        "chart.js": "^2.8.0",
+        "vue-chartjs": "^3.4.2",
         "vuepress-plugin-export": "^0.2.0",
         "vuepress-plugin-mathjax": "^1.2.8"
     },
     "devDependencies": {
-        "vuepress": "^1.0.0-rc.1"
-    }
+        "vuepress": "^1.0.3"
+    },
+    "license": "CC-BY-SA-4.0"
 }
