@@ -1,7 +1,5 @@
 # DC/DC converter
 
-Math formula test:
-
-$$i = \frac{1}{\pi}$$
-
-Inline $1=1$ test aswell...
+::: warning TODO
+Description of different types of DC/DC converters, mainly focusing on synchronous buck converter.
+:::

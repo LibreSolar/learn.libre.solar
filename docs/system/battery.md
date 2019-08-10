@@ -1,17 +1,23 @@
 # Battery
 
-This chapter will cover the following topics:
+## Battery types
 
-- Basics for different battery chemistries
-    - Lead-acid
-    - Lithium-ion
-- Charging methods (2-stage, 3-stage, etc.)
-- Battery Management Systems for Li-ion batteries
+### Lead-acid
 
-## Lead-acid
+::: warning TODO
+- Different types of lead-acid (wet, VRLA, AGM, etc.)
+:::
 
-## Lithium-ion
+### Lithium-ion
 
-What is special about li-ion?
+::: warning TODO
+- What is special about li-ion chemistry?
+- Battery Management System basics
+:::
 
-Battery management system needed
+## Charge methods
+
+::: warning TODO
+- 2-stage, 3-stage, etc.
+- Impact on lifetime
+:::

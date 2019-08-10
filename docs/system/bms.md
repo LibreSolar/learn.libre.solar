@@ -1,5 +1,8 @@
 # Battery Management System
 
-The BMS module is optional as soon as lithium ion batteries are used. Lithium ion batteries have a high energy density, so the energy capacity per kg. Thus, they are particularly well suited for mobile applications, such as in electromobility or in the consumer sector. The batteries in our mobile phones are also lithium ion batteries. A disadvantage of this battery type is the sensitivity to overvoltage and deep discharge. Therefore, they require an upstream electrical circuit that covers these monitoring functions, a so-called Battery Management System (BMS).
-
-In addition to the safety functions, the BMS module balances the connected batteries. This is necessary as soon as more than one battery cell is connected in series. Charging and discharging processes allow the capacitance between the individual battery cells to drift away from one another. This effect leads in the long term to a shorter life of the batteries and to a lower energy consumption. By balancing this effect is counteracted by the equalizing currents through balancing cells between the capacity. A detailed description of the balancing process can be found at the following Wkipedia article - Balancer.
+::: warning TODO
+- Main functions
+    - Protection
+    - Balancing
+- Types of BMSs
+:::

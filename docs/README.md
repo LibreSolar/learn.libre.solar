@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to our Open Educational Resource (OER) for **Building DC Energy Systems**. Our aim is to describe most important aspects of DC energy systems including
+Welcome to the Open Educational Resource (OER) for **Building DC Energy Systems**. Our aim is to describe most important aspects of DC energy systems including
 
 - [Energy System Layout](/system/) to explain important general concepts,
 - [Component Development](/development/) (e.g. charge controller electronics) and

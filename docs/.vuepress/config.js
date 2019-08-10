@@ -29,6 +29,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     'battery',
+                    //'grid',
                 ],
             }, {
                 title: "Consumption",
@@ -42,7 +43,7 @@ module.exports = {
                 children: [
                     'charge_controller',
                     'bms',
-                    'inverter',
+                    //'inverter',
                 ],
             }, {
                 title: "Connections",
@@ -57,11 +58,11 @@ module.exports = {
                 title: "Hardware",
                 collapsable: false,
                 children: [
-                    'current_measurement',
-                    'heat_dissipation',
                     'dcdc_converter',
                     'load_switch',
-                    'mosfets_drivers',
+                    'current_measurement',
+                    'heat_dissipation',
+                    //'mosfets_drivers',
                 ],
             }, {
                 title: "Firmware",
@@ -78,20 +79,36 @@ module.exports = {
                 children: [
                     'communication',
                 ],
-            }, {
+            }, /*{
                 title: "Software",
                 collapsable: false,
                 children: [
                     'software',
                 ],
-            }],
-            '/prodduction/': [{
-                title: "PCB",
+            }*/],
+            '/production/': [/*{
+                title: "Ordering",
                 collapsable: false,
                 children: [
-                    'pcb_reproduction',
+                    'pcbs',
+                    'stencil',
+                    'parts',
                 ],
-            }]
+            }, {
+                title: "Assembly",
+                collapsable: false,
+                children: [
+                    'smd',
+                    'tht',
+                ],
+            }, {
+                title: "Testing",
+                collapsable: false,
+                children: [
+                    'visual_check',
+                    'eol',
+                ],
+            }*/]
         },
         // Assumes GitHub. Can also be a full GitLab url.
         //repo: 'LibreSolar/learn.libre.solar',
