@@ -10,6 +10,13 @@
 #branch=`git branch | grep \* | cut -d ' ' -f2`
 branch="$TRAVIS_BRANCH"
 
+if [ $branch != "master" ]; then
+    # adjust directory used in links
+    sed -i -e "s/base: '\/'/base: '\/branches\/$branch\/'/g" docs/.vuepress/config.js
+    # make also github edit link work
+    sed -i -e "s/docsBranch: 'master'/docsBranch: '$branch'/g" docs/.vuepress/config.js
+fi
+
 npm run docs:build
 
 printf "\nPreparing deployment for branch $branch\n"

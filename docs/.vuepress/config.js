@@ -1,6 +1,7 @@
 module.exports = {
     title: 'Building DC Energy Systems',
     description: 'Open Educational Resource (OER) by Libre Solar to explain how to develop, produce and use components for DC energy systems',
+    base: '/',
     plugins: [
         'vuepress-plugin-export',
         ['mathjax', {
