@@ -1,0 +1,3 @@
+# Make github linguist recognize this repository as markdown
+
+docs/* linguist-documentation=false

@@ -17,8 +17,7 @@ install:
     - npm install
 
 script:
-    - npm run docs:build
-    - echo learn.libre.solar >> docs/.vuepress/dist/CNAME
+    - ./deploy.sh
 
 cache:
     directories:
@@ -29,9 +28,10 @@ notifications:
 
 deploy:
     provider: pages
+    fqdn: learn.libre.solar
     skip-cleanup: true
     github-token: $GH_REPO_TOKEN
-    local_dir: docs/.vuepress/dist
+    local_dir: gh-pages
     keep-history: false
     on:
-        branch: master
+        all_branches: true
