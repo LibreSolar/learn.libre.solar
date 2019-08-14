@@ -84,11 +84,47 @@ The battery internal resistance is in the range of 50 m&#8486; for a 60-100 Ah b
 
 ### Inrush current when connecting capacitive loads
 
-It would be a simple task to just switch off immediately as soon as a current above a certain limit is reached. However, this sort of protection would create false positives when connecting a load with a high input capacitance. A capacitance acts as a short circuit in the very moment of connection, but the current decreases quickly after the capacitor got charged.
+It would be a simple task to just switch off immediately as soon as a current above a certain limit is reached. However, this sort of protection creates false positives when connecting a load with a high input capacitance. A capacitance acts as a short circuit in the short moment of connection, but the current decreases quickly after the capacitor got charged.
 
-::: warning TODO
-Describe boundary conditions and solutions.
-:::
+The following simplified RLC circuit can be used to analyze the behavior of the system:
+
+![Load output with capacitive load](./images/load-switch-capacitive-load.svg)
+
+The resistance $R_{total}$ consists of the battery internal resistance, the wire resistance and any resistance inside the charge controller, e.g. because of connectors or a shunt for current measurement.
+
+The wire inductance slows down the current increase and reduces the current peak during a failure. So the worst case is a short wire. The [self-inductance of two parallel wires](https://en.wikipedia.org/wiki/Inductance#Self-inductance_of_thin_wire_shapes) with a conductor radius $r$, a distance $d$ between the conductors and a length $l$ of the pair is:
+
+$$L = \frac{\mu_0 l}{\pi} \left( \ln(\frac{d}{r}) + 0.25 \right)$$
+
+This results in an inductance of approx. 1 µH per meter for a pair of 4 mm² wires.
+
+The following interactive graph shows the current vs. time with worst-case assumptions as default values:
+
+- Total wire length of 1 m (calculations assume 4 mm² cross-section)
+- A [good quality large VRLA battery](https://eu.industrial.panasonic.com/sites/default/pidseu/files/downloads/files/panasonic-batteries-vrla-for-professionals_interactive.pdf) at full state of charge with 5 m&#8486; internal resistance plus another 5 m&#8486; contributed by the charge controller terminals and PCB.
+- A low-ESR electrolytic capacitor of 1000 µF with around 20 m&#8486; ESR (e.g. Panasonic FR series)
+
+<load-sc-current/>
+
+The default values are realistic for what a typical 10-20A charge controller needs to detect and handle. In order to protect the MOSFET, the charge controller should switch off within less than 20 µs in case of the steep current increase of the short circuit. You can change the values to get an impression of your particular system and the general influencing factors on the maximum current.
+
+#### Digital solution with fast ADC
+
+In order to distinguish between inrush current for capacitive loads and an actual short circuit, the microcontroller has to take multiple measurements and not only consider the absolute values, but also the slope of the current.
+
+For a fast detection of the steep short circuit current increase, a sample frequency of less than 5 µs is necessary. This is at the limit of what lower end microcontrollers can do, if the ADC needs to measure not only the current, but also other values continuously. In addition to that, the delay and bandwidth of the current measurement have to be considered.
+
+#### Analog solution with filter and comparator
+
+A comparator can be used to trigger a load switch-off signal as soon as a certain threshold of the current measurement signal is reached. As the comparator does not consider the slope or the length of the pulse, but just the absolute value, this approach can lead to false positives as described above if the signal is not filtered.
+
+The current measurement output normally contains a low-pass filter (RC circuit). The filter time constant should be chosen such that the maximum allowed pulse caused by a capacitor just does not yet trigger the comparator, i.e. the damping at the frequency of the pulse is high enough to get an output signal below the threshold.
+
+The comparator can be a dedicated part on the PCB that pulls down the MOSFET gate and switches the load output off. If the used microcontroller has an internal comparator, this can be used to trigger an interrupt and switch off the load output via software. In some MCUs, the comparator can also directly control an output pin without any interference of software.
+
+<!--
+The approach using an internal comparator to drive a GPIO pin is used in the Libre Solar PWM charge controller (links to hardware and firmware).
+-->
 
 ## Overvoltage
 
