@@ -14,7 +14,7 @@
    viewBox="0 0 125.93549 117.37991"
    version="1.1"
    id="svg443"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
    sodipodi:docname="on_off_state.svg">
   <defs
      id="defs437">
@@ -87,16 +87,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2081851"
-     inkscape:cx="237.98833"
+     inkscape:cx="8.7188249"
      inkscape:cy="221.82031"
      inkscape:document-units="mm"
-     inkscape:current-layer="g7414-1"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1916"
+     inkscape:window-height="1036"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0"
      fit-margin-top="2"
      fit-margin-right="2"
      fit-margin-bottom="2"
@@ -135,8 +135,8 @@
          x="54.661819"
          y="59.391182"
          style="stroke-width:0.26458329">V<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
-   id="tspan2745">g</tspan></tspan></text>
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan6867">in</tspan></tspan></text>
     <flowRoot
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.66666698px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="flowRoot8487"
@@ -705,8 +705,8 @@
          x="54.938877"
          y="121.67231"
          style="stroke-width:0.26458329">V<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
-   id="tspan2747">g</tspan></tspan></text>
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan6865">in</tspan></tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path1034-0"
