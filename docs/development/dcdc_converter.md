@@ -1,8 +1,8 @@
 # DC/DC converter
 
-A DC to DC converter is an electronic circuit that converts between different voltage levels of direct current (DC). The direction can be from higher voltage to lower voltage or
+A DC to DC converter is an electronic circuit that converts between different voltage levels of direct current (DC). The direction can be from higher voltage to lower voltage or in reverse direction.
 
-## Linear regulators
+## Linear regulator
 
 A linear regulator generates an output voltage $V_{out}$ lower than the input voltage $V_{in}$ using a resistive voltage drop.
 
@@ -25,15 +25,15 @@ A very simple type of linear regulator can be built using an NPN transistor, a r
 
 The resulting output voltage for low currents is approximately the Zener voltage of $D_z$ minus the transistor base threshold voltage (around 0.6 V).
 
-This type of converter can be used if the output voltage does not need to be very stable, for example as the driving voltage for MOSFETs of around 10 V.
+This type of converter can be used if the output voltage does not need to be very stable, e.g. for a 10 V MOSFET gate driver supply voltage.
 
 ### Advanced LDOs
 
-For stable power supply e.g. a 3.3 V supply rail for microcontrollers, a dedicated regulator IC is normally used. Most available regulators are so-called low-dropout (LDO) types, that allow a very small difference between input and output voltage.
+If a stable power supply voltage like 3.3 V for microcontrollers is desired, a dedicated regulator IC is normally used. Most available regulators are so-called low-dropout (LDO) types, that allow a very small difference between input and output voltage.
 
-## Switching regulators
+## Switching regulator
 
-Typical switching mode converters use a switch, an inductor, a capacitor and a diode to transfer energy from input to output. The input energy is stored temporarily in an inductor and then released to the output at a different voltage. Swichting regulators allow high power conversion efficiency up to 99%.
+Typical switching mode converters use a switch, an inductor, a capacitor and a diode to transfer energy from input to output. The input energy is stored temporarily in an inductor and then released to the output at a different voltage. Switching regulators allow high power conversion efficiencies up to 99%.
 
 Switching regulators can be either isolated or non-isoladed. Galvanically isolated converters include a transformer, which typically decreases the efficiency of the conversion.
 
@@ -41,7 +41,7 @@ For DC energy systems, the non-isolated synchronous buck-converter is the most i
 
 ## Buck converter
 
-A non-Isolated buck converter is shown in figure 2.
+The schematic of a non-isolated buck converter is shown in figure 2.
 
 <figure>
 <center>
@@ -139,13 +139,21 @@ A duty cycle of 0.5 results in output voltage which is half of the input voltage
 
 To calculate the values of inductor and capacitor, we recommend [this website](http://schmidt-walter-schaltnetzteile.de/smps_e/smps_e.html#Abw).
 
-Inductor($L$) influences the amount of current ripple seen on the inductor current. Inductors have DC resistance ($R_L$)that impacts the performance of the output stage. Minimizing the $R_L$ improves the overall performance of the converter. The $R_L$ is small for lower inductor values but there is a trade-off between inductance and ripple current. The lower the inductance the higher the ripple current through the inductor.
+Inductor ($L$) influences the amount of current ripple seen on the inductor current. Inductors have DC resistance ($R_L$)that impacts the performance of the output stage. Minimizing the $R_L$ improves the overall performance of the converter. The $R_L$ is small for lower inductor values but there is a trade-off between inductance and ripple current. The lower the inductance the higher the ripple current through the inductor.
 
-Capacitor (C) directly influences the output voltage of the converter, the response time of the output feedback loop, and the amount of output voltage overshoot that occurs during changes in load current. The higher value of capacitor lower the amount of ripple voltage and lower the output voltage overshoot, but higher the response time for the changes at load.
+Capacitor ($C$) directly influences the output voltage of the converter, the response time of the output feedback loop, and the amount of output voltage overshoot that occurs during changes in load current. The higher value of capacitor lower the amount of ripple voltage and lower the output voltage overshoot, but higher the response time for the changes at load.
 
 Capacitors also have a parasitic series resistance, known as the equivalent series resistance ($R_{ESR}$). The $R_{ESR}$ affects the output voltage ripple and the overall efficiency of the converter. Lower the $R_{ESR}$ value higher the performance. The idea to reduce ESR is to use multiple capacitors in parallel.
 
 More information on the LC value selection see this [ON Semiconductor application note](https://www.onsemi.com/pub/Collateral/AND9135-D.PDF).
+
+## Efficiency calculation
+
+The following interactive graph can be used to calculate the efficiency depending on different input parameters.
+
+<dcdc-efficiency/>
+
+See the [Richtek AN005](https://www.richtek.com/Design%20Support/Technical%20Document/AN005?sc_lang=en) for details and equations behind the loss calculations.
 
 <h2>References</h2>
 
