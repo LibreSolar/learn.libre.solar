@@ -2,6 +2,10 @@
 
 Charge controllers are often equipped with a load switch that protects the battery from deep-discharge. If supported by the charge controller, the load switch can also be used for advanced control of connected loads, e.g. switching on lights during the night.
 
+The following image shows the layout of a typical MPPT charge controller with the DC/DC power stage between the solar panel and the battery and a switch between the battery and the load output.
+
+![Charge Controller Layout](./images/charge-controller-layout.svg)
+
 Even though it might seem very simple to switch on and off a load using a MOSFET, a reliable load switch control can get quite complicated. The load switch needs to protect itself and the charge controller from overcurrents and from exceeding its thermal limits. In addition to that, it must protect the wires from short circuits, acting like an electronic fuse. These different protection features are described below in more detail.
 
 ## High-side vs. low-side
@@ -13,14 +17,17 @@ Even though it might seem very simple to switch on and off a load using a MOSFET
 
 ## Inrush current during turn-on
 
-- Slew-rate limitation using gate capacitor
+A load with high capacitance will generate an inrush current after the switch was turned on. This current spike can be limited with two different methods:
 
-https://www.onsemi.com/pub/Collateral/AND9093-D.PDF
-https://www.rohm.com/electronics-basics/transistors/what-is-a-load-switch
+### Slew-rate limitation using gate capacitor
 
-- PWM switching
+This approach is described in the [Application Note AND9093-D](https://www.onsemi.com/pub/Collateral/AND9093-D.PDF) by ON Semiconductors. Also [this page](https://www.rohm.com/electronics-basics/transistors/what-is-a-load-switch) by ROHM gives a short introduction to the topic.
 
-See also: https://community.victronenergy.com/articles/2992/load-output-of-mppt-charge-controllers.html
+### PWM switching
+
+Instead of switching on continuously, a PWM signal can be applied to the load switch, so that the capacitance is charged in several small quantities over a few milliseconds. Depending on the PWM frequency, this method requires stronger MOSFET gate drivers.
+
+This method is also described in detail in the [following blog post](https://community.victronenergy.com/articles/2992/load-output-of-mppt-charge-controllers.html) by Victron Energy.
 
 ## Overcurrent
 
@@ -118,19 +125,17 @@ For a fast detection of the steep short circuit current increase, a sample frequ
 
 A comparator can be used to trigger a load switch-off signal as soon as a certain threshold of the current measurement signal is reached. As the comparator does not consider the slope or the length of the pulse, but just the absolute value, this approach can lead to false positives as described above if the signal is not filtered.
 
-The current measurement output normally contains a low-pass filter (RC circuit). The filter time constant should be chosen such that the maximum allowed pulse caused by a capacitor just does not yet trigger the comparator, i.e. the damping at the frequency of the pulse is high enough to get an output signal below the threshold.
+The current measurement output normally contains a low-pass filter (RC circuit). The filter time constant should be chosen such that the maximum allowed pulse caused by a capacitor just does not yet trigger the comparator, i.e. the damping at the frequency of the pulse is high enough to get an output signal below the threshold. In order to validate the correct filter layout, SPICE simulation of the circuit and laboratory tests should be used.
 
 The comparator can be a dedicated part on the PCB that pulls down the MOSFET gate and switches the load output off. If the used microcontroller has an internal comparator, this can be used to trigger an interrupt and switch off the load output via software. In some MCUs, the comparator can also directly control an output pin without any interference of software.
 
-<!--
-The approach using an internal comparator to drive a GPIO pin is used in the Libre Solar PWM charge controller (links to hardware and firmware).
--->
+The approach using an internal comparator to drive a GPIO pin is used in the Libre Solar PWM charge controller (see [hardware](https://github.com/LibreSolar/pwm-2420-lus) and [firmware](https://github.com/LibreSolar/charge-controller-firmware)).
 
 ## Overvoltage
 
-If the battery voltage rises above allowed limits for some reasons, the load should be switched off. This is a trivial task and will work reliably as long as there is enough margin to the maximum $V_ds$ of the MOSFET.
+If the battery voltage rises above allowed limits, e.g. because of a fault in the charger or because of transients, the load output should be switched off to protect connected consumers from overvoltage. This is a trivial task and will work reliably as long as there is enough margin to the maximum $V_{DS}$ of the MOSFET.
 
-However, switching off an inductive load like a motor or a relay can result in voltage peaks at the load switch. This is the reason why most charge controllers don't allow switching of inductive loads.
+However, switching off an inductive load like a motor or a relay can result in voltage peaks at the load switch. This is the reason why most charge controllers don't allow switching inductive loads at the load port.
 
 In order to allow the current to decay slowly, a free-wheeling diode $D_{fw}$ can be added to the load output. Such a circuit is shown in the following schematic:
 
