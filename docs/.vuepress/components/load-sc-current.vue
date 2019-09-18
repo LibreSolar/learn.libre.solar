@@ -44,7 +44,7 @@ export default {
             }
             var points_sc = [];
             for (var i = 0; i <= 200; i += 5) {
-                points_sc.push({x:i, y:this.I_sc(i*2)});
+                points_sc.push({x:i, y:this.I_sc(i)});
             }
 
             this.chartData = {
