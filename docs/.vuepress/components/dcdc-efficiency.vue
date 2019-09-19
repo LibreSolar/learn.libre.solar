@@ -11,7 +11,7 @@
         <div class="left">Output voltage: </div>
         <div class="right"><input type="number" id="vout" step="1" value="14" min="1" @change="updateGraph()"> V</div>
 
-        <div class="left">Rds(on): </div>
+        <div class="left">MOSFET Rds(on): </div>
         <div class="right"><input type="number" id="rdson" step="1" value="3" min="0" @change="updateGraph()"> m&#8486;</div>
 
         <div class="left">Switching frequency: </div>
