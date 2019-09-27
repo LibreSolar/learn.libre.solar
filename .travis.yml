@@ -1,4 +1,4 @@
-
+dist: trusty
 language: node_js
 node_js:
     - "10"
@@ -13,8 +13,8 @@ addons:
             - g++-4.8
 
 install:
-    - npm install -g vuepress@next
-    - npm install
+    - yarn add -D vuepress
+    - yarn docs:build
 
 script:
     - ./deploy.sh
