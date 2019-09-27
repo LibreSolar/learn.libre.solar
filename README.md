@@ -8,6 +8,17 @@
 
 ## Style Guide
 
+### Git usage
+
+- Better make several small [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit#Atomic_commit_convention) than a single big one
+- Use meaningful commit messages. Tell *what* was changed and not that *something* was changed. "Solar panel: Electrical characteristics graph added" is much better than "Updates".
+
+### Text
+
+- The target audience of the OER has basic knowledge of electricity as taught at schools. The text should focus on topics relevant for understanding how to design and use a DC energy system. Detailed knowledge of physical prinicples is not within the scope of this OER.
+- Headings should be short and precise, not an entire sentence.
+- All content must be original. As the OER is published under CC-BY-SA license, it's not allowed to reuse any content from external sources unless it is published as public domain or a compatible CC license. Make sure to include correct references for attribution, if necessary.
+
 ### JavaScript coding style
 
 - Indentation: 4 spaces (no tabs)

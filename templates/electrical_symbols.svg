@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,9 +40,9 @@
      inkscape:window-height="1036"
      id="namedview15663"
      showgrid="true"
-     inkscape:zoom="1"
-     inkscape:cx="550.04906"
-     inkscape:cy="332.53822"
+     inkscape:zoom="1.4142135"
+     inkscape:cx="172.02991"
+     inkscape:cy="709.89837"
      inkscape:window-x="0"
      inkscape:window-y="20"
      inkscape:window-maximized="0"
@@ -610,23 +610,27 @@
        d="m 118,245.70079 v 16 l -4,0"
        inkscape:connector-curvature="0" />
   </g>
-  <path
-     inkscape:connector-curvature="0"
-     d="M 30,253.70081 H 70"
-     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-     id="path5094-36-1-0" />
-  <path
-     inkscape:connector-curvature="0"
-     d="m 42.375,245.70079 v 16 l 16,-8 z"
-     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     id="path5096-2-6-9"
-     sodipodi:nodetypes="cccc" />
-  <path
-     inkscape:connector-curvature="0"
-     d="m 58.375,245.70079 v 16"
-     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-     id="path5104-1-62-9"
-     sodipodi:nodetypes="cc" />
+  <g
+     id="g22862">
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5094-36-1-0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 30,253.70079 H 70"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path5096-2-6-9"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 42.375,245.70079 v 16 l 16,-8 z"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5104-1-62-9"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 58.375,245.70079 v 16"
+       inkscape:connector-curvature="0" />
+  </g>
   <g
      id="g7591"
      style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
@@ -2449,43 +2453,6 @@
        y="433.703"
        x="30"
        style="font-size:14.66666667px;font-family:sans-serif">Sources</tspan></text>
-  <g
-     id="g7764"
-     style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
-     transform="translate(-10,-156.29919)">
-    <g
-       id="g8035-9"
-       transform="translate(-290,302.6)"
-       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
-      <circle
-         id="path8029-7"
-         cy="367.39999"
-         cx="510"
-         r="3"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
-    </g>
-    <path
-       id="path6256"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 220,667 v -7"
-       inkscape:connector-curvature="0" />
-    <g
-       id="g8035-9-8"
-       transform="matrix(1,0,0,-1,-290,1057)"
-       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
-      <circle
-         id="path8029-7-5"
-         cy="367.39999"
-         cx="510"
-         r="3"
-         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
-    </g>
-    <path
-       id="path6256-0"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 220,693 v 7.08"
-       inkscape:connector-curvature="0" />
-  </g>
   <path
      id="path5752-3-7"
      style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round"
@@ -3339,4 +3306,39 @@
        y="757.20074"
        x="890"
        style="font-size:14.66666698px;font-family:sans-serif;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">Standard font size: 11px</tspan></text>
+  <g
+     id="g3010">
+    <g
+       id="g8035-9"
+       transform="translate(-300,146.30081)"
+       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+      <circle
+         id="path8029-7"
+         cy="367.39999"
+         cx="510"
+         r="3"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <path
+       id="path6256"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 210,510.70081 v -7"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g8035-9-9"
+       transform="rotate(180,360,450.55039)"
+       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+      <circle
+         id="path8029-7-3"
+         cy="367.39999"
+         cx="510"
+         r="3"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <path
+       id="path6256-6"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 210,536.70079 v 7"
+       inkscape:connector-curvature="0" />
+  </g>
 </svg>
