@@ -4,7 +4,7 @@ A battery can be metaphorized as a container that is slowly filled with liquid. 
 
 This chapter provides the necessary basics of electrical batteries in order to understand their usage in a DC energy system.
 
-**For more detailed information about batteries, the excellent  [Battery University](https://batteryuniversity.com/) website is highly recommended.**
+**For more detailed information about batteries, the excellent [Battery University](https://batteryuniversity.com/) website is highly recommended.**
 
 ## Working Principle
 
@@ -82,9 +82,31 @@ A good selection of the charging technique will prolong the service lifetime of 
 
 ### Four-Stage Battery Charging
 
+<figure>
+<center>
+    <img src="./images/four-stage-charging.svg" alt="Battery charging stages" height="auto" width="auto" />
+    <figcaption><b>Figure 2.</b> Battery charging stages.</figcaption>
+</center>
+</figure>
+
+* The ***Bulk or CC or MPPT*** is the first charging stage the battery goes through. This stage involves about 70 percent of the charging process. In this phase, the battery is charged with a constant current, typically the maximum current which the charger can produce. As a result, the terminal voltage increases until the peak charge voltage limit is reached and then it proceeds to the topping phase.
+* During the ***Topping or CV or Absorpation*** charging stage, the remaining 30 percent is continued being charged at a constant voltage while gradually decreasing the charge current until the battery is fully charged.
+* The ***Equalization*** charging is beneficial for many batteries such as the flooded lead-acid versions. It can be considered as a periodic controlled overcharge that brings the cells to the same voltage level and remove the sulphation by increasing the voltage to a higher value than the peak charge voltage limit while the charging current is set to a very low value.
+* The ***Trickle or Float*** charging is the final phase upon the completion of the absorption phase which maintains the battery at full charge. During this stage, the charge voltage is reduced and held constant, while the current is reduced to an insignificant value that prevents any further heating of the battery.
+
+**For lead-acid batteries**, the charging can go through the four charging stages. However, some versions do not have the periodic boost of the equalization charge and are only charged using the other three stages.
+
+**For lithium-ion batteries**, the charging process only goes through the bulk and topping charging stages. The current then disappears and no float charging process occurs.
+
+### Charging Voltages
+
+|      Battery Type               |   Bulk Stage      |  Topping Stage   |   Equalization Stage  |  Float Stage  |
+|:-------------------------------:|:-----------------:|:----------------:|:---------------------:|:-------------:|
+| Flooded, single cell            |      2.45 V       |      2.4  V      |        2.5  V         |     2.35 V    |
+| Flooded, 6-cell                 |      14.7 V       |      14.4 V      |        15   V         |     14.1 V    |
+| AGM, 6-cell                     |      14.7 V       |      14.4 V      |        14.7 V         |     13.8 V    |
+| Gel, 6-cell                     |      14.7 V       |      14.4 V      |        14.7 V         |     13.8 V    |
+
 ::: warning TODO
-- 2-stage, 3-stage, 4 stage etc.
 - Impact on lifetime
 :::
-
-### References
