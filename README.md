@@ -18,6 +18,9 @@
 - The target audience of the OER has basic knowledge of electricity as taught at schools. The text should focus on topics relevant for understanding how to design and use a DC energy system. Detailed knowledge of physical prinicples is not within the scope of this OER.
 - Headings should be short and precise, not an entire sentence.
 - All content must be original. As the OER is published under CC-BY-SA license, it's not allowed to reuse any content from external sources unless it is published as public domain or a compatible CC license. Make sure to include correct references for attribution, if necessary.
+- Emphasize important words with bold *or* italic type, but [not both](https://practicaltypography.com/bold-or-italic.html).
+- Figures are numbered starting with 1 in each markdown file. Take a look at existing chapters for correct format.
+- References to other documents (e.g. scientific papers) should be listed at the bottom of each chapter indicated with a number within the text.
 
 ### JavaScript coding style
 
