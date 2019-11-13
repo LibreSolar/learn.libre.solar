@@ -4,7 +4,12 @@ Charge controllers are often equipped with a load switch that protects the batte
 
 The following image shows the layout of a typical MPPT charge controller with the DC/DC power stage between the solar panel and the battery and a switch between the battery and the load output.
 
-![Charge Controller Layout](./images/charge-controller-layout.svg)
+<figure>
+<center>
+    <img src="./images/charge-controller-layout.svg" alt="Charge Controller Layout" height="auto" width="auto" />
+    <figcaption><b>Figure 1.</b> Charge Controller Layout.</figcaption>
+</center>
+</figure>
 
 Even though it might seem very simple to switch on and off a load using a MOSFET, a reliable load switch control can get quite complicated. The load switch needs to protect itself and the charge controller from overcurrents and from exceeding its thermal limits. In addition to that, it must protect the wires from short circuits, acting like an electronic fuse. These different protection features are described below in more detail.
 
@@ -73,7 +78,12 @@ Normally, there should be a fuse installed at the battery terminal to protect th
 
 MOSFET datasheets normally state a so-called safe operating area, which shows the maximum allowed current vs. the drain-source-voltage. The following example is from the [Nexperia PSMN5R2-60YL datasheet](https://assets.nexperia.com/documents/data-sheet/PSMN5R2-60YL.pdf):
 
-![Safe operating area of PSMN5R2-60YL](./images/mosfet-safe-operating-area.png)
+<figure>
+<center>
+    <img src="./images/mosfet-safe-operating-area.png" alt="Safe operating area of PSMN5R2-60YL" height="auto" width="auto" />
+    <figcaption><b>Figure 2.</b> Safe operating area of PSMN5R2-60YL.</figcaption>
+</center>
+</figure>
 
 As long as the maximum junction temperature is not exceeded, this MOSFET can handle 100A continuously. However, under real operating conditions with passive cooling via the PCB, the continuous current will be in the range of 20A. During a short-circuit, the current rises very quickly, only limited by the impedance of the battery, the wires and the PCB.
 
@@ -95,7 +105,12 @@ It would be a simple task to just switch off immediately as soon as a current ab
 
 The following simplified RLC circuit can be used to analyze the behavior of the system:
 
-![Load output with capacitive load](./images/load-switch-capacitive-load.svg)
+<figure>
+<center>
+    <img src="./images/load-switch-capacitive-load.svg" alt="Load output with capacitive load" height="auto" width="auto" />
+    <figcaption><b>Figure 3.</b> Load output with capacitive load.</figcaption>
+</center>
+</figure>
 
 The resistance $R_{total}$ consists of the battery internal resistance, the wire resistance and any resistance inside the charge controller, e.g. because of connectors or a shunt for current measurement.
 
@@ -112,6 +127,12 @@ The following interactive graph shows the current vs. time with worst-case assum
 - A low-ESR electrolytic capacitor of 1000 µF with around 20 m&#8486; ESR (e.g. Panasonic FR series)
 
 <load-sc-current/>
+
+<figure>
+<center>
+    <figcaption><b>Figure 4.</b> Load short-circuit current calculation <b>(interactive)</b>.</figcaption>
+</center>
+</figure>
 
 The default values are realistic for what a typical 10-20A charge controller needs to detect and handle. In order to protect the MOSFET, the charge controller should switch off within less than 20 µs in case of the steep current increase of the short circuit. You can change the values to get an impression of your particular system and the general influencing factors on the maximum current.
 
@@ -139,6 +160,11 @@ However, switching off an inductive load like a motor or a relay can result in v
 
 In order to allow the current to decay slowly, a free-wheeling diode $D_{fw}$ can be added to the load output. Such a circuit is shown in the following schematic:
 
-![Load output with freewheeling diode](./images/load-switch-freewheeling-diode.svg)
+<figure>
+<center>
+    <img src="./images/load-switch-freewheeling-diode.svg" alt="Load output with freewheeling diode" height="auto" width="auto" />
+    <figcaption><b>Figure 5.</b> Load output with freewheeling diode.</figcaption>
+</center>
+</figure>
 
 A freewheeling diode in the charge controller should only be seen as an additional protection measure. Ideally, the diode should be located as close to the load itself as possible.

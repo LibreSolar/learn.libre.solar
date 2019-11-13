@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LineChart from './LineChart.js'
+import LineChart from './line-chart.js'
 
 export default {
     components: {
