@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import LineChart from './LineChart.js'
+import LineChart from './line-chart.js'
 
 var vmpp;       // Vmpp at defined temperature and irradiance
 var impp;       // Impp at defined temperature and irradiance
