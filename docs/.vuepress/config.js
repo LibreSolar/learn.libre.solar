@@ -87,13 +87,23 @@ module.exports = {
                     'software',
                 ],
             }*/],
-            '/production/': [/*{
+            '/production/': [ {
+                title: "Introduction",
+                collapsable: false,
+                children: [
+                    'guide',
+                    'roadmap',
+                    'skills',
+                    'tools',
+                    ],
+            },
+                {
                 title: "Ordering",
                 collapsable: false,
                 children: [
+                    'parts',
                     'pcbs',
                     'stencil',
-                    'parts',
                 ],
             }, {
                 title: "Assembly",
@@ -109,7 +119,7 @@ module.exports = {
                     'visual_check',
                     'eol',
                 ],
-            }*/]
+            }]
         },
         // Assumes GitHub. Can also be a full GitLab url.
         //repo: 'LibreSolar/learn.libre.solar',
