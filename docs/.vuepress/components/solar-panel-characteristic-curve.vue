@@ -3,7 +3,7 @@
         <line-chart :chart-data="chartData" :options="chartOptions"></line-chart>
 
         <p>
-        <center><b>Datasheet parameters at standard test conditions (STC):</b></center>
+        <div class="subhead">Datasheet parameters at standard test conditions (STC):</div>
         <div class="left">Voltage in maximum power point:</div>
         <div class="right"><input type="number" id="vmpp_stc" step="1" value="18.3" @change="updateGraph()"> V</div>
         <div class="left">Current in maximum power point:</div>
@@ -16,7 +16,7 @@
         </p>
 
         <p style="padding-top:50px">
-        <center><b>Datasheet temperature parameters:</b></center>
+        <div class="subhead">Datasheet temperature parameters:</div>
         <div class="left">Normal operating cell temperature (NOCT): </div>
         <div class="right"><input type="number" id="noct" step="1" value="46" @change="updateGraph()"> °C</div>
         <div class="left">Temperature coefficient of Isc: </div>
@@ -27,7 +27,7 @@
         </p>
 
         <p style="padding-top:50px">
-        <center><b>Actual environmental conditions:</b></center>
+        <div class="subhead">Actual environmental conditions:</div>
         <div class="left">Solar Irradiance:</div>
         <div class="right"><input type="number" id="g" step="100" value="1000" max="1000" @change="updateGraph()"> W/m²</div>
         <div class="left">Ambient Temperature: </div>
@@ -225,5 +225,12 @@ export default {
     width: 50%;
     margin-left: 10px;
     float:left;
+}
+.subhead {
+    width: 95%;
+    margin-left: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 </style>
