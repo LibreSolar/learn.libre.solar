@@ -14,7 +14,7 @@ Except for some old boards, all Libre Solar electronics hardware is built using 
 
 As KiCad version 5 contains lots of interesting new features (better rendering, rounded pads, STEP export and better symbol file format), the Libre Solar PCBs were recently converted to this version. Unfortunately, the files are not compatible with the older KiCad version 4 anymore. Please download the nightly builds or the stable KiCad version 5 as soon as it is released.
 
-**Custom footprints and symbols are saved in separate repositories:**
+**Custom footprints and symbols are saved in separate repositories**:
 
 * [https://github.com/LibreSolar/KiCad-footprints](https://github.com/LibreSolar/KiCad-footprints)
 * [https://github.com/LibreSolar/KiCad-symbols](https://github.com/LibreSolar/KiCad-symbols)
@@ -25,7 +25,7 @@ The footprint library is directly included via the github import feature in KiCa
 
 The firmware for the Libre Solar hardware is developed using the [ARM mbed OS](https://developer.mbed.org/) embedded software framework. This makes it possible to use easy-to-understand C++ syntax (similar to Arduino) and enhances community based software development.
 
-**Using Visual Studio Code and [PlatformIO](http://platformio.org/) as an IDE for software development is recommended.**
+**Using Visual Studio Code and [PlatformIO](http://platformio.org/) as an IDE for software development is recommended**.
 
 All Libre Solar software repositories are structured as PlatformIO projects:
 

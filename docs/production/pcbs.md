@@ -1,6 +1,6 @@
 # PCB Manufacturing
 
-**There are two options to send the manufacturing data of a PCB designed in KiCAD:**
+**There are two options to send the manufacturing data of a PCB designed in KiCAD**:
 
 ## Native KiCAD Files
 
@@ -10,7 +10,7 @@ More and more PCB manufacturers accept native KiCAD board files **(extension .ki
 
 The Gerber export is a little bit more complicated.
 
-After the board is opened in Pcbnew, the solder mask clearance and min width must be set to zero. This is important because the manufacturers normally want to define the clearance themselves based on their process. Setting it to zero makes it easier for them to shrink/enlarge the pads for the solder mask. The dialogue can be found under ***Dimensions > Pads to Mask Clearance*** as shown in Figure 1 below:
+After the board is opened in Pcbnew, the solder mask clearance and min width must be set to zero. This is important because the manufacturers normally want to define the clearance themselves based on their process. Setting it to zero makes it easier for them to shrink/enlarge the pads for the solder mask. The dialogue can be found under **Dimensions > Pads to Mask Clearance** as shown in **Figure 1** below:
 
 <figure>
 <center>
@@ -19,7 +19,7 @@ After the board is opened in Pcbnew, the solder mask clearance and min width mus
 </center>
 </figure>
 
-After that, open the Gerber export dialog under ***File > Plot*** and select at least the following layers for export:
+After that, open the Gerber export dialog under **File > Plot** and select at least the following layers for export:
 
 * **Top** (Top copper plane)
 * **Bottom** (Bottom copper plane)
@@ -30,7 +30,7 @@ After that, open the Gerber export dialog under ***File > Plot*** and select at 
 * **F.Mask** (Front solder mask)
 * **Edge.Cuts** (Margins where the PCB should be cut by milling)
 
-Select a folder where your files should be saved and press ***Plot***:
+Select a folder where your files should be saved and press **Plot**:
 
 <figure>
 <center>
@@ -39,7 +39,7 @@ Select a folder where your files should be saved and press ***Plot***:
 </center>
 </figure>
 
-After sucessful export, press ***Generate Drill Files***. Then select the same output directory and make sure that ***Merge PTH and NPTH holes into one file*** is **not** checked. Otherwise, your manufacturer doesn't know which holes are copper plated or not.
+After sucessful export, press **Generate Drill Files**. Then select the same output directory and make sure that **Merge PTH and NPTH holes into one file** is not checked. Otherwise, your manufacturer doesn't know which holes are copper plated or not.
 
 <figure>
 <center>
@@ -48,6 +48,4 @@ After sucessful export, press ***Generate Drill Files***. Then select the same o
 </center>
 </figure>
 
-After that you should have all files necessary for the PCB production. **Compress all the files (gerber and drill files) to a .zip file and send them to the manufacturer.**
-
-### Manufacturers
+After that you should have all files necessary for the PCB production. **Compress all the files (gerber and drill files) to a .zip file and send them to the manufacturer**.

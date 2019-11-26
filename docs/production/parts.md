@@ -41,7 +41,7 @@ The first step to build up the hardware is **ordering a PCB**. Most of the Libre
 
 ### 1. Clone or Download
 
-It is not recommended to use the ***Clone or download*** button on GitHub, as it does not automatically download the library submodule. If you still want to use it or you don't have the command-line git available, you should also click the *library* folder on GitHub and download it manually to your already cloned project. Otherwise your schematics will not work and you will get lots of warnings.
+It is not recommended to use the **Clone or download** button on GitHub, as it does not automatically download the library submodule. If you still want to use it or you don't have the command-line git available, you should also click the **library** folder on GitHub and download it manually to your already cloned project. Otherwise your schematics will not work and you will get lots of warnings.
 
 ### 2. Command Line
 
@@ -61,7 +61,7 @@ The **Bill of Materials (BOM)** lists all the parts of the PCB and is one of the
 
 In KiCad, the part properties like manufacturer, part number, etc. are defined inside the schematic editor.
 
-**The Libre Solar schematics contain the following fields:**
+**The Libre Solar schematics contain the following fields**:
 
 * Reference
 * Value
@@ -73,7 +73,7 @@ In KiCad, the part properties like manufacturer, part number, etc. are defined i
 * OrderNumber **(optional)**
 * Remarks **(optional)**
 
-The KiBoM plugin by SchrodingersGat is recommended to use for CSV export. A guide of how to install and use it can be found in the [KiBoM github repository](https://github.com/SchrodingersGat/KiBoM).
+The **KiBoM** plugin by **SchrodingersGat** is recommended to use for CSV export. A guide of how to install and use it can be found in the [KiBoM github repository](https://github.com/SchrodingersGat/KiBoM).
 
 A list of all parts can be exported using the BOM export features of KiCad Eeschema under **Tools > Generate Bill of Materials**. By default, there is no export plugin installed in KiCad.
 

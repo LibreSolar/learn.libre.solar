@@ -35,7 +35,7 @@
 
 ## Solder Paste Application
 
-**With the created stencil, it is possible to apply solder onto the whole PCB in a few steps:**
+**With the created stencil, it is possible to apply solder onto the whole PCB in a few steps**:
 
 1. Fix the previously prepared stencil on the PCB with adhesive tape so it cannot shift out of place.
 2. Apply some solder on top the stencil.
@@ -96,14 +96,14 @@ Since there is a long list of components to be placed, it is easier to organize 
 <figure>
 <center>
     <img src="./images/step_bom.jpg" alt="Reading the Blue print of PCB layout" height="auto" width="auto" />
-    <figcaption><b>Figure 2. </b>Reading the Blue print of PCB layout</figcaption>
+    <figcaption><b>Figure 2. </b>Reading the blueprint of PCB layout</figcaption>
 </center>
 </figure>
 
 <figure>
 <center>
     <img src="./images/step_equip.jpg" alt="Reading the Blue print of PCB layout" height="auto" width="auto" />
-    <figcaption><b>Figure 3. </b>Reading the Blue print of PCB layout</figcaption>
+    <figcaption><b>Figure 3. </b>Reading the blueprint of PCB layout</figcaption>
 </center>
 </figure>
 
@@ -125,7 +125,7 @@ Once the step is completed, an inspection can be done to see the pins which are 
 <figure>
 <center>
     <img src="./images/pick_place_inspection_before_reflow_oven.jpg" alt="Reading the Blue print of PCB layout" height="auto" width="auto" />
-    <figcaption><b>Figure 5. </b>Reading the Blue print of PCB layout</figcaption>
+    <figcaption><b>Figure 5. </b>Reading the blueprint of PCB layout</figcaption>
 </center>
 </figure>
 
@@ -159,7 +159,7 @@ Once the step is completed, an inspection can be done to see the pins which are 
   </tr>
 </table>
 
-The ***Reflow Oven*** is suitable for fast soldering of entire boards in one go when working with so-called surface **mounted devices (SMD)**.
+The **Reflow Oven** is suitable for fast soldering of entire boards in one go when working with so-called surface **mounted devices (SMD)**.
 Typically used for very small electronic components, as they are processed in the automated production of industrial robots.
 Soldering SMDs by hand is hard and time-staking. It can be done in 5-10 mins with the reflow oven.
 
@@ -174,7 +174,7 @@ Soldering SMDs by hand is hard and time-staking. It can be done in 5-10 mins wit
 
 This process starts once the components are physically placed on top of the PCB board and glued with the help of thermal paste with the help of magnifying lens.
 
-The oven has a four pre-programmed temperature curves -also called as wave- which are selected based on the type of solder material and the thermal limits of the components used. For this purpose, the **curve no. 2** was chosen to fit our criterion.
+The oven has a four pre-programmed temperature curves -also called as **wave**- which are selected based on the type of solder material and the thermal limits of the components used. For this purpose, the **curve no. 2** was chosen to fit our criterion.
 
 Once the casing is closed and the oven is started, one can see the moving point on the temperature curve to know the status of the process. This process typically lasted for 7 mins and a beep sound was heard at the end of it.
 

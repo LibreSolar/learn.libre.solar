@@ -19,4 +19,4 @@ Getting to know the environment and the tools is necessary in order to complete 
 </center>
 </figure>
 
-The process is then followed by the steps mentioned in **Figure 2**. The first step (ordering process) can be done at home. For further steps, some specific machines and tools are needed.
+The process is then followed by the steps mentioned in **Figure 2**. The first step (**ordering process**) can be done at home. For further steps, some specific machines and tools are needed.

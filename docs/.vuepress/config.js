@@ -91,7 +91,6 @@ module.exports = {
                 title: "Introduction",
                 collapsable: false,
                 children: [
-                    'guide',
                     'roadmap',
                     'skills',
                     'tools',

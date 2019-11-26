@@ -52,7 +52,7 @@ Instead of applying solder manually to every solder joint, a laser cutter is use
 
 ### Laser Cutter Preparation
 
-A **Laser Cutter** uses a focused high power laser to cut materials or engrave surfaces. Similar to a 3D printer or a CNC machine the laser beam is moved along two axes by a motion controller. There are software tools that generate motion commands from different file formats, in our case we use the open source software [VisiCut](http://hci.rwth-aachen.de/visicut-download) to use the laser cutter ***Epilog Zing***.
+A **Laser Cutter** uses a focused high power laser to cut materials or engrave surfaces. Similar to a 3D printer or a CNC machine the laser beam is moved along two axes by a motion controller. There are software tools that generate motion commands from different file formats, in our case we use the open source software [VisiCut](http://hci.rwth-aachen.de/visicut-download) to use the laser cutter **Epilog Zing**.
 
 <figure>
 <center>
@@ -73,7 +73,7 @@ The two most important parameters to determine if only the surface of a material
 * **Power of the laser beam**
 * **Speed of the beam**
 
-The higher the power of the beam and the longer the beam stays at one place, the deeper the beam cuts into the material. If the parameters are not correct, the beam won't cut through the material or even burn the material. Also note that different materials need different parameters to achieve the desired cut or engrave. Tests showed that coated paper from glossy magazines or a material called ***Mylar*** are a good choice for laser cutting the stencil. To find the right parameters for laser cut machine you need to perform some test cuts with different power and speed settings. Use the [laser cutter template](./images/lasercut_test.svg) to conduct some tests by varying speed and power with a piece of material of your choice. A test scenario could look like this:
+The higher the power of the beam and the longer the beam stays at one place, the deeper the beam cuts into the material. If the parameters are not correct, the beam will not cut through the material or even burn the material. Also note that different materials need different parameters to achieve the desired cut or engrave. Tests showed that coated paper from glossy magazines or a material called **Mylar** are a good choice for laser cutting the stencil. To find the right parameters for laser cut machine you need to perform some test cuts with different power and speed settings. Use the [laser cutter template](./images/lasercut_test.svg) to conduct some tests by varying speed and power with a piece of material of your choice. A test scenario could look like this:
 
 1. **10% power, 100% speed**
 2. **5% power, 100% speed**
@@ -96,3 +96,12 @@ The stencil can be created by exporting an image in SVG file format from the KiC
 The new file is a vectorized graphic in SVG file format. The file can also be opened and modified if needed with image processing tools like [Gimp](https://www.gimp.org) or [Inkscape](https://inkscape.org). The parameter settings obtained from the test cuts are then used to create the stencil. The small spots where the laser didn't cut through the material can be repaired using a knife.
 
 ## Stainless Steel Stencils
+
+**Stainless steel stencils** are of outstanding quality, accuracy and precision made by printing experts to ensure professional production with intricate details that allow more efficient solder paster release. They put an end to the tedious hand soldering of PCB boards and hence reducing the PCB assembly time which make them more suitable for industry than the do-it-yourself method.
+
+<figure>
+<center>
+    <img src="./images/stainless-steel-stencil.jpg" alt="Stainless Steel Stencils" height="auto" width="auto" />
+    <figcaption><b>Figure 5. </b>Stainless Steel Stencil</figcaption>
+</center>
+</figure>
