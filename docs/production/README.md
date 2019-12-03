@@ -1,7 +1,10 @@
 # Production
 
-This chapter will explain the production of electronics hardware.
+In in the following chapters, the single steps of a PCB production, assembly and testing process are described. A Libre Solar MPPT solar charge controller is used as an example.
 
-::: warning TODO
-Include and extend the existing [OER by Collective Open Source Hardware](http://cos-h.cc/education/).
-:::
+<center>
+    <img src="./images/roadmap_stepguide.png" alt="roadmap stepguide" height="auto" width="auto" />
+</center>
+</figure>
+
+These chapters are based on the [OER by Collective Open Source Hardware](http://cos-h.cc/education/).

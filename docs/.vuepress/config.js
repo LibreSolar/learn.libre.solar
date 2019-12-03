@@ -97,7 +97,7 @@ module.exports = {
                     'software',
                 ],
             }*/],
-            '/production/': [/*{
+            '/production/': [{
                 title: "Ordering",
                 collapsable: false,
                 children: [
@@ -119,7 +119,7 @@ module.exports = {
                     'visual_check',
                     'eol',
                 ],
-            }*/]
+            }]
         },
         // Assumes GitHub. Can also be a full GitLab url.
         //repo: 'LibreSolar/learn.libre.solar',
