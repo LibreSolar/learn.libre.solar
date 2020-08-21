@@ -20,12 +20,7 @@ This results in a comparably low efficiency for large voltage differences.
 
 A very simple type of linear regulator can be built using an NPN transistor, a resistor and a Zener diode:
 
-<figure>
-<center>
-    <img src="./images/dcdc-emitter-follower.svg" alt="Emitter follower as a simple linear regulator" height="auto" width="auto" />
-    <figcaption><b>Figure 1.</b> Emitter follower as a simple linear regulator.</figcaption>
-</center>
-</figure>
+<fig-caption src="development/dcdc-emitter-follower.svg" caption="Emitter follower as a simple linear regulator" num="1" />
 
 The resulting output voltage for low currents is approximately the Zener voltage of $D_z$ minus the transistor base threshold voltage (around 0.6 V).
 
@@ -49,12 +44,7 @@ For DC energy systems, the non-isolated synchronous buck-converter is the most i
 
 The simplified schematic of a non-isolated buck converter is shown in Figure 2. It uses an N-channel MOSFET (Q) as the switch and a freewheeling diode (D).
 
-<figure>
-<center>
-    <img src="./images/dcdc-buck.svg" alt="Non-synchronous non-isolated buck converter" height="auto" width="auto" />
-    <figcaption><b>Figure 2.</b> Non-synchronous non-isolated buck converter.</figcaption>
-</center>
-</figure>
+<fig-caption src="development/dcdc-buck.svg" caption="Non-synchronous non-isolated buck converter" num="2" />
 
 During operation, Q is repeatedly switched ON and OFF. This switching action causes a train of pulses at the junction of Q, D, and L (the so-called switch node) which is filtered by the LC output filter to produce a DC output voltage ($V_{out}$).
 
@@ -62,12 +52,7 @@ At low loads, the power stage operates in discontinuous conduction mode where cu
 
 Figure 3 shows the current and voltage behavior during continuous conduction mode.
 
-<figure>
-<center>
-    <img src="./images/dcdc-continuous-mode.svg" alt="continuous_mode" height="auto" width="auto" />
-    <figcaption><b>Figure 3.</b> Buck converter in continuous conduction mode.</figcaption>
-</center>
-</figure>
+<fig-caption src="development/dcdc-continuous-mode.svg" caption="Buck converter in continuous conduction mode" num="3" />
 
 During on-time, the current $I_L$ flows from the input capacitor $C_{in}$ through the MOSFET switch $Q$ to the output capacitor $C_{out}$.
 
@@ -97,12 +82,7 @@ Further details regarding operation modes of buck converters are explained [on W
 
 A non-synchronous boost converter is very similar to the buck converter, but the diode and the switch are swapped, as shown in the schematic in Figure 4.
 
-<figure>
-<center>
-    <img src="./images/dcdc-boost.svg" alt="Non-synchronous non-isolated boost converter" height="auto" width="auto" />
-    <figcaption><b>Figure 4.</b> Non-synchronous non-isolated boost converter.</figcaption>
-</center>
-</figure>
+<fig-caption src="development/dcdc-boost.svg" caption="Non-synchronous non-isolated boost converter" num="4" />
 
 Note that the input of the converter is now at the right side of the schematic. This notation may differ from other publications, but helps to show the similarities of buck and boost converters.
 
@@ -112,12 +92,7 @@ For a detailed explanation of the boost converter operating mode see also [the W
 
 For a synchronous non-isolated buck or boost converter as shown in Figure 5, the diode of the non-synchronous converters is replaced by an additional power MOSFET. Synchronous means that the switching of the power transistors is synchronized such that the high side and low side MOSFETs are not turned on at the same time. Otherwise, a direct short of the high voltage side to ground would destroy the circuit (shoot-through).
 
-<figure>
-<center>
-    <img src="./images/dcdc-synchronous.svg" alt="synchronous_dc_dc" height="auto" width="auto" />
-    <figcaption><b>Figure 5.</b> Synchronous non-isolated converter (buck and boost).</figcaption>
-</center>
-</figure>
+<fig-caption src="development/dcdc-synchronous.svg" caption="Synchronous non-isolated converter (buck and boost)" num="5" />
 
 The main advantage of a synchronous converter compared to the non-synchronous counterparts is the increased efficiency at higher power. Instead of the loss resulting from the forward voltage drop in the diode, only the lower resistive loss during on-state of the MOSFET is dissipated.
 

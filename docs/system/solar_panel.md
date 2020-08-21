@@ -10,12 +10,7 @@ A photovoltaic (PV) cell generates an electron flow from the energy of sunlight 
 
 The basic principles of a PV cell are shown in Figure 1 and explained below.
 
-<figure>
-<center>
-    <img src="./images/pv-cell-principles.gif" alt="Basic principle of photovoltaic cells" height="auto" width="auto" />
-    <figcaption><b>Figure 1.</b> Basic principle of photovoltaic cells [1].</figcaption>
-</center>
-</figure>
+<fig-caption src="system/pv-cell-principles.gif" caption="Basic principle of photovoltaic cells [1]" num="1" />
 
 The cell contains two different types of silicon: A so-called n-type, which has extra electrons and a p-type with extra spaces for electrons, called holes. The two types are connected at the p/n junction and create an electrical field.
 
@@ -45,12 +40,7 @@ For larger systems, multiple panels (or modules) are again connected in series t
 
 The different steps from a single PV cell to a solar array are shown in Figure 1.
 
-<figure>
-<center>
-    <img src="./images/solar-cell-to-array.svg" alt="From a solar cell to a solar array" height="auto" width="auto" />
-    <figcaption><b>Figure 2.</b> From a solar cell to a solar array.</figcaption>
-</center>
-</figure>
+<fig-caption src="system/solar-cell-to-array.svg" caption="From a solar cell to a solar array" num="2" />
 
 Small off-grid systems may use only a single module or even use modules with lower voltage. The following table lists typical module designs and their applications:
 
@@ -102,12 +92,7 @@ The sunlight is modelled as a photo-generated current source $I_{ph}$. In order 
 
 The described equivalent circuit model is shown in Figure 3. It is also called single-diode or five-parameter model.
 
-<figure>
-<center>
-    <img src="./images/pv-equivalent-circuit.svg" alt="Equivalent circuit model of a solar cell" height="auto" width="auto" />
-    <figcaption><b>Figure 3.</b> Equivalent circuit model of a solar cell.</figcaption>
-</center>
-</figure>
+<fig-caption src="system/pv-equivalent-circuit.svg" caption="Equivalent circuit model of a solar cell" num="3" />
 
 The following interactive graph plots the characteristic curves of a solar panel using an approximated solution of above model [2]. The equivalent circuit model parameters were calculated from datasheet parameters and can be adjusted for a specific solar panel. You can use it to evaluate how the ambient temperature and the irradiance influences the performance.
 
