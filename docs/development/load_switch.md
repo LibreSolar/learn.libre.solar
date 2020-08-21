@@ -1,6 +1,6 @@
 # Load Switch
 
-Charge controllers are often equipped with a load switch that protects the battery from deep-discharge. If supported by the charge controller, the load switch can also be used for advanced control of connected loads, e.g. switching on lights during the night.
+Charge controllers are often equipped with a load switch that disconnects consumers and protects the battery from deep-discharge. If supported by the charge controller, the load switch can also be used for advanced control of connected loads, e.g. switching on lights during the night.
 
 The following image shows the layout of a typical MPPT charge controller with the DC/DC power stage between the solar panel and the battery and a switch between the battery and the load output.
 
@@ -10,10 +10,21 @@ Even though it might seem very simple to switch on and off a load using a MOSFET
 
 ## High-side vs. low-side
 
-::: warning TODO
-- Circuit diagrams
-- Advantages and disadvantages
-:::
+When switching off an electrical load, there are basically two ways to disconnect its power, either at the positive terminal (high-side) or the negative terminal (low-side).
+
+Switching the low-side is the most easy method from electrical perspective. An N-channel MOSFET can be used, driven by an existing positive supply voltage, e.g. the battery itself. On the high-side, an N-channel MOSFET needs a drive voltage at the gate that is above the battery voltage. This requires additional circuitry like a charge pump.
+
+As an alternative, a P-channel MOSFET can be used to switch the high-side. However, P-channel MOSFETs are more expensive and feature a higher on-state resistance compared to N-channel MOSFETs.
+
+In most cases it is more safe to use high-side switching in order to prevent additional ground paths which could either make the switch ineffective or even lead to damage in other parts or wires.
+
+Fig. 2 shows a typical scenario where the use of low-side switches is problematic.
+
+<fig-caption src="development/load_switch_2nd_gnd_path.svg" caption="Second ground path with low-side load switch" num="2" />
+
+If two devices powered via different paths from a single source (the 12V battery in this case) are connected via a second path like audio, video or USB interfaces, these interfaces provide a redundant ground path. If one of the consumers (e.g. the screen) is switched off via the negative terminal, the current will flow back to the battery via the small signal wire. This does not only create issues with the signal transmission or makes the switch ineffective. It could also overheat or destroy the signal wire due to excessive current.
+
+In a car or a boat, the chassis or hull is typically connected to the negative terminal of the battery (meaning it is "grounded"). This could provide the undesired second ground path in case of a short circuit. With a ground path via the chassis the switch would not have any effect anymore.
 
 ## Inrush current during turn-on
 
@@ -73,7 +84,7 @@ Normally, there should be a fuse installed at the battery terminal to protect th
 
 MOSFET datasheets normally state a so-called safe operating area, which shows the maximum allowed current vs. the drain-source-voltage. The following example is from the [Nexperia PSMN5R2-60YL datasheet](https://assets.nexperia.com/documents/data-sheet/PSMN5R2-60YL.pdf):
 
-<fig-caption src="development/mosfet-safe-operating-area.png" caption="Safe operating area of PSMN5R2-60YL" num="2" />
+<fig-caption src="development/mosfet-safe-operating-area.png" caption="Safe operating area of PSMN5R2-60YL" num="3" />
 
 As long as the maximum junction temperature is not exceeded, this MOSFET can handle 100A continuously. However, under real operating conditions with passive cooling via the PCB, the continuous current will be in the range of 20A. During a short-circuit, the current rises very quickly, only limited by the impedance of the battery, the wires and the PCB.
 
@@ -95,7 +106,7 @@ It would be a simple task to just switch off immediately as soon as a current ab
 
 The following simplified RLC circuit can be used to analyze the behavior of the system:
 
-<fig-caption src="development/load-switch-capacitive-load.svg" caption="Load output with capacitive load" num="3" />
+<fig-caption src="development/load-switch-capacitive-load.svg" caption="Load output with capacitive load" num="4" />
 
 The resistance $R_{total}$ consists of the battery internal resistance, the wire resistance and any resistance inside the charge controller, e.g. because of connectors or a shunt for current measurement.
 
@@ -115,7 +126,7 @@ The following interactive graph shows the current vs. time with worst-case assum
 
 <figure>
 <center>
-    <figcaption><b>Figure 4.</b> Load short-circuit current calculation <b>(interactive)</b>.</figcaption>
+    <figcaption><b>Figure 5.</b> Load short-circuit current calculation <b>(interactive)</b>.</figcaption>
 </center>
 </figure>
 
@@ -145,6 +156,6 @@ However, switching off an inductive load like a motor or a relay can result in v
 
 In order to allow the current to decay slowly, a free-wheeling diode $D_{fw}$ can be added to the load output. Such a circuit is shown in the following schematic:
 
-<fig-caption src="development/load-switch-freewheeling-diode.svg" caption="Load output with freewheeling diode" num="5" />
+<fig-caption src="development/load-switch-freewheeling-diode.svg" caption="Load output with freewheeling diode" num="6" />
 
 A freewheeling diode in the charge controller should only be seen as an additional protection measure. Ideally, the diode should be located as close to the load itself as possible.
