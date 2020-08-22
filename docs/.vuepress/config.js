@@ -12,6 +12,7 @@ module.exports = {
     ['meta', { name: "msapplication-TileColor", content: "#2b5797"}],
     ['meta', { name: "msapplication-config", content: "/favicons/browserconfig.xml"}],
     ['meta', { name: "theme-color", content: "#ffffff"}],
+    ['link', { rel: 'stylesheet', href: `https://cdn.jsdelivr.net/npm/quasar@1.12.13/dist/quasar.min.css` }]
   ],
   plugins: [
     'vuepress-plugin-export',
