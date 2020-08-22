@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import LineChart from './line-chart.js'
+import LineChart from './LineChart.vue'
 
 //chart for efficiency
 export default {
@@ -60,15 +60,15 @@ export default {
 
             var x_sec_6_points = [];
             for (var i = 0; i <= x_sec_6_steps; i++) {
-            	points_total.push({x:i, y:this.efficiency(i,x_sec_6)});               
+            	points_total.push({x:i, y:this.efficiency(i,x_sec_6)});
 	    	x_sec_6_points.push({x:i, y:this.efficiency(i,x_sec_6)});
             }
 
             var x_sec_4_points = [];
-            for (var i = 0; i <= x_sec_4_steps; i++) { 
+            for (var i = 0; i <= x_sec_4_steps; i++) {
             	x_sec_4_points.push({x:i, y:this.efficiency(i,x_sec_4)-points_total[i].y});
-            	points_total[i].y += x_sec_4_points[i].y;  
-            }	
+            	points_total[i].y += x_sec_4_points[i].y;
+            }
 
             var x_sec_2_5_points = [];
             for (var i = 0; i <= x_sec_2_5_steps; i++) {
@@ -191,13 +191,13 @@ export default {
             var specific_resistance = document.getElementById("sr").value; // Ohm
             var wire_length = document.getElementById("wl").value; // m
 	    var voltage = document.getElementById("v").value; //v
-	    
+
             var resistance_milli = (specific_resistance * wire_length * 1000)/ x_sec;
             var power_loss = (Math.pow(current,2) * resistance_milli)/1000;
 
             return (power_loss * 100)/(voltage * current);
         },
-	
+
 	updateGraph_voltage_drop() {
             // cross-section areas in mm2
             var x_sec_1 = 1;
@@ -217,7 +217,7 @@ export default {
             var x_sec_6_points = [];
             for (var i = 0; i <= x_sec_6_steps; i++) {
                 x_sec_6_points.push({x:i, y:this.voltage_drop(i,x_sec_6)});
-            	points_total.push({x:i, y:this.voltage_drop(i,x_sec_6)}); 
+            	points_total.push({x:i, y:this.voltage_drop(i,x_sec_6)});
             }
 
             var x_sec_4_points = [];
@@ -347,7 +347,7 @@ export default {
             var specific_resistance = document.getElementById("sr").value; // Ohm
             var wire_length = document.getElementById("wl").value; // m
 	    var voltage = document.getElementById("v").value; //v
-	    
+
             var resistance_milli = (specific_resistance * wire_length * 1000)/ x_sec;
 
             return (resistance_milli * current)/1000;

@@ -1,3 +1,4 @@
+<script>
 //
 // Custom LineChart component for live/interactive update of charts
 //
@@ -5,6 +6,7 @@
 //
 
 import { Line, mixins } from 'vue-chartjs'
+
 const { reactiveProp } = mixins
 
 export default {
@@ -15,3 +17,4 @@ export default {
         this.renderChart(this.chartData, this.options)
     }
 }
+</script>

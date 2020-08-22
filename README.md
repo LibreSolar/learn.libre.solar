@@ -25,7 +25,6 @@
 ### JavaScript coding style
 
 - Indentation: 4 spaces (no tabs)
-- .vue file names all lower-case, words connected with dashes
 - Graph border width should be 2px
 
 ### Colors
