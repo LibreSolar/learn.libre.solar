@@ -1,43 +1,39 @@
 <template>
-  <div style="overflow:auto">
+  <div>
     <line-chart :chart-data="chartData" :options="chartOptions"></line-chart>
 
-    <p>
-    <div class="subhead">Datasheet parameters at standard test conditions (STC):</div>
-    <div class="left">Voltage in maximum power point:</div>
-    <div class="right"><input type="number" id="vmpp_stc" step="1" value="18.3" @change="updateGraph()"> V</div>
-    <div class="left">Current in maximum power point:</div>
-    <div class="right"><input type="number" id="impp_stc" step="1"value="8.27" @change="updateGraph()"> A</div>
-    <div class="left">Open circuit voltage:</div>
-    <div class="right"><input type="number" id="voc_stc" step="1" value="22.5" @change="updateGraph()"> V</div>
-    <div class="left">Short circuit current:</div>
-    <div class="right"><input type="number" id="isc_stc" step="1" value="8.81" @change="updateGraph()"> A</div>
-    <br/><br/>
-    </p>
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card style="max-width: 320px; margin: 0px" class="q-pa-sm q-pb-md" flat>
+        <q-list>
+          <q-item-label class="text-weight-bold">Datasheet parameters (STC):</q-item-label>
+          <param-input label="Voltage in maximum power point:" unit="V" v-model="vmpp_stc" @input="updateGraph()"></param-input>
+          <param-input label="Current in maximum power point:" unit="A" v-model="impp_stc" @input="updateGraph()"></param-input>
+          <param-input label="Open circuit voltage:" unit="V" v-model="voc_stc" @input="updateGraph()"></param-input>
+          <param-input label="Short circuit current:" unit="A" v-model="isc_stc" @input="updateGraph()"></param-input>
+          <param-input label="Temperature coefficient of Voc:" unit="%/K" v-model="voc_coeff" step="0.01" @input="updateGraph()"></param-input>
+          <param-input label="Temperature coefficient of Isc:" unit="%/K" v-model="isc_coeff" step="0.01" @input="updateGraph()"></param-input>
+          <param-input label="Normal operating cell temperature (NOCT):" unit="°C" v-model="noct" @input="updateGraph()"></param-input>
+        </q-list>
+      </q-card>
 
-    <p style="padding-top:50px">
-    <div class="subhead">Datasheet temperature parameters:</div>
-    <div class="left">Normal operating cell temperature (NOCT): </div>
-    <div class="right"><input type="number" id="noct" step="1" value="46" @change="updateGraph()"> °C</div>
-    <div class="left">Temperature coefficient of Isc: </div>
-    <div class="right"><input type="number" id="isc_coeff" step="0.01" value="0.08" @change="updateGraph()"> %/K</div>
-    <div class="left">Temperature coefficient of Voc:</div>
-    <div class="right"><input type="number" id="voc_coeff" step="0.01" value="-0.37" @change="updateGraph()"> %/K</div>
-    <br/>
-    </p>
-
-    <p style="padding-top:50px">
-    <div class="subhead">Actual environmental conditions:</div>
-    <div class="left">Solar Irradiance:</div>
-    <div class="right"><input type="number" id="g" step="100" value="1000" max="1000" @change="updateGraph()"> W/m²</div>
-    <div class="left">Ambient Temperature: </div>
-    <div class="right"><input type="number" id="t_ambient" step="5" value="25" @change="updateGraph()"/> °C</div>
-    </p>
+      <q-card style="width: 320px; margin: 0px" class="q-pa-sm q-pb-md" flat>
+        <q-list>
+          <q-item-label class="text-weight-bold">Actual environmental conditions:</q-item-label>
+          <param-input label="Solar Irradiance:" unit="W/m²" v-model="g" step="100" max="1000" @input="updateGraph()"></param-input>
+          <param-input label="Ambient Temperature:" unit="°C" v-model="t_ambient" step="5" @input="updateGraph()"></param-input>
+          <q-item style="padding: 0px">
+            <q-item-section><q-item-label>Calculated cell temperature:</q-item-label></q-item-section>
+            <q-item-section side>{{ Math.round(t_cell * 10) / 10 }} °C</q-item-section>
+          </q-item>
+        </q-list>
+      </q-card>
+    </div>
   </div>
 </template>
 
 <script>
 import LineChart from './LineChart.vue'
+import ParamInput from './ParamInput.vue'
 
 var vmpp;       // Vmpp at defined temperature and irradiance
 var impp;       // Impp at defined temperature and irradiance
@@ -51,7 +47,17 @@ export default {
   data () {
     return {
       chartData: null,
-      chartOptions: null
+      chartOptions: null,
+      vmpp_stc: 18.3,
+      impp_stc: 8.27,
+      voc_stc:  22.5,
+      isc_stc: 8.81,
+      isc_coeff: 0.08,
+      voc_coeff: -0.37,
+      g: 1000,
+      t_ambient: 25,
+      noct: 46,
+      t_cell: 25.0
     }
   },
   mounted () {
@@ -80,8 +86,8 @@ export default {
           pointRadius: 0,
           fill: false,
           data: points_v
-                 },
-                 {
+        },
+        {
           label: 'Power',
           yAxisID: 'P',
           backgroundColor: '#005e85',
@@ -160,24 +166,11 @@ export default {
     // Reads the datasheet parameters at standard test conditions (user input)
     // and calculate values for actual condition
     getValues() {
-      var vmpp_stc = parseFloat(document.getElementById("vmpp_stc").value);
-      var impp_stc = parseFloat(document.getElementById("impp_stc").value);
-      var voc_stc = parseFloat(document.getElementById("voc_stc").value);
-      var isc_stc = parseFloat(document.getElementById("isc_stc").value);
-      var isc_coeff = parseFloat(document.getElementById("isc_coeff").value);
-      var voc_coeff = parseFloat(document.getElementById("voc_coeff").value);
-      var g = parseFloat(document.getElementById("g").value);
-
-      // calculate cell temperature
-      var t_ambient= parseFloat(document.getElementById("t_ambient").value);
-      var noct = parseFloat(document.getElementById("noct").value);
-      var t_cell = t_ambient + g / 800 * (noct - 20);
-
-      // calculate values for actual temperature and irradiance
-      voc = voc_stc * (1 + voc_coeff / 100 * (t_cell - 25));
-      isc = isc_stc * (1 + isc_coeff / 100 * (t_cell - 25)) * g / 1000;
-      vmpp = vmpp_stc * (1 + voc_coeff / 100 * (t_cell - 25));
-      impp = impp_stc * (1 + isc_coeff / 100 * (t_cell - 25)) * g / 1000;
+      this.t_cell = parseFloat(this.t_ambient) + parseFloat(this.g) / 800 * (parseFloat(this.noct) - 20);
+      voc = this.voc_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));
+      isc = this.isc_stc * (1 + this.isc_coeff / 100 * (this.t_cell - 25)) * this.g / 1000;
+      vmpp = this.vmpp_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));
+      impp = this.impp_stc * (1 + this.isc_coeff / 100 * (this.t_cell - 25)) * this.g / 1000;
     },
 
     getVoc() {
@@ -186,15 +179,11 @@ export default {
     },
 
     getVmax() {
-      var voc_stc = parseFloat(document.getElementById("voc_stc").value);
-      var voc_coeff = parseFloat(document.getElementById("voc_coeff").value);
-      return voc_stc * (1 + voc_coeff / 100 * (0 - 25));
+      return this.voc_stc * (1 + this.voc_coeff / 100 * (0 - 25));
     },
 
     getImax() {
-      var isc_stc = parseFloat(document.getElementById("isc_stc").value);
-      var isc_coeff = parseFloat(document.getElementById("isc_coeff").value);
-      return isc_stc * (1 + isc_coeff / 100 * (70 - 25));
+      return this.isc_stc * (1 + this.isc_coeff / 100 * (70 - 25));
     },
 
     // calculate I-V characteristic curve based on El Tayyan simplified method:
@@ -214,23 +203,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.left {
-  width: 45%;
-  float: left;
-  text-align: right;
-}
-.right {
-  width: 50%;
-  margin-left: 10px;
-  float:left;
-}
-.subhead {
-  width: 95%;
-  margin-left: 10px;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-</style>

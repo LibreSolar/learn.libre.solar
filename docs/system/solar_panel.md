@@ -96,12 +96,9 @@ The described equivalent circuit model is shown in Figure 3. It is also called s
 
 The following interactive graph plots the characteristic curves of a solar panel using an approximated solution of above model [2]. The equivalent circuit model parameters were calculated from datasheet parameters and can be adjusted for a specific solar panel. You can use it to evaluate how the ambient temperature and the irradiance influences the performance.
 
-<solar-panel-characteristic-curve/>
-
-<figure>
-<center>
-    <figcaption><b>Figure 4.</b> Solar panel characteristic curve <b>(interactive)</b>.</figcaption>
-</center>
+<figure style="margin-right:0px; margin-left:0px">
+    <solar-panel-characteristic-curve/>
+    <figcaption style="text-align:center"><b>Figure 4.</b> Solar panel characteristic curve <b>(interactive)</b>.</figcaption>
 </figure>
 
 The default values in the graph are based on a typical 150 W module with 36 cells, suitable for 12V systems.
