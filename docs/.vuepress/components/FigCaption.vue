@@ -12,7 +12,7 @@ export default {
   props: ['src', 'caption', 'num'],
   computed: {
     imagesrc () {
-      return '/images/' + this.src
+      return this.$site.base + 'images/' + this.src
     }
   }
 }
