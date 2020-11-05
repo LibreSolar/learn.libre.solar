@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # This script deploys master branch commits to gh-pages root directory and other branches to
-# sub-directory /branches/<branch-name>.
+# sub-directory /b/<branch-name>.
 #
-# Rendered branches can be accessed via https://learn.libre.solar/branches/<branch-name>
+# Rendered branches can be accessed via https://learn.libre.solar/b/<branch-name>
 #
 # See here for documentation of Travis CI environment variables:
 # https://docs.travis-ci.com/user/environment-variables/
