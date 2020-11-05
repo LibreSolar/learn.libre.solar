@@ -5,7 +5,7 @@ Harvesting wind energy is one of the oldest forms of energy production in human 
 The two main types of turbines are distinct by their working principles. 
 Drag type turbines use the fact that certain bodies or geometries have different drag when moving against the wind and are comonly reffered to as "Savonius turbines". Lift type turbines use the lift effect on airfoils in moving liquids, much like an airplane. 
 
-According to *Betz's Law*, the maximum of energy that can be extraxted from the wind is around $\frac{16}{27}$ or $\approx60\%$ of the total kinetic energy of the moving air. The most important detail of turbines is therefore the power coefficient $c_p% and how close it is to the maximum defined by *Betz's Law*. It is defined by the ratio of turbine energy output to kinetic wind energy:
+According to *Betz's Law*, the maximum of energy that can be extraxted from the wind is around $\frac{16}{27}$ or $\approx60\%$ of the total kinetic energy of the moving air [3]. The most important detail of turbines is therefore the power coefficient $c_p$ and how close it is to the maximum posted by *Betz's Law*. It is defined by the ratio of turbine energy output to kinetic wind energy [3]:
 
 $$c_p=\frac{P_{turbine}}{P_{wind}}$$
 
@@ -38,7 +38,7 @@ with $\omega$ as angular frequency and $r$ as radius, is always $\lambda\le1$. D
 
 ### Lift Runner
 
-Lift running turbines use airfoils as blade geometry and are mostly divided into VAWT and Horizontal Axis Wind Turbines (HAWT). There are other hybrids and experimental types of turbines, but those are not commonly used. Most lift types have a much higher TSR ($\lambda$=2...6) than drag types thus the wind velocity at the blade is much higher, resulting in better power coeeficients. All lift types have a relativly low starting torque, resulting in a high cut-in windspeed.
+Lift running turbines use airfoils as blade geometry and are mostly divided into VAWT and Horizontal Axis Wind Turbines (HAWT). There are other hybrids and experimental types of turbines, but those are not commonly used. Most lift types have a much higher TSR ($\lambda$=2...12) [4] than drag types thus the wind velocity at the blade is much higher, resulting in better power coeeficients. All lift types have a relativly low starting torque, resulting in a high cut-in windspeed.
 
 <figure>
     <center>
@@ -50,7 +50,7 @@ Lift running turbines use airfoils as blade geometry and are mostly divided into
 
 #### HAWT
 
-Horizontal turbines are most commonly seen in commercial wind energy production due to there high power efficiency ($c_p \approx50\%$) and scalability. To control rotational speed, large systems use active pitch controller where each blade can be individually pitched to adapt generated torque. Small turbines with fixed blades need either a passive stall design or a yaw mechanism to effectivly lower the wind-facing area of the turbine. Most systems will have mechanical or hydraulic brake system for storm protection. Since the relative windspeed attacking the blade changes along the radius, the angle of attack also changes which leads different optimal blade geometries along the blade. 
+Horizontal turbines are most commonly seen in commercial wind energy production due to there high power efficiency ($c_p \approx50\%$) and scalability. To control rotational speed, large systems use active pitch controller where each blade can be individually pitched to adapt generated torque. Small turbines with fixed blades need either a passive stall design or a yaw mechanism to effectivly lower the wind-facing area of the turbine. Most systems will have mechanical or hydraulic brake systems for storm protection. Since the relative windspeed attacking the blade changes along the radius, the angle of attack also changes which leads different optimal blade geometries along the blade [4]. 
 
 | Advantages                            | Drawbacks                                     |
 |---------------------------------------|-----------------------------------------------|
@@ -70,13 +70,53 @@ Vertical axis wind turbines have a power coefficient of $c_p \approx 30\%-40\%$ 
 
 ## Generators
 
+Electric generators can be classified into radial flux machines and axial flux machines. The main difference is the flow direction of magnetic flux, where it is either parallel or radial to the rotaional axis. The common synchronous and asynchronous (induction) machines belong to the radial flux machines and are mainly used in large turbines. One of the main challenges for larger wind turbines is the connection to the grid. While DC-Sources can be connected to the grid when their voltage is equal to the grid voltage, AC-Sources have to be in synch with the grid's voltage frequency and amplitude [4]. For small scale, especially off-grid turbines, axial flux generators are more common. 
+
+### Asynchronous
+
+The distinctive property of induction generators is the slip between rotor and stator fields. In generator operation, the turbine moves the rotor *above* the synchronous speed. Because of the two magnetic fields running against each other, this type of generator can introduce high reactive power loads in the system. 
+
+The synchronous speed $n_s$ in *rpm* is dependend on the pole count $p$ (as pairs, four poles -> two pairs)  of the stator and the excitation frequenzy $f_e$:
+
+$$n=\frac{f_e\cdot60}{p}$$
+
+The synchronous speed for a four pole generator on grid frequenzy of $f=50Hz$ is $1500rpm$. To achieve these speeds, a gearbox is installed. Alternatively the pole pairs could be increased, leading to higher overall mass. To run a turbine at $n_s=120rpm$ and $f=e=50Hz$, $p=25$ pole pairs (!) are needed which is simply not feasible for this type of machine. To manipulate the synchronous speed to allow variable turbine speed, several approaches are possible. The quasi-standard are double-fed induction generators (DFIG) (always as wound-rotor) where the field windings are fed with an adjustable frequency AC-power [4] while the armature windings are directly connected to the grid or other equipment for conversion. With this setup, the rotational speed of the turbine can vary with windspeed while the active *and* reactive power of the generator can be controlled.
+
+<figure>
+    <center>
+        <a href="https://commons.wikimedia.org/wiki/File:DFIG_in_Wind_Turbine.svg#/media/File:DFIG_in_Wind_Turbine.svg">
+            <fig-caption src="system/DFIG_in_Wind_Turbine.svg" caption="Schematics for a double fed induction generator [5]" style="width:50%"  num="3" />
+        </a>
+    </center>
+</figure>
+
+### Synchronous
+
+#### Field Coil Excitation
+
+Synchronous generators can be build with a much higher pole count than asynchronous generators and are used for gearless setups which reduces the maintance requirements significantly. If they are directly coupled to the grid, they need to be synchronized first and cannot run with different speeds. In fact, when the force on the turbine increases and the generator comes out of sync with the grid, the system can be damage due to balancing currents.
+
+#### Permanent Magnet Excitation
 ## Projects
+
+http://pureselfmade.com/
+http://www.windstuffnow.com/main/
+http://scoraigwind.co.uk/
+https://www.resystech.com/3-kw-wind-turbine.html
+https://www.youtube.com/watch?v=EPmW-BjCiWI&list=PLdO3Wk-XPC_CZxL8AA-ZpndukLLF0TlQu
+
 
 <h2>References</h2>
 
 [1] !Original: RottweilerVector: Cmglee, CC BY-SA 3.0, [Link](http://creativecommons.org/licenses/by-sa/3.0/)
 
 [2] By Vector by רונאלדיניו המלך, Original by J Doug McLean, CC BY-SA 4.0, [Link](https://commons.wikimedia.org/w/index.php?curid=775969569)
+
+[3] E. Hau, Windkraftanlagen: Grundlagen, Technik, Einsatz, Wirtschaftlichkeit. Springer-Verlag Berlin Heidelberg, 2008
+
+[4] S. Heier, Windkraftanlagen: Systemauslegung, Netzintegration und Regelung. 6. Auflage, Springer Vieweg Verlag Wiesbaden, 2018, DOI: https://doi.org/10.1007/978-3-8348-2104-1
+
+[5] By Funkjoker23 - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=17634829
 
 ::: warning TODO
 - Types of generators
