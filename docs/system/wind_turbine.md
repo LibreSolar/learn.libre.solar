@@ -70,7 +70,7 @@ Vertical axis wind turbines have a power coefficient of $c_p \approx 30\%-40\%$ 
 
 ## Generators
 
-Electric generators can be classified into radial flux machines and axial flux machines. The main difference is the flow direction of magnetic flux, where it is either parallel or radial to the rotaional axis. The common synchronous and asynchronous (induction) machines belong to the radial flux machines and are mainly used in large turbines. One of the main challenges for larger wind turbines is the connection to the grid. While DC-Sources can be connected to the grid when their voltage is equal to the grid voltage, AC-Sources have to be in synch with the grid's voltage frequency and amplitude [4]. For small scale, especially off-grid turbines, axial flux generators are more common. 
+Electric generators can be classified into radial flux machines and axial flux machines. The main difference is the flow direction of magnetic flux, where it is either parallel or radial to the rotaional axis. The common synchronous and asynchronous (induction) machines belong to the radial flux machines and are mainly used in large turbines. One of the main challenges for larger wind turbines is the connection to the grid. While DC-Sources can be connected to the grid when their voltage is equal to the grid voltage, AC-Sources have to be in synch with the grid's voltage frequency and amplitude [4]. For small scale, especially off-grid turbines, axial flux generators are more common as they can be fairly easily constructed without high level machinery, especially for low-rpm usecases.
 
 ### Asynchronous
 
@@ -95,16 +95,42 @@ The synchronous speed for a four pole generator on grid frequenzy of $f=50Hz$ is
 #### Field Coil Excitation
 
 Synchronous generators can be build with a much higher pole count than asynchronous generators and are used for gearless setups which reduces the maintance requirements significantly. If they are directly coupled to the grid, they need to be synchronized first and cannot run with different speeds. In fact, when the force on the turbine increases and the generator comes out of sync with the grid, the system can be damage due to balancing currents.
+Most turbines have a rectifier and a [power inverter](inverter) to connect to the grid.
 
 #### Permanent Magnet Excitation
+
+Exitation with permanent magnets reduces the complexity and therefor maintance. For this reason, PM generators are used mostly on offshore wind farms. There is also no energy needed for exitation so they have slightly better efficieny. Considering the large amount of rare earths needed for permanent magnets though, this effect is negligible [6].
+
+The axial flux or axial gap generators are a special type of synchronous PM generators not widely found in larger applications. It can be however found frequently for small scale DIY turbines. Their flat structure and easy-to-wind coils makes them very suited for small workshops. They provide a fairly good efficiency and common materials such as wood, steel and epoxy can be used. Since the rotor becomes wider with increasing pole count, rotational inertia and centifugal forces are increased as well, though higer pole count mostly means lower rpm needed.
+
+## Electronics
+
+Depending on the generator used and to what load (machine, grid, battery, ...) the sytem will be connected, different electronic components are necessary. Since this OER is aimed at makers and for off-grid (or local tiny-grid) use cases, high power AC/DC-DC/AC setups, frequency synchronizing elements for direct coupled wind turbines or storage units like ppumped hydroelectric energy storage are not discussed.
+Most common standalone systems consist of a source, a sink and a storage unit.
+
+As a storage unit, mostly [batteries](battery) are used. While it is possible to connect a turbine directly to some types of batteries using a rectifier and a charge controller like [Hugh Piggott](#projects) suggested, it has some serious drawbacks.
+
+<figure>
+    <center>
+        <fig-caption src="system/wind_direct_battery.svg" caption="Simplified layout for direct connection to the battery after Piggott's design" style="width:100%"  num="4" />
+    </center>
+</figure>
+
+Whenever there is spike in voltage or the battery is full and no load is connected, current will be diverted to the dump load and dissipated. If the voltage of the turbine is much higher than the battery's, the power can't be used to actually load the battery. The same happens when the turbine voltage is below charging voltage. To mitigate these flaws, a rectifier and a [DC/DC-Converter](../development/dcdc_converter) can be used to either step-down or step-up the voltage needed to efficiently load the battery. This is mostly done inside a [charge controller](charge_controller) who can take several parameters into account like optimal load current at given generator voltage. Modern batteries like [Lithium-Ion](battery#lithium-ion) require a proper [Battery Management System](bms) to work safely. 
+
+<figure>
+    <center>
+        <fig-caption src="system/wind_controlled_battery.svg" caption="Simplified layout for controlled connection to the battery" style="width:100%"  num="5" />
+    </center>
+</figure>
+The disadvantage of this design is that all components need to be able to take the full maximum power taken by the load or given by the turbine.
+
 ## Projects
+One of the most famous DIY-projects is [Hugh Piggott's](http://scoraigwind.co.uk/) 2F-Windturbine. His [books](http://scoraigwind.co.uk/all-of-the-books-by-hugh-how-to-get-them/) provide many details as well as basic principles on how to design, build and run small off-grid turbines.
 
-http://pureselfmade.com/
-http://www.windstuffnow.com/main/
-http://scoraigwind.co.uk/
-https://www.resystech.com/3-kw-wind-turbine.html
-https://www.youtube.com/watch?v=EPmW-BjCiWI&list=PLdO3Wk-XPC_CZxL8AA-ZpndukLLF0TlQu
+Another well-documented project with good [video](https://www.youtube.com/watch?v=EPmW-BjCiWI&list=PLdO3Wk-XPC_CZxL8AA-ZpndukLLF0TlQu) material is James Biggar's [Reaper Turbine](https://www.resystech.com/3-kw-wind-turbine.html)
 
+Another seriously low-tech design but open source is by [Daniel Connel]( https://opensourcelowtech.org/wind_turbine.html). It is a VAWT as a combination of lift and drag type and can be constructed for under 100€ in material cost.
 
 <h2>References</h2>
 
@@ -118,9 +144,4 @@ https://www.youtube.com/watch?v=EPmW-BjCiWI&list=PLdO3Wk-XPC_CZxL8AA-ZpndukLLF0T
 
 [5] By Funkjoker23 - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=17634829
 
-::: warning TODO
-- Types of generators
-- Necessary electronics and connection
-- Popular designs and projects (e.g. by Hugh Piggott)
-:::
- 
+[6] Wikipedia contributors. (2020, October 19). Rare-earth element. In Wikipedia, The Free Encyclopedia. Retrieved 07:59, November 6, 2020, [Link](from )https://en.wikipedia.org/w/index.php?title=Rare-earth_element&oldid=984305200)
