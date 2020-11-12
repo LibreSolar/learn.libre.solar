@@ -5,7 +5,7 @@ Harvesting wind energy is one of the oldest forms of energy production in human 
 The two main types of turbines are distinct by their working principles. 
 Drag type turbines use the fact that certain bodies or geometries have different drag when moving against the wind and are comonly reffered to as "Savonius turbines". Lift type turbines use the lift effect on airfoils in moving liquids, much like an airplane. 
 
-According to *Betz's Law*, the maximum of energy that can be extraxted from the wind is around $\frac{16}{27}$ or $\approx60\%$ of the total kinetic energy of the moving air [3]. The most important detail of turbines is therefore the power coefficient $c_p$ and how close it is to the maximum posted by *Betz's Law*. It is defined by the ratio of turbine energy output to kinetic wind energy [3]:
+According to *Betz's Law*, the maximum amount of energy that can be extracted from the wind is around $\frac{16}{27}$ or $\approx60\%$ of the total kinetic energy of the moving air [3]. The most important detail of turbines is therefore the power coefficient $c_p$ and how close it is to the maximum posted by *Betz's Law*. It is defined by the ratio of turbine energy output to kinetic wind energy [3]:
 
 $$c_p=\frac{P_{turbine}}{P_{wind}}$$
 
@@ -30,11 +30,11 @@ where $A$ is the cross-sectional area of the scoop, $v_{air}$ is the windspeed, 
 $$\Delta F = \frac{c_{w,1}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2 - \frac{c_{w,2}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2 = \frac{c_{w,1} -c_{w,2}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2$$
 
 
-A Savonius rotors rotation speed can not exceed the wind velocity, so the Tip Speed Ratio (TSR) defined as
+A Savonius rotor's rotation speed can not exceed the wind velocity, so the Tip Speed Ratio (TSR) defined as
 
 $$\lambda = \frac{\omega r}{v_{air}}$$
 
-with $\omega$ as angular frequency and $r$ as radius, is always $\lambda\le1$. Due to their low power coeefficient ($c_p \lt 25\%)$ and low rotatioal speed, Savonius turbines are not commonly used for power generation. There are however cases were a high starting torque, simple design and low maintenance requirements are beneficial.
+with $\omega$ as angular frequency and $r$ as radius, is always $\lambda\le1$. Due to their low power coeefficient ($c_p \lt 25\%$) and low rotatioal speed, Savonius turbines are not commonly used for power generation. There are however cases were a high starting torque, simple design and low maintenance requirements are beneficial.
 
 ### Lift Runner
 
@@ -101,11 +101,11 @@ Most turbines have a rectifier and a [power inverter](inverter) to connect to th
 
 Exitation with permanent magnets reduces the complexity and therefor maintance. For this reason, PM generators are used mostly on offshore wind farms. There is also no energy needed for exitation so they have slightly better efficieny. Considering the large amount of rare earths needed for permanent magnets though, this effect is negligible [6].
 
-The axial flux or axial gap generators are a special type of synchronous PM generators not widely found in larger applications. It can be however found frequently for small scale DIY turbines. Their flat structure and easy-to-wind coils makes them very suited for small workshops. They provide a fairly good efficiency and common materials such as wood, steel and epoxy can be used. Since the rotor becomes wider with increasing pole count, rotational inertia and centifugal forces are increased as well, though higer pole count mostly means lower rpm needed.
+The axial flux or axial gap generators are a special type of synchronous PM generators not widely found in larger applications. It can however be found frequently for small scale DIY turbines. Their flat structure and easy-to-wind coils makes them very suited for small workshops. They provide a fairly good efficiency and common materials such as wood, steel and epoxy can be used. Since the rotor becomes wider with increasing pole count, rotational inertia and centrifugal forces are increased as well, though higher pole count mostly means lower rpm needed.
 
 ## Electronics
 
-Depending on the generator used and to what load (machine, grid, battery, ...) the sytem will be connected, different electronic components are necessary. Since this OER is aimed at makers and for off-grid (or local tiny-grid) use cases, high power AC/DC-DC/AC setups, frequency synchronizing elements for direct coupled wind turbines or storage units like ppumped hydroelectric energy storage are not discussed.
+Depending on the generator used and to what load (machine, grid, battery, ...) the sytem will be connected, different electronic components are necessary. Since this OER is aimed at makers and for off-grid (or local tiny-grid) use cases, high power AC/DC-DC/AC setups, frequency synchronizing elements for direct coupled wind turbines or storage units like pumped hydroelectric energy storage are not discussed.
 Most common standalone systems consist of a source, a sink and a storage unit.
 
 As a storage unit, mostly [batteries](battery) are used. While it is possible to connect a turbine directly to some types of batteries using a rectifier and a charge controller like [Hugh Piggott](#projects) suggested, it has some serious drawbacks.
@@ -116,7 +116,7 @@ As a storage unit, mostly [batteries](battery) are used. While it is possible to
     </center>
 </figure>
 
-Whenever there is spike in voltage or the battery is full and no load is connected, current will be diverted to the dump load and dissipated. If the voltage of the turbine is much higher than the battery's, the power can't be used to actually load the battery. The same happens when the turbine voltage is below charging voltage. To mitigate these flaws, a rectifier and a [DC/DC-Converter](../development/dcdc_converter) can be used to either step-down or step-up the voltage needed to efficiently load the battery. This is mostly done inside a [charge controller](charge_controller) who can take several parameters into account like optimal load current at given generator voltage. Modern batteries like [Lithium-Ion](battery#lithium-ion) require a proper [Battery Management System](bms) to work safely. 
+Whenever there is an increase in voltage or the battery is full and no load is connected, current will be diverted to the dump load and dissipated. If the voltage of the turbine is much higher than the battery's, it's not suitable to charge the battery. The same happens when the turbine voltage is below charging voltage. To mitigate these flaws, a rectifier and a [DC/DC-Converter](../development/dcdc_converter) can be used to either step-down or step-up the voltage needed to efficiently charge the battery. This is mostly done inside a [charge controller](charge_controller) which can take several parameters into account like optimal current at given generator voltage. Modern batteries like [Lithium-Ion](battery#lithium-ion) require a proper [Battery Management System](bms) to work safely. 
 
 <figure>
     <center>
@@ -130,7 +130,7 @@ One of the most famous DIY-projects is [Hugh Piggott's](http://scoraigwind.co.uk
 
 Another well-documented project with good [video](https://www.youtube.com/watch?v=EPmW-BjCiWI&list=PLdO3Wk-XPC_CZxL8AA-ZpndukLLF0TlQu) material is James Biggar's [Reaper Turbine](https://www.resystech.com/3-kw-wind-turbine.html)
 
-Another seriously low-tech design but open source is by [Daniel Connel]( https://opensourcelowtech.org/wind_turbine.html). It is a VAWT as a combination of lift and drag type and can be constructed for under 100€ in material cost.
+Another seriously low-tech wind turbine is the design provided as open source by [Daniel Connel]( https://opensourcelowtech.org/wind_turbine.html). It is a VAWT as a combination of lift and drag type and can be constructed for under 100€ in material cost.
 
 <h2>References</h2>
 
