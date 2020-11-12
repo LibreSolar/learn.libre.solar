@@ -32,7 +32,7 @@ They need to be installed upright in order to make them work properly and avoid 
 
 In contrast to the flooded type, VRLA batteries don't have a liquid electrolyte. It is instead either a gel or absorbed in a glass mat (AGM). The battery enclosure is **sealed** and contains a valve that is closed under normal conditions. This allows the recombination of the hydrogen and oxygen gases produced and prevents the loss of electrolyte, so the batteries are **maintainance-free**. If the battery is fast-charging or overcharged and pressure builds up inside the battery, the valve opens and allows some gas to escape.
 
-- **Gel** batteries use a silica additive to convert the previously wet electrolyte into a gel and immobilize it. In contrast to wet batteries, gel batteries don't need to be installed upright anymore and prevent any electrolyte spillage. Chemically, these batteries are still quite similar to flooded lead-acid batteries and don't offer much better performance.
+- **Gel** batteries use a silica additive to convert the previously wet electrolyte into a gel and immobilize it. In contrast to wet batteries, gel batteries don't need to be installed upright anymore to prevent any electrolyte spillage. Chemically, these batteries are still quite similar to flooded lead-acid batteries and don't offer much better performance.
 
 - **Absorbed Glass Mat (AGM)** batteries are the newest type of VRLA batteries. The glass mat construction allows the electrolyte to be absorbed in a thin fiberglass mat sandwiched between the lead plates. This type of battery is more proof against vibrations (important for car batteries) enhancing both the discharge and recharge efficiencies. AGM batteries allow higher currents and offer longer lifespan compared to the other lead-acid batteries.
 
@@ -44,7 +44,7 @@ The **Lithium-ion** battery has become the superior battery system on the market
 - High number of charging cycles, i.e. long lifespan
 - Low self-discharge rate and no memory effect, so it does not require deliberate full discharge cycles to maintain its optimum performance.
 
-A major disadvantage of Li-ion batteries is the sensitivity to over-charging or over-discharging, which can result in catastrophic failures including thermal runaways. Hence, it requires a system that monitors its temperature, current and voltage states, protects the battery from operating outside the safe limits in addition to regulating its charging and discharging processes. This so-called **Battery Management System (BMS)** will be described in a [dedicated chapter](bms.md).
+A major disadvantage of Li-ion batteries is the sensitivity to over-charging or over-discharging, which can result in catastrophic failures including thermal runaway. Hence, it requires a system that monitors its temperature, current and voltage states, protects the battery from operating outside the safe limits in addition to regulating its charging and discharging processes. This so-called **Battery Management System (BMS)** will be described in a [dedicated chapter](bms.md).
 
 The following table gives a rough overview of different Li-ion technologies and their advantages and disadvantages.
 
@@ -98,7 +98,7 @@ During the **topping** (sometimes also called **boost** or **absorption**) the r
 
 #### 3. Equalization stage
 
-An additional **equalization** charging is beneficial for flooded lead-acid batteries only. It can be considered as a periodic controlled overcharge that brings the cells to the same charge level and removes the sulphation by increasing the voltage to a higher value than the peak charge voltage limit. The current during equlization is controlled at a very low value.
+An additional **equalization** charging is beneficial for flooded lead-acid batteries only. It can be considered as a periodic controlled overcharge that brings the cells to the same charge level and removes the sulphation by increasing the voltage to a higher value than the peak charge voltage limit. The current during equalization is controlled at a very low value.
 
 #### 4. Trickle stage
 

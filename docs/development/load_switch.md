@@ -108,7 +108,7 @@ The following simplified RLC circuit can be used to analyze the behavior of the 
 
 <fig-caption src="development/load-switch-capacitive-load.svg" caption="Load output with capacitive load" num="4" />
 
-The resistance $R_{total}$ consists of the battery internal resistance, the wire resistance and any resistance inside the charge controller, e.g. because of connectors or a shunt for current measurement.
+The resistance $R_{total}$ consists of the battery internal resistance, the wire resistance and any resistance inside the charge controller, e.g. because of connectors or a [shunt](current_measurement#measurement-principle) for current measurement.
 
 The wire inductance slows down the current increase and reduces the current peak during a failure. So the worst case is a short wire. The [self-inductance of two parallel wires](https://en.wikipedia.org/wiki/Inductance#Self-inductance_of_thin_wire_shapes) with a conductor radius $r$, a distance $d$ between the conductors and a length $l$ of the pair is:
 

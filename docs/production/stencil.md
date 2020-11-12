@@ -41,13 +41,13 @@ The higher the power of the beam and the longer the beam stays at one place, the
 3. 4% power, 100% speed
 4. 4% power, 50% speed
 
-<fig-caption src="development/stencil_test_cuts.jpg" caption="Laser cutting test with different parameters for Mylar material" num="1" />
+<fig-caption src="production/stencil_test_cuts.jpg" caption="Laser cutting test with different parameters for Mylar material" num="1" />
 
 In this example, the parameter set of test no. 2 was used to laser cut the stencil. The final result is shown in Figure 2.
 
 In test no. 1, the fine bridges on the left side of the test cut are connected due to too much power. Tests no. 3 and 4 show that the power was not high enough to cut through some spots of the material.
 
-<fig-caption src="development/stencil_fit.jpg" caption="Fitting the stencil onto the PCB" num="2" />
+<fig-caption src="production/stencil_fit.jpg" caption="Fitting the stencil onto the PCB" num="2" />
 
 As an alternative material for only 1-2 PCBs, coated cardboard paper can be used.
 
@@ -59,4 +59,4 @@ Stainless steel stencils offer much tighter tolerances than self-made plastic st
 
 Figure 3 shows a stainless stell stencil together with the matching Libre Solar BMS board.
 
-<fig-caption src="development/stainless-steel-stencil.jpg" caption="Stainless Steel Stencil" num="3" />
+<fig-caption src="production/stainless-steel-stencil.jpg" caption="Stainless Steel Stencil" num="3" />
