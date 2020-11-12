@@ -25,7 +25,7 @@ The mathematical equation to describe the force on the scoops is given by
 
 $$F = \frac{c_w}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2$$
 
-where $A$ is the cross-sectional area of the scoop, $v_{air}$ is the windspeed, $\varrho_{air}$ is air density and $c_w$ is the drag coeeficient specific for the geometry used. The coefficient is derived via measurements and can be found in corresponding tables. The force driving the rotation is the difference between the coefficients:
+where $A$ is the cross-sectional area of the scoop, $v_{air}$ is the windspeed, $\varrho_{air}$ is air density and $c_w$ is the drag coeeficient specific for the geometry used. The coefficient is derived via measurements and can be found in corresponding tables. The force driving the rotation is the difference between the coefficients $c_{w,1}$ and $c_{w,2}$ for the flat and curved sides of the scoop, respectively:
 
 $$\Delta F = \frac{c_{w,1}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2 - \frac{c_{w,2}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2 = \frac{c_{w,1} -c_{w,2}}{2} \cdot \varrho_{air} \cdot A \cdot v_{air}^2$$
 
@@ -110,19 +110,15 @@ Most common standalone systems consist of a source, a sink and a storage unit.
 
 As a storage unit, mostly [batteries](battery) are used. While it is possible to connect a turbine directly to some types of batteries using a rectifier and a charge controller like [Hugh Piggott](#projects) suggested, it has some serious drawbacks.
 
-<figure>
-    <center>
-        <fig-caption src="system/wind_direct_battery.svg" caption="Simplified layout for direct connection to the battery after Piggott's design" style="width:100%"  num="4" />
-    </center>
-</figure>
+
+<fig-caption src="system/wind_direct_battery.svg" caption="Simplified layout for direct connection to the battery after Piggott's design" style="width:100%"  num="4" />
+
 
 Whenever there is an increase in voltage or the battery is full and no load is connected, current will be diverted to the dump load and dissipated. If the voltage of the turbine is much higher than the battery's, it's not suitable to charge the battery. The same happens when the turbine voltage is below charging voltage. To mitigate these flaws, a rectifier and a [DC/DC-Converter](../development/dcdc_converter) can be used to either step-down or step-up the voltage needed to efficiently charge the battery. This is mostly done inside a [charge controller](charge_controller) which can take several parameters into account like optimal current at given generator voltage. Modern batteries like [Lithium-Ion](battery#lithium-ion) require a proper [Battery Management System](bms) to work safely. 
 
-<figure>
-    <center>
-        <fig-caption src="system/wind_controlled_battery.svg" caption="Simplified layout for controlled connection to the battery" style="width:100%"  num="5" />
-    </center>
-</figure>
+
+<fig-caption src="system/wind_controlled_battery.svg" caption="Simplified layout for controlled connection to the battery" style="width:100%"  num="5" />
+
 The disadvantage of this design is that all components need to be able to take the full maximum power taken by the load or given by the turbine.
 
 ## Projects
