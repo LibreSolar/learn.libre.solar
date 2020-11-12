@@ -12,7 +12,7 @@ The basic principles of a PV cell are shown in Figure 1 and explained below.
 
 <fig-caption src="system/pv-cell-principles.gif" caption="Basic principle of photovoltaic cells [1]" num="1" />
 
-The cell contains two different types of silicon: A so-called n-type, which has extra electrons and a p-type with extra spaces for electrons, called holes. The two types are connected at the p/n junction and create an electrical field.
+The cell contains two different types of silicon: A so-called n-type, which has extra electrons and a p-type with extra spaces for electrons, called holes. The two types are connected at the p-n junction and create an electrical field.
 
 If a photon from the sunlight hits an electron in the p-type silicon with enough energy, it can remove it from its bond and push it accross the electrical field in the junction to the n-type side. The electron can now be fed back to the p-type side by an external load, closing the electrical circuit.
 
@@ -86,7 +86,7 @@ In order to estimate the temperature influence on the performance, datasheets al
 
 ## Performance Simulation
 
-A solar cell has the same inner structure as a diode, as it consists of a p/n junction. So, the basis for modeling the behavior of a solar cell is a diode $D$.
+A solar cell has the same inner structure as a diode, as it consists of a p-n junction. So, the basis for modeling the behavior of a solar cell is a diode $D$.
 
 The sunlight is modelled as a photo-generated current source $I_{ph}$. In order to consider losses in conductors and leakage current, the model is extended with a series resistor $R_s$ and a resistor $R_{sh}$ in parallel to the diode.
 

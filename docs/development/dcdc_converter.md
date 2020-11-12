@@ -90,7 +90,7 @@ For a detailed explanation of the boost converter operating mode see also [the W
 
 ### Synchronous converter
 
-For a synchronous non-isolated buck or boost converter as shown in Figure 5, the diode of the non-synchronous converters is replaced by an additional power MOSFET. Synchronous means that the switching of the power transistors is synchronized such that the high side and low side MOSFETs are not turned on at the same time. Otherwise, a direct short of the high voltage side to ground would destroy the circuit (shoot-through).
+For a synchronous non-isolated buck and boost converter as shown in Figure 5, the diode of the non-synchronous converters is replaced by an additional power MOSFET. Synchronous means that the switching of the power transistors is synchronized such that the high side and low side MOSFETs are not turned on at the same time. Otherwise, a direct short of the high voltage side to ground would destroy the circuit (shoot-through).
 
 <fig-caption src="development/dcdc-synchronous.svg" caption="Synchronous non-isolated converter (buck and boost)" num="5" />
 
@@ -108,7 +108,7 @@ Lots of literature is available to help with passive component selection for a g
 
 The inductor selection ($L$) influences the amount of current ripple seen on the inductor current. Inductors have DC resistance ($R_L$) that impacts the performance of the output stage. Minimizing the $R_L$ improves the overall performance of the converter. The $R_L$ is small for lower inductor values but there is a trade-off between inductance and ripple current. The lower the inductance, the higher the ripple current through the inductor.
 
-The capacitors directly influence the output voltage of the converter, the response time of the output feedback loop, and the amount of output voltage overshoot that occurs during changes in load current. Higher values of capacitance lower the amount of ripple voltage and lower the output voltage overshoot, but increase the response time for load changes.
+The capacitors directly influence the output voltage of the converter, the response time of the output feedback loop and the amount of output voltage overshoot that occurs during changes in load current. Higher values of capacitance lower the amount of ripple voltage and lower the output voltage overshoot, but increase the response time for load changes.
 
 Capacitors also have a parasitic series resistance, known as the equivalent series resistance ($R_{ESR}$). The $R_{ESR}$ affects the output voltage ripple and the overall efficiency of the converter. The lower the $R_{ESR}$ value, the higher the performance. In order to reduce the ESR, multiple capacitors can be connected in parallel.
 
