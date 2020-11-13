@@ -1,6 +1,19 @@
 # Charge Controller
 
-A charge controller regulates the voltage and/or current flowing from solar panels into batteries. By doing so, it prevents the batteries from overcharging and ensures good battery life. Most 12$V$ solar panels outputs 16-20$V$, whereas batteries usually need around 14-14.5$V$ to get fully charged. Direct connection of batteries to the solar panel without any regulation, causes damage to the batteries as a result of overcharging. To prevent this a charge controller can be used between solar panels and charging batteries to regulate voltage and/or current. Mainly, there are two major type of charge controllers.
+A charge controller regulates the voltage and current flowing from solar panels into batteries and from the batteries to loads. By doing so, it prevents the batteries from overcharge or deep discharge and ensures good battery life. Depending on the solar panel's [configuration](solar_panel#panels-and-arrays) the outpu voltage is different from the batteries' optimal charging voltage. Direct connection of batteries to the solar panel without any regulation, causes damage to the batteries as a result of overcharging. To prevent this a charge controller can be used between solar panels and charging batteries to regulate voltage and current. Mainly, there are two major type of charge controllers. As described in the [battery chapter](battery#charge-methods), standard lead-acid batteries require a four staged charging cycle for optimal performance. The different voltages and currents can be delivered by the charge controller by measuring the the voltage of the battery and reacting accordingly. There are two main methods used today. 
+
+## PWM charge controllers
+
+PWM (Pulse Width Modulation) charge controller is in pratice a switch connected between solar panel and a battery. During bulk or constant current load, the switch is simply closed and the battery is charged with whatever current the panel can provide. The panel's voltage is pulled down which effectively lowers the panels efficiency since it is not operating in its **maximum power point**. After bulk charging, the pwm-controller will apply different duty cycles resulting in current boosts, effectively applying a constant voltage. The cycles are adapted depending on the the battery's charge state. The **interactive** example in Figure [1] shows the power effectively used for charging a battery with a given base voltage. The closer the rated battery voltage to the maximum power point voltage, the higher the efficiency
+
+<charge-controller-curve/>
+<figcaption><b>Figure 1.</b> Battery voltage vs. maximum power point in bulk phase on a pwm controller <b>(interactive)</b>.</figcaption>
+
+Consider the interactive graph as shown in Fig.1 with standard test conditions. The charge voltage imposed on the solar panel (i.e, PWM voltage $V_{pwm}$) can be found by drawing a vertical line at the voltage point equal to the battery Voltage ($V_{bat}$) + 0.5$V$. The additional 0.5$V$ represents the voltage loss in the cabling and controller. The intersection of this line with the current-voltage curve gives the corresponding PWM current ($I_{pwm}$).
+
+Eg - If $V_{bat}$ = 13$V$, then $V_{PWM}$ = 13.5$V$ and corresponding $I_{PWM}$ = 6.2$A$  
+Total power $P_{PWM}$ = $V_{PWM}$ * $I_{PWM}$ = 13.5 * 6.2 = 83.7$W$
+
 1. PWM charge controllers
 2. MPPT charge controllers
 
@@ -19,23 +32,8 @@ and other parameters are assumed to be
 
 The current-voltage and power-voltage curves of the panels are given in the below interactive graph as shown in Fig.1
 
-<solar-panel-characteristic-curve/>
-
-<figure>
-<center>
-    <figcaption><b>Figure 1.</b> Solar panel characteristic curve <b>(interactive)</b>.</figcaption>
-</center>
-</figure>
 
 
-## PWM charge controllers
-
-PWM (Pulse Width Modulation) charge controller is in pratice a switch connected between solar panel and a battery. Instead of providing a steady output, it sends out a series of charging pulses to the battery. The controller constantly checks the state of the battery to determine the frequency and duty cycle of the pulse. In a fully discharged battery, the pulses would be very long and almost continuous while as the charge in battery increases, pulses might be very short. The controller checks the state of charge on the battery between pulses and adjusts itself each time.
-
-Consider the interactive graph as shown in Fig.1 with standard test conditions. The charge voltage imposed on the solar panel (i.e, PWM voltage $V_{pwm}$) can be found by drawing a vertical line at the voltage point equal to the battery Voltage ($V_{bat}$) + 0.5$V$. The additional 0.5$V$ represents the voltage loss in the cabling and controller. The intersection of this line with the current-voltage curve gives the corresponding PWM current ($I_{pwm}$).
-
-Eg - If $V_{bat}$ = 13$V$, then $V_{PWM}$ = 13.5$V$ and corresponding $I_{PWM}$ = 6.2$A$  
-Total power $P_{PWM}$ = $V_{PWM}$ * $I_{PWM}$ = 13.5 * 6.2 = 83.7$W$
 
 ## MPPT charge controller
 
