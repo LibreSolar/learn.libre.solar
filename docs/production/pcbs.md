@@ -14,12 +14,7 @@ However, the Gerber export is a bit more complicated than providing native files
 
 After the board is opened in Pcbnew, the solder mask clearance and min width must be set to zero. This is important because the manufacturers normally want to define the clearance themselves based on their process. Setting it to zero makes it easier for them to shrink/enlarge the pads for the solder mask. The dialogue can be found under *File > Board Setup* as shown in Figure 1.
 
-<figure>
-<center>
-    <img src="./images/pcbs_kicad_pads_clearance.png" alt="Pads and Mask Clearance dialog" height="auto" width="auto" />
-    <figcaption><b>Figure 1.</b> Pads and Mask Clearance dialog (KiCad v5.1.4).</figcaption>
-</center>
-</figure>
+<fig-caption src="production/pcbs_kicad_pads_clearance.png" caption="Pads and Mask Clearance dialog (KiCad v5.1.4)" num="1" />
 
 After that, open the Gerber export dialog under *File > Plot* and select at least the following layers for export:
 
@@ -38,20 +33,10 @@ After that, open the Gerber export dialog under *File > Plot* and select at leas
 
 Select a folder where your files should be saved and press *Plot*:
 
-<figure>
-<center>
-    <img src="./images/pcbs_kicad_gerber_export.png" alt="Gerber Export Settings" height="auto" width="auto" />
-    <figcaption><b>Figure 2.</b> Gerber Export Settings (KiCad v5.1.4).</figcaption>
-</center>
-</figure>
+<fig-caption src="production/pcbs_kicad_gerber_export.png" caption="Gerber Export Settings (KiCad v5.1.4)" num="2" />
 
 After sucessful export, press *Generate Drill Files*. Then select the same output directory and make sure that *PTH and NPTH in single file* is **not** checked. Otherwise, your manufacturer doesn't know which holes are copper plated or not.
 
-<figure>
-<center>
-    <img src="./images/pcbs_kicad_drill_file.png" alt="Drill Files Generation" height="auto" width="auto" />
-    <figcaption><b>Figure 3.</b> Drill Files Generation (KiCad v5.1.4).</figcaption>
-</center>
-</figure>
+<fig-caption src="production/pcbs_kicad_drill_file.png" caption="Drill Files Generation (KiCad v5.1.4)" num="3" />
 
 After that you should have all necessary files ready for the PCB production. Compress all the files (gerber and drill files) to a .zip file and send them to the manufacturer.

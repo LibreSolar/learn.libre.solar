@@ -22,10 +22,8 @@
 - Figures are numbered starting with 1 in each markdown file. Take a look at existing chapters for correct format.
 - References to other documents (e.g. scientific papers) should be listed at the bottom of each chapter indicated with a number within the text.
 
-### JavaScript coding style
+### Graphs
 
-- Indentation: 4 spaces (no tabs)
-- .vue file names all lower-case, words connected with dashes
 - Graph border width should be 2px
 
 ### Colors

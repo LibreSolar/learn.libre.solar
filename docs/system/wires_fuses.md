@@ -55,31 +55,19 @@ The interactive graph given below, helps us to understand how parameters like sp
 <figure>
     <wire-efficiency/>
     <br/>
-<centre>
+<center>
     <figcaption><b>Figure 1.</b> Efficiency and voltage drop variations of electrical wires <b>(interactive)</b>.</figcaption>
-</centre>
+</center>
 </figure>
 
 ## Fuses
 
-A Fuse is an important component in electrical systems, used to prevent excessive flow of current which can lead to damage of electrical components or even accidents like fire. Proper care must be taken in deciding the placement of the fuse to prevent any damage. Generally it is always advisable to place the fuse as close as possible to the energy source. If the fuse is placed away from the energy source as shown in Fig.2a, the short-circuit which occurs at point X would go undetected, resulting in excessive current. Whereas in the case of Fig.2b, this problem can be avoided. 
+A Fuse is an important component in electrical systems, used to prevent excessive flow of current which can lead to damage of electrical components or even accidents like fire. Proper care must be taken in deciding the placement of the fuse to prevent any damage. Generally it is always advisable to place the fuse as close as possible to the energy source. If the fuse is placed away from the energy source as shown in Fig.2a, the short-circuit which occurs at point X would go undetected, resulting in excessive current. Whereas in the case of Fig.2b, this problem can be avoided.
 
-<figure>
-<center>
-    <img src="./images/fuse_battery.svg" alt="Position of fuse with respect to energy source" height="auto" width="auto" />
-    <figcaption><b>Figure 2.</b> Position of fuse with respect to energy source.</figcaption>
-</center>
-</figure>
+<fig-caption src="system/fuse_battery.svg" caption="Position of fuse with respect to energy source" num="2" />
 
 ### Branch
 
 In case of branches where multiple lines are drawn from the main wire as shown in the Fig.3, fuse has to be placed on each individual branch lines. Failure in doing so, might result in excessive current in individual lines of the branch beyond their limit even when total current in the main line is within the limit. i.e, Fuse $F$ might have higher current rating and fuse $F_1$ might have lower current. In this case, even though when fuse $F$ doesn't trip and current is within the safe limit of the main line, fuse $F_1$ might trip due to excessive current in branch 1 beyond the limit of branch 1 line. Absence of $F_1$ in this case leads to damage of the systems.
-<figure>
-<center>
-    <img src="./images/fuse_branches.svg" alt="Position of fuse in branches" height="auto" width="auto" />
-    <figcaption><b>Figure 3.</b> Position of fuse in branches.</figcaption>
-</center>
-</figure>
 
-
-
+<fig-caption src="system/fuse_branches.svg" caption="Position of fuse in branches" num="3" />

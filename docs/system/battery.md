@@ -6,12 +6,7 @@ This chapter will cover the necessary basics of electrical batteries in order to
 
 The battery stores chemical energy and can convert it to electrical energy through a reaction. It consists of a **cathode (+)** and an **anode (-)** and an **electrolyte** medium in between.
 
-<figure>
-<center>
-    <img src="./images/battery.svg" alt="Basic principle of a battery" height="auto" width="auto" />
-    <figcaption><b>Figure 1.</b> Basic principle of a battery.</figcaption>
-</center>
-</figure>
+<fig-caption src="system/battery.svg" caption="Basic principle of a battery" num="1" />
 
 When a consumer such as a lamp or a resistor is connected to the battery, electrons flow from the negative terminal through the consumer to the positive terminal of the battery. This is the opposite direction of the technical current flow direction, which goes from positive to negative portential.
 
@@ -91,12 +86,7 @@ A good selection of the charging technique will prolong the service lifetime of 
 
 The charging method with four different stages is only used for lead-acid batteries. Li-ion battery charging is more simple and use only two of the four stages. Figure 3 shows the voltage and current for an entire charging cycle with three or four stages, which will be explained below.
 
-<figure>
-<center>
-    <img src="./images/four-stage-charging.svg" alt="Four battery charging stages" height="auto" width="auto" />
-    <figcaption><b>Figure 3.</b> Four battery charging stages.</figcaption>
-</center>
-</figure>
+<fig-caption src="system/four-stage-charging.svg" caption="Four battery charging stages" num="3" />
 
 #### 1. Bulk stage
 

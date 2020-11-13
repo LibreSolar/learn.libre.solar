@@ -4,6 +4,6 @@ Most components in renewable energy systems (solar panels, batteries and loads l
 
 The following picture gives an overview of the DC energy system components:
 
-![DC energy system overview](./images/dc_energy_system.png)
+![DC energy system overview](/images/system/dc_energy_system.png)
 
 The components will be described in more detail in the following chapters.
