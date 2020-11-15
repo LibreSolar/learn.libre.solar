@@ -28,6 +28,10 @@ For more complex embedded projects with many different task that have to be hand
 
 These features are provided by a real-time operating system (RTOS), which might be independent of the drivers or come as an entire package with build system and drivers (as e.g. in the case of Zephyr RTOS).
 
+A typical firmware architecture with an RTOS kernel and supporting layers are shown in Figure 1.
+
+<fig-caption src="development/rtos-architecture.svg" caption="Firmware architecture with RTOS kernel" num="1" />
+
 The features of an RTOS are further explained in [a dedicated chapter](rtos_super_loop).
 
 ## Overview
