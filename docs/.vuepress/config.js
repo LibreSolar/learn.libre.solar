@@ -79,10 +79,11 @@ module.exports = {
         title: "Firmware",
         collapsable: false,
         children: [
-          'rtos_state_machines',
-          'hw_abstraction_drivers',
-          'digital_control',
+          'firmware_frameworks',
+          'rtos_super_loop',
+          /*'hw_abstraction_drivers',*/
           'flashing_debugging',
+          'digital_control',
         ],
       }, {
         title: "Communication",
