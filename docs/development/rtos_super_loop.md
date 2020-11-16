@@ -70,6 +70,10 @@ void loop()
 
 As we can see, the the super loop handles two different tasks. First it reads the temperature measurements and afterwards it blinks the LEDs depending on the results of the temperature processing.
 
+The timing of the different tasks is shown in Fig. 1. For simplicity reasons, the program uses a constant 500 ms delay between each loop, which would introduce a small drift in the intervals because the processing for the calculations is added to the interval. In reality, these simple calculations take a negligible amount of time, so they are ignored here and the figure shows the time durations in an exaggerated way.
+
+<fig-caption src="development/tasks-super-loop.svg" caption="Tasks in a super loop architecture" num="1" />
+
 As the blinking task needs to be run more often, we need some variables to store the current state of the system. In a more complex system, a state machine could be used for this task instead of using just a simple boolean variable.
 
 ## Multiple threads
@@ -121,6 +125,10 @@ K_THREAD_DEFINE(led_tid, 1024, led_thread, NULL, NULL, NULL, 1, 0, 0);
 ```
 
 Now there are two infinite loops, one in each thread. Both threads communicate via the signal `temp_alarm`. If the signal is not active, the LED thread intentionally gets stuck in the `k_poll` call. Only when the signal was raised from the main thread, the `k_poll` call returns immediately and the LEDs start blinking.
+
+The timing diagram in Fig. 2 shows the two independent threads. However, because the MCU cannot actually handle two things in parallel, the scheduler prioritizes the main thread over the blinking thread. Thus, the final outcome of the multithreaded design is exactly the same as in the superloop in this case.
+
+<fig-caption src="development/tasks-multithreading.svg" caption="Tasks in a multithreaded architecture" num="2" />
 
 ## Advantages and disadvantages
 
