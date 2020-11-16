@@ -47,7 +47,7 @@ The main reasons for the selection of Zephyr RTOS:
 
 The following table gives an overview of different frameworks including the aspects that were considered important for the Libre Solar project:
 
-Criterion             | Arduino | ARM Mbed  | Zephyr   | RIOT   | FreeRTOS  |
+Criterion             | [Arduino](https://www.arduino.cc/) | [ARM Mbed OS](https://os.mbed.com/)| [Zephyr RTOS](https://www.zephyrproject.org/)| [RIOT](http://riot-os.org/)   | [FreeRTOS](https://freertos.org/)  |
 ----------------------|---------|-----------|----------|--------|-----------|
 License               | LGPL    | Apache 2  | Apache 2 | LGPL   | MIT       |
 Integrated HAL        | yes     | yes       | yes      | yes    | no        |
