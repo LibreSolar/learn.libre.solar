@@ -126,7 +126,7 @@ K_THREAD_DEFINE(led_tid, 1024, led_thread, NULL, NULL, NULL, 1, 0, 0);
 
 Now there are two infinite loops, one in each thread. Both threads communicate via the signal `temp_alarm`. If the signal is not active, the LED thread intentionally gets stuck in the `k_poll` call. Only when the signal was raised from the main thread, the `k_poll` call returns immediately and the LEDs start blinking.
 
-The timing diagram in Fig. 2 shows the two independent threads. However, because the MCU cannot actually handle two things in parallel, the scheduler prioritizes the main thread over the blinking thread. Thus, the final outcome of the multithreaded design is exactly the same as in the superloop in this case.
+The timing diagram in Fig. 2 shows the two independent threads. However, because the MCU cannot actually handle two things in parallel, the scheduler prioritizes the main thread over the blinking thread. Thus, the final outcome of the multithreaded design is exactly the same as in the super loop in this case.
 
 <fig-caption src="development/tasks-multithreading.svg" caption="Tasks in a multithreaded architecture" num="2" />
 
@@ -136,11 +136,11 @@ There is no general rule when an RTOS should be used and when not. Even very com
 
 That being said, an RTOS can make life easier in the following situations:
 
-- If there are multiple slow tasks that need to run in parallel (like different communication interfaces) a state machine to keep track of each task can get very complicated. Dedicated tasks with a scheduler make the implmentation more straight-forward.
+- If there are multiple slow tasks that need to run in parallel (like different communication interfaces) a state machine to keep track of each task can get very complicated. Dedicated tasks with a scheduler make the implementation more straight-forward.
 - Higher-level communication like IP networking and Bluetooth will almost certainly require an RTOS environment.
 - You might also be interested in the package that comes with an RTOS, e.g. the drivers.
 
 Under the following circumstances, a super loop can be the better solution:
 
-- If the firmware needs to run on very contstrained hardware, the overhead of an RTOS can be too much. Especially the amount of RAM can be critical, as each RTOS thread requires its own stack space, which increases overall memory consumption.
+- If the firmware needs to run on very constrained hardware, the overhead of an RTOS can be too much. Especially the amount of RAM can be critical, as each RTOS thread requires its own stack space, which increases overall memory consumption.
 - For short high-priority tasks that need to interrupt a slow main loop, a simple multitasking using ISRs can be sufficient and easier to maintain.

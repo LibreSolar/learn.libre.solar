@@ -6,7 +6,7 @@ title: Frameworks
 
 If you want to build your embedded application, you need a couple of tools to finish your task efficiently. One important aspect is the firmware framework, which provides you with everything you need to get started.
 
-In order to not re-invent the wheel, a firmware frameworks usually contains libraries (e.g. drivers to access the hardware) and the necessary tools to build and flash the firmware.
+In order to not re-invent the wheel, a firmware framework usually contains libraries (e.g. drivers to access the hardware) and the necessary tools to build and flash the firmware.
 
 A very popular framework is Arduino, which comes with an entire ecosystem of boards, firmware libraries and a simple editor.
 
@@ -20,11 +20,11 @@ An example of such an abstraction is the `Serial.write()` in Arduino firmware, w
 
 There are different degrees of abstraction. Chip vendors usually provide libraries (vendor HALs) which allow to reuse the code if you switch between chip families. In case of an RTOS that should work for chips of different vendors, the RTOS may provide another unified driver API layer on top of the vendor HALs.
 
-Peripheral drivers with a common API accross different vendors and chips can only provide the common denominator of functions. If some specific features of one chip need to be used, the driver may have to be bypassed and the lower-level functions of the chip have to be accessed directly.
+Peripheral drivers with a common API across different vendors and chips can only provide the common denominator of functions. If some specific features of one chip need to be used, the driver may have to be bypassed and the lower-level functions of the chip have to be accessed directly.
 
 ## Real-time operating systems
 
-For more complex embedded projects with many different task that have to be handled in parallel, higher-level features like multithreading can be helpful.
+For more complex embedded projects with many different tasks that have to be handled in parallel, higher-level features like multithreading can be helpful.
 
 These features are provided by a real-time operating system (RTOS), which might be independent of the drivers or come as an entire package with build system and drivers (as e.g. in the case of Zephyr RTOS).
 
@@ -41,9 +41,9 @@ For the Libre Solar project, we used [Arduino](https://www.arduino.cc/) and [ARM
 The main reasons for the selection of Zephyr RTOS:
 
 - Excellent build system and customization (based on Devicetree and Kconfig from Linux kernel) that allows a clear separation between board specification and the firmware itself.
-- Fast integration of new microcontroller support (e.g. the STM32G4 series, which is used in the new charge controllers)
+- Fast integration of new microcontroller support (e.g. the STM32G4 series, which is used in the new charge controllers).
 - Great community and open governance, so it’s a truly community-driven open source project.
-- Strong focus on code quality and safety (aiming towards ISO 26262 and IEC 61508 certification)
+- Strong focus on code quality and safety (aiming towards ISO 26262 and IEC 61508 certification).
 
 The following table gives an overview of different frameworks including the aspects that were considered important for the Libre Solar project:
 
