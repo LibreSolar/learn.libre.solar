@@ -18,7 +18,7 @@ If the same firmware should work on different microcontrollers, it makes sense t
 
 An example of such an abstraction is the `Serial.write()` in Arduino firmware, which works the same way no matter if your board is based on an AVR 8-bit microcontroller or a 32-bit ESP8266.
 
-There are different degrees of abstraction. Chip vendors usually provide libraries (vendor HALs) which allow to reuse the code if you switch between chip families. In case of an RTOS that should work for chips of different vendors, the RTOS may provide another unified driver API layer on top of the vendor HALs.
+There are different degrees of abstraction. Chip vendors usually provide libraries (vendor HALs) which allow to reuse the code if you switch between chip families.
 
 Peripheral drivers with a common API across different vendors and chips can only provide the common denominator of functions. If some specific features of one chip need to be used, the driver may have to be bypassed and the lower-level functions of the chip have to be accessed directly.
 
@@ -26,7 +26,7 @@ Peripheral drivers with a common API across different vendors and chips can only
 
 For more complex embedded projects with many different tasks that have to be handled in parallel, higher-level features like multithreading can be helpful.
 
-These features are provided by a real-time operating system (RTOS), which might be independent of the drivers or come as an entire package with build system and drivers (as e.g. in the case of Zephyr RTOS).
+These features are provided by a real-time operating system (RTOS), which might be independent of the drivers or come as an entire package with build system and drivers (as e.g. in the case of Zephyr RTOS). Frameworks that aim to work for chips of different vendors usually provide another unified driver API layer on top of the vendor HALs.
 
 A typical firmware architecture with an RTOS kernel and supporting layers are shown in Figure 1.
 
