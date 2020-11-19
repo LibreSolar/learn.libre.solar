@@ -15,12 +15,9 @@ module.exports = {
   ],
   plugins: [
     'vuepress-plugin-export',
-    ['mathjax', {
-      target: 'svg',
-      macros: {
-              '*': '\\times',
-      },
-    }],
+    '@maginapp/vuepress-plugin-katex', {
+      delimiters: 'dollars'
+    }
   ],
   themeConfig: {
     nav: [

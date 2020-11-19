@@ -5,10 +5,10 @@
         "docs:pdf": "vuepress export docs"
     },
     "dependencies": {
+        "@maginapp/vuepress-plugin-katex": "^1.0.7",
         "chart.js": "^2.8.0",
         "vue-chartjs": "^3.4.2",
-        "vuepress-plugin-export": "^0.2.0",
-        "vuepress-plugin-mathjax": "^1.2.8"
+        "vuepress-plugin-export": "^0.2.0"
     },
     "devDependencies": {
         "vuepress": "^1.0.3"
