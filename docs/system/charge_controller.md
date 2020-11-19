@@ -9,6 +9,7 @@ A charge controller regulates the voltage and/or current flowing into batteries.
 ## Solar
 
 Solar energy is the predominant method for off-grid electricity generation, as it does not require any moveable parts and is easily installed.
+PWM (Pulse Width Modulation) charge controller is in pratice a switch connected between solar panel and a battery. During bulk or constant current load, the switch is simply closed and the battery is charged with whatever current the panel can provide. The panel's voltage is pulled down which effectively lowers the panels efficiency since it is not operating in its **maximum power point**. After bulk charging, the pwm-controller will apply different duty cycles resulting in current boosts, effectively applying a constant voltage. The cycles are adapted depending on the the battery's charge state. The **interactive** example in Figure [1] shows the power effectively used for charging a battery with a given base voltage. The closer the rated battery voltage to the maximum power point voltage, the higher the overall efficiency.
 
 As explained in the [Solar Panel](solar_panel.md) chapter, the voltage of a solar panel depends on the number of cells, the temperature, the irradiance and the amount current draw.
 
@@ -22,7 +23,19 @@ There are mainly two different types of charge controllers, the Maximum Power Po
 
 MPPT (Maximum Power Point Tracking) controllers contain a DC-DC converter which matches varying voltage at the solar panel input with the output at the battery side.
 
-Because of the typically high conversion efficiencies (>95%), power at input and output remains the same whereas the voltage and current varies correspondingly. In order to get the best out of solar panels, MPPT charge controller finds and operates at optimal current-voltage point. In contrast, PWM controllers operate at the voltage equal to that of battery voltage which is not an optimal current-voltage point resulting in wastage of power.
+Because of the typically high conversion efficiencies (>95%), power at input and output remains the same whereas the voltage and current varies correspondingly. In order to get the best out of solar panels, MPPT charge controller finds and operates at optimal current-voltage point. In contrast, PWM controllers operate at the voltage equal to that of battery voltage which is not an optimal current-voltage point resulting in wastage of power. There are many ways to implement the tracking, two will be described here.
+
+#### Fractional Open Circuit Voltage
+
+This methods uses a simple linear relationship between the open circuit and maximum powerpoint voltage:
+
+$$V_{MPP} = k \cdot V_{oc}$$
+
+The factor $k$ can be determined for a given solar panel than used to track the maximum. It is dependant on the panels' temperature though and has to be corrected accordingly. This method is simple to implement though the factor and its temperature dependency has to be adapted to every installation so that the controller itself is not that versatile.
+
+#### Perturb and Observe
+
+As described in the [DC/DC-Converter chapter](../development/dcdc_converter), a longer duy cycle corresponds to higher input voltage at the converter which is also the voltage across the panel. With this method, the converter will start to draw small amounts of power with a small duty cycle and closely measure the power output. It will increase the duty cycle and measure again. If the output is increased, it will further increase the duty cycle and so on until the power decreases and the duty cycle is decreased as well. With a high frequeny, this method will find the MPP but will also always move away again and then jump back. Though it will not always be precisely on the MPP, it will stay very close to it and does not need any temperature adjustmenents.
 
 ### PWM Series Regulator
 
@@ -45,27 +58,20 @@ PWM (Pulse Width Modulation) charge controller is in pratice a switch connected 
 
 The current-voltage and power-voltage curves of the panels are given in the below interactive graph as shown in Fig.1
 
-In the interactive graph shown in Fig.1, voltage at maximum power ($V_{mpp}$) is found out by drawing a vertical line at the peak of power-voltage curve. Corresponding current is obtained by the point of intersection of the vertical line with the current-voltage curve.
+The red line indicates the battery voltage and the corrsponding power output when using a PWM-controller. Increasing the battery voltage to match the panels voltage would improve the systems performance but as soon as the panels voltage drops, no loading could be done anymore.
 
-Consider the interactive graph as shown in Fig.1 with standard test conditions. The charge voltage imposed on the solar panel (i.e, PWM voltage $V_{pwm}$) can be found by drawing a vertical line at the voltage point equal to the battery Voltage ($V_{bat}$) + 0.5$V$. The additional 0.5$V$ represents the voltage loss in the cabling and controller. The intersection of this line with the current-voltage curve gives the corresponding PWM current ($I_{pwm}$).
-
-<solar-panel-characteristic-curve/>
+<charge-controller-curve/>
 
 <figure>
 <center>
-    <figcaption><b>Figure 1.</b> Solar panel characteristic curve <b>(interactive)</b>.</figcaption>
+    <figcaption><b>Figure 1.</b> Usable energy MPPT vs. PWM <b>(interactive)</b>.</figcaption>
 </center>
 </figure>
 
 #### Temperature influence
 
 Temperature has significant effect on the efficiency of charge controllers. As the temperature increases, $V_{oc}$ decreases i.e, current-voltage curve moves to the left but the current remains almost constant as seen from the interactive graph in Fig.1. Consequently, the power-voltage graph and hence maximum power point also moves towards lower value.
-
-Eg - At temperature = 75$^{\circ}C$
-MPPT charge controller : Total power = 14.2$V$ * 5.6$A$= 79.52$W$
-PWM charge controller : Total power = 13.5$V$ * 6$A$ = 81$W$
-
-Since the maximum power point moved to the lower value, the power transferred in case of MPPT charge controller decreased resulting in lower performance. At this point, MPPT charge controllers can no longer outperforms PWM charge controllers.
+Since the maximum power point moved to the lower value, the power transferred with a MPPT charge controller decreases. At this point, MPPT charge controllers can no longer outperform PWM charge controllers.
 
 ## Wind
 

@@ -11,7 +11,13 @@
     <div class="left">Rated battery voltage:</div>
     <div class="right"><input type="number" id="vbat" step="0.1" value="12" @change="updateGraph()"> V</div>
 
-    
+    <p style="padding-top:50px">
+    <div class="subhead">Actual environmental conditions:</div>
+    <div class="left">Solar Irradiance:</div>
+    <div class="right"><input type="number" id="g" step="100" value="1000" max="1000" @change="updateGraph()"> W/m²</div>
+    <div class="left">Ambient Temperature: </div>
+    <div class="right"><input type="number" id="t_ambient" step="5" value="25" @change="updateGraph()"/> °C</div>
+    </p>
     </p>
   </div>
 </template>
@@ -190,10 +196,10 @@ export default {
       var isc_stc = 8.81;
       var isc_coeff = 0.08
       var voc_coeff = -0.37
-      var g = 1000
+      var g = parseFloat(document.getElementById("g").value);
 
       // calculate cell temperature
-      var t_ambient= 25
+      var t_ambient= parseFloat(document.getElementById("t_ambient").value);
       var noct = 46
       var t_cell = t_ambient + g / 800 * (noct - 20);
 
