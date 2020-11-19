@@ -1,7 +1,3 @@
----
-sidebarDepth: 2
----
-
 # Flashing and debugging
 
 The firmware of embedded devices is usually stored in the flash memory of the microcontroller. In order to upgrade it, special tools and processes may be needed. This chapter will give an overview of the most important aspects you need to know about firmware upgrades.
