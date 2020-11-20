@@ -75,12 +75,20 @@ Since the maximum power point moved to the lower value, the power transferred wi
 
 ## Wind
 
-::: warning TODO
-- Why is a dump load needed and where do we put it
-:::
+For small wind turbines without variable-pitch speed-controller, a charge-controller can be used to keep the turbine at optimal rotation speed. Especially for wind speeds below the rated optimal wind, it is beneficial to reduce the load so that the turbine is not slowed down too much. For most turbines, the power coefficient $c_p$ is linked to the ratio between blade tips and the wind speed (TSR or $\lambda$) as shown in Figure [3]. A MPPT can be implemented in different ways. One approach could be to measure wind, rotational speed and have a pre-calculated look-up table for the power coefficient and regulate the accordingly. A major drawback is the pre-calculated look-up table, which is specific to one turbine and has to be verified with measurements in controlled conditions like a wind tunnel. It is also necessary to measure the wind which adds to the complexity. 
+
+Another, turbine-agnostic way is a dynamic approach where the duty cycle of the converter is permanently changed and the slope of the power production measured. Since the general curve is known (Figure [3]), this mehod will always approach the maximum point independently from any wind or rotational speed measurements. 
+
+<fig-caption src="system/cp_vs_tsr.png" caption="Power coefficient vs. Tip Speed Ratio  [1]" style="width:100%"  num="3" />
 
 ### MPPT with dump load
 
-<fig-caption src="system/wind-mppt-charge-controller.svg" caption="Wind MPPT charge controller" num="3" />
+Since wind turbines require a [dump load](dump_load) to protect it from spinning free, the circuit has to be adopted so that the charge controller can use it.
+
+<fig-caption src="system/wind-mppt-charge-controller.svg" caption="Wind MPPT charge controller" num="4" />
 
 ### PWM load diversion
+
+<h2>References</h2>
+
+[1] R. Kot, , M. Rolak, M. Malinowski: Comparison of maximum peak power tracking algorithms for a small wind turbine, Warsaw, 2013
