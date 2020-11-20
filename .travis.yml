@@ -1,7 +1,7 @@
-dist: trusty
+dist: bionic
 language: node_js
 node_js:
-    - "10"
+    - "15"
 env:
     - CXX=g++-4.8
 
