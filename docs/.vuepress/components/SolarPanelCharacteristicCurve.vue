@@ -2,10 +2,8 @@
   <div>
     <line-chart :chart-data="chartData" :options="chartOptions"></line-chart>
 
-    <div class="q-pa-md row items-start q-gutter-md">
-      <q-card style="max-width: 320px; margin: 0px" class="q-pa-sm q-pb-md" flat>
-        <q-list>
-          <q-item-label class="text-weight-bold">Datasheet parameters (STC):</q-item-label>
+    <v-container fluid>
+      <v-col>
           <param-input label="Voltage in maximum power point:" unit="V" v-model="vmpp_stc" @input="updateGraph()"></param-input>
           <param-input label="Current in maximum power point:" unit="A" v-model="impp_stc" @input="updateGraph()"></param-input>
           <param-input label="Open circuit voltage:" unit="V" v-model="voc_stc" @input="updateGraph()"></param-input>
@@ -13,21 +11,17 @@
           <param-input label="Temperature coefficient of Voc:" unit="%/K" v-model="voc_coeff" step="0.01" @input="updateGraph()"></param-input>
           <param-input label="Temperature coefficient of Isc:" unit="%/K" v-model="isc_coeff" step="0.01" @input="updateGraph()"></param-input>
           <param-input label="Normal operating cell temperature (NOCT):" unit="°C" v-model="noct" @input="updateGraph()"></param-input>
-        </q-list>
-      </q-card>
 
-      <q-card style="width: 320px; margin: 0px" class="q-pa-sm q-pb-md" flat>
-        <q-list>
-          <q-item-label class="text-weight-bold">Actual environmental conditions:</q-item-label>
           <param-input label="Solar Irradiance:" unit="W/m²" v-model="g" step="100" max="1000" @input="updateGraph()"></param-input>
           <param-input label="Ambient Temperature:" unit="°C" v-model="t_ambient" step="5" @input="updateGraph()"></param-input>
-          <q-item style="padding: 0px">
-            <q-item-section><q-item-label>Calculated cell temperature:</q-item-label></q-item-section>
-            <q-item-section side>{{ Math.round(t_cell * 10) / 10 }} °C</q-item-section>
-          </q-item>
-        </q-list>
-      </q-card>
-    </div>
+          <!--v-flex xs2>
+            <v-card>
+              <v-card-text> Calculated Cell Temperature: </v-card-text>
+            </v-card>
+            <v-card><v-card-text> {{ Math.round(t_cell * 10) / 10 }} °C </v-card-text></v-card>
+          </v-flex-->
+      </v-col>
+    </v-container>
   </div>
 </template>
 

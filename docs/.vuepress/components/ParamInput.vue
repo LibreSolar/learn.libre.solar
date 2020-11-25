@@ -1,12 +1,9 @@
 <template>
-  <q-item style="padding: 0px">
-    <q-item-section><q-item-label>{{ label }}</q-item-label></q-item-section>
-    <q-item-section side>
-      <q-input dense outlined class="input-right" type="number" :step="step" :max="max" :min="min"
+    <v-row left>
+        <v-text-field dense shaped :label="label" :max="max" :min="min"
         v-bind:value="value" v-on:input="$emit('input', $event)"
        :suffix="unit" />
-    </q-item-section>
-  </q-item>
+    </v-row>
 </template>
 
 <script>
@@ -22,11 +19,3 @@ export default {
 }
 </script>
 
-<style>
-.input-right {
-  width: 110px;
-}
-.input-right input {
-  text-align: right;
-}
-</style>
