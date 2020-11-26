@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-container fluid>
     <line-chart :chart-data="chartData" :options="chartOptions"></line-chart>
 
-    <v-container fluid>
-      <v-col>
+    
+      
           <param-input label="Voltage in maximum power point:" unit="V" v-model="vmpp_stc" @input="updateGraph()"></param-input>
           <param-input label="Current in maximum power point:" unit="A" v-model="impp_stc" @input="updateGraph()"></param-input>
           <param-input label="Open circuit voltage:" unit="V" v-model="voc_stc" @input="updateGraph()"></param-input>
@@ -14,15 +14,16 @@
 
           <param-input label="Solar Irradiance:" unit="W/m²" v-model="g" step="100" max="1000" @input="updateGraph()"></param-input>
           <param-input label="Ambient Temperature:" unit="°C" v-model="t_ambient" step="5" @input="updateGraph()"></param-input>
-          <!--v-flex xs2>
-            <v-card>
-              <v-card-text> Calculated Cell Temperature: </v-card-text>
-            </v-card>
-            <v-card><v-card-text> {{ Math.round(t_cell * 10) / 10 }} °C </v-card-text></v-card>
-          </v-flex-->
-      </v-col>
+          <v-row>
+            <v-col cols="6">
+              <v-subheader>Calculated Cell Temperature:</v-subheader>
+            </v-col>
+            <v-col cols="3">
+              <v-text-field dense shaped readonly :value="t_cell_calc" suffix="°C"></v-text-field>
+            </v-col>
+          </v-row>
     </v-container>
-  </div>
+  
 </template>
 
 <script>
@@ -33,6 +34,7 @@ var vmpp;       // Vmpp at defined temperature and irradiance
 var impp;       // Impp at defined temperature and irradiance
 var voc;        // Voc at defined temperature and irradiance
 var isc;        // Isc at defined temperature and irradiance
+var t_cell_calc;
 
 export default {
   components: {
@@ -161,6 +163,7 @@ export default {
     // and calculate values for actual condition
     getValues() {
       this.t_cell = parseFloat(this.t_ambient) + parseFloat(this.g) / 800 * (parseFloat(this.noct) - 20);
+      t_cell_calc =  Math.round(this.t_cell * 10) / 10 ;
       voc = this.voc_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));
       isc = this.isc_stc * (1 + this.isc_coeff / 100 * (this.t_cell - 25)) * this.g / 1000;
       vmpp = this.vmpp_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));

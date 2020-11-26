@@ -1,8 +1,13 @@
 <template>
-    <v-row left>
-        <v-text-field dense shaped :label="label" :max="max" :min="min"
+    <v-row no-gutters>
+       <v-col cols="6">
+        <v-subheader>{{ label }}</v-subheader>
+      </v-col>
+      <v-col cols="3">
+        <v-text-field dense shaped  :max="max" :min="min"
         v-bind:value="value" v-on:input="$emit('input', $event)"
-       :suffix="unit" />
+       :suffix="unit"/>
+      </v-col>
     </v-row>
 </template>
 
