@@ -19,7 +19,7 @@
               <v-subheader>Calculated Cell Temperature:</v-subheader>
             </v-col>
             <v-col cols="3">
-              <v-text-field dense shaped readonly :value="t_cell_calc" suffix="°C"></v-text-field>
+              <v-text-field dense shaped readonly :value="t_cell" suffix="°C"></v-text-field>
             </v-col>
           </v-row>
     </v-container>
@@ -53,7 +53,8 @@ export default {
       g: 1000,
       t_ambient: 25,
       noct: 46,
-      t_cell: 25.0
+      t_cell: 25.0,
+      //t_cell_calc: null
     }
   },
   mounted () {
@@ -163,7 +164,7 @@ export default {
     // and calculate values for actual condition
     getValues() {
       this.t_cell = parseFloat(this.t_ambient) + parseFloat(this.g) / 800 * (parseFloat(this.noct) - 20);
-      t_cell_calc =  Math.round(this.t_cell * 10) / 10 ;
+      //this.t_cell_calc =  Math.round(this.t_cell * 10) / 10 ;
       voc = this.voc_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));
       isc = this.isc_stc * (1 + this.isc_coeff / 100 * (this.t_cell - 25)) * this.g / 1000;
       vmpp = this.vmpp_stc * (1 + this.voc_coeff / 100 * (this.t_cell - 25));
