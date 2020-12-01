@@ -1,7 +1,7 @@
 // register vuetify as a global plugin with vuepress
 // .vuepress/enhanceApp.js
 import Vuetify from 'vuetify';
-import "vuetify/dist/vuetify.min.css";
+import './theme/external/vuetify_styles.scss';
 
 export default ({
   Vue,      // the version of Vue being used in the VuePress app
