@@ -28,7 +28,9 @@ For development with STM32 microcontrollers, usually the ST-Link in-circuit debu
 
 The Libre Solar boards usually contain a 5-pin or 6-pin header with the same pin-out as the SWD connector on the ST-Link/V2 of the Nucleo boards. In addition to that, you can use the **serial interface** built-in to the Nucleo board to transfer debug information via an additional 2-pin connector.
 
-Before you can flash the software, the device needs to be powered, either via USB or the battery.
+::: warning
+Before you can flash the software, the device needs to be powered, either via USB or the battery. The VCC from SWD does not provide power, it just detects the supply voltage of the target.
+:::
 
 The same pins of the SWD connector on both boards should be connected with jumper wires. Pin 1 is usually marked with a small dot next to the connector. The following table gives an overview of the connector pinout:
 
