@@ -8,7 +8,7 @@ The firmware of embedded devices is usually stored in the flash memory of the mi
 
 There are basically two ways to upgrade the firmware.
 
-1. Using a **programmer** and a dedicated hardware interface on the board to communicate with the microcontroller.
+1. Using a **programmer** and a dedicated hardware interface (JTAG/SWD) on the board to communicate with the microcontroller.
 
 2. Via a **bootloader** using communication interfaces that are used for other purposes during normal operation of the device.
 
