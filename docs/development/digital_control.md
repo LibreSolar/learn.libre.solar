@@ -34,7 +34,7 @@ A similar result as with above analog controller can be achieved with a digital 
 
 <fig-caption src="development/digital-current-control.svg" caption="Digitally controlled current sink" num="3" />
 
-In this case, the output voltage is measured by an analog-to-digital converter (ADC), so that it can be used for calculations inside the microcontroller. The set-point could either be measured as a voltage by the ADC aswell or it can be defined by any other sort of input signal to the microcontroller, e.g. a communication interface.
+In this case, the output voltage is measured by an analog-to-digital converter (ADC), so that it can be used for calculations inside the microcontroller. The set-point could either be measured as a voltage by the ADC as well or it can be defined by any other sort of input signal to the microcontroller, e.g. a communication interface.
 
 After the error between set-point and measurement has been calculated, it gets fed into the digital controller. In the figure, the commonly used proportional-integral-derivative (PID) controller is shown, but it could be any other control algorithm.
 
@@ -45,7 +45,7 @@ Finally, the calculated output signal of the controller has to be converted back
 Some of the main advantages of a digital controllers are:
 
 - Control algorithms are more flexible.
-- Nonlinearities of analog components can be compensated.
+- Nonlinearities in the plant can be compensated (e.g. using lookup tables).
 - The set-point can be defined arbitrarily.
 
 However, there are also some drawbacks:
@@ -201,7 +201,7 @@ $$ x[k+1] = A_d x[k] + B_d u[k] $$
 
 $$ y[k] = C_d x[k] + D_d u[k] $$
 
-The new matrices for the discretized model (suffix $d$) can be calculated by hand, but it's typically done with software tools like Matlab or Octave.
+The new matrices for the discretized model (suffix $d$) can be calculated by hand, but it's typically done with software tools like Matlab or Octave. Most commonly, the [zero-order hold (ZOH)](https://en.wikipedia.org/wiki/Zero-order_hold) method is used for this.
 
 The discretized model can be analyzed with similar methods as the continuous-time model, like e.g. Bode plots. The effect of the discretization becomes visible mostly at higher frequencies, where the period of the signal gets close to the discretization period (step size).
 
@@ -224,25 +224,20 @@ Such implementation-specific issues cannot be easily simulated with control syst
 
 For the actual implementation in C code, also the resolution of variables needs to be considered, as they define minimum possible steps in input and output signals. For fast signal processing even on microcontrollers without a floating-point unit (FPU), calculations are usually done with fixed-point math using the [Q number format](https://en.wikipedia.org/wiki/Q_(number_format)).
 
-Below source code gives an example of an implemenation of a PID controller, based on the [ARM CMSIS DSP library](http://www.keil.com/pack/doc/CMSIS/DSP/html/group__PID.html).
+Below source code gives an example of an implemenation of a PID controller, based on the [ARM CMSIS DSP library](http://www.keil.com/pack/doc/CMSIS/DSP/html/group__PID.html). For simplicity reasons it is implemented using floating-point numbers.
 
 
 ```C
-/* Fixed-point number format, Q scaling factor determined in the application */
-typedef int32_t fix32_t;
-
 /* Instance structure for PID controller */
 struct PidController
 {
     float Kp;       /* Proportional gain */
     float Ki;       /* Integral gain */
     float Kd;       /* Derivative gain */
-    float Ts;       /* Sample time (= 1 / sample_frequency) */
 
-    int32_t q;      /* Q number scaling factor */
-    fix32_t A0;     /* Derived gain: A0 = Kp + Ki + Kd */
-    fix32_t A1;     /* Derived gain: A1 = -Kp - 2Kd */
-    fix32_t A2;     /* Derived gain, A2 = Kd */
+    float A0;       /* Derived gain: A0 = Kp + Ki + Kd */
+    float A1;       /* Derived gain: A1 = -Kp - 2Kd */
+    float A2;       /* Derived gain, A2 = Kd */
 
     /* state[0] = e[k-1] */
     /* state[1] = e[k-2] */
@@ -254,7 +249,7 @@ struct PidController
  * Resets the state variables and initializes the integrator to ensure good
  * startup of the controller
  */
-static inline void pid_reset(PidController *pid, fix32_t initial_output)
+static inline void pid_reset(PidController *pid, float initial_output)
 {
     pid->state[0] = 0;
     pid->state[1] = 0;
@@ -264,33 +259,14 @@ static inline void pid_reset(PidController *pid, fix32_t initial_output)
 /**
  * Process function of PID controller
  *
- * Only the parameters A0, A1 and A2 are scaled using the Q number format.
- *
- * The input and output values in int32_t format can have a maximum resolution
- * of 29 bit to prevent an overflow because of the additions in this function.
- *
  * \param in Input of the PID controller (target - actual value)
  * \returns Processed output sample
  */
-static inline int32_t pid_process(struct PidController *pid, int32_t in)
+static inline float pid_process(struct PidController *pid, float in)
 {
-    int64_t acc;
-    fix32_t out;
-
-    /* acc = A0 * x[n] */
-    acc = (int64_t) pid->A0 * in;
-
-    /* acc += A1 * x[n-1] */
-    acc += (int64_t) pid->A1 * pid->state[0];
-
-    /* acc += A2 * x[n-2] */
-    acc += (int64_t) pid->A2 * pid->state[1];
-
-    /* scale output back to Q number format */
-    out = (int64_t) (acc >> pid->q);
-
-    /* finally add y[n-1] */
-    out += pid->state[2];
+    /* u[n] = u[n-1] + A0 * e[n] + A1 * e[n-1] + A2 * e[n-2]  */
+    float out = pid->state[2] + pid->A0 * in +
+        pid->A1 * pid->state[0] + pid->A2 * pid->state[1];
 
     /* update state for next run */
     pid->state[1] = pid->state[0];
@@ -301,9 +277,7 @@ static inline int32_t pid_process(struct PidController *pid, int32_t in)
 }
 ```
 
-The variables `A0`, `A1` and `A2` are pre-calculated based on the floating-point PID controller constants `Kp`, `Ki`, `Kd` and `Ts` determined by simulation and testing. In each run of the control loop, only the pre-calculated values are used to minimize calculation effort and allow integer-only calculations.
-
-As mentioned in the comments, the developer has to take care of potential variable overruns and choose the Q number scaling carefully.
+The variables `A0`, `A1` and `A2` are pre-calculated based on the PID controller constants `Kp`, `Ki`, `Kd` and `Ts` determined by simulation and testing. In each run of the control loop, only the pre-calculated values are used to minimize calculation effort.
 
 <h2>References</h2>
 
