@@ -37,18 +37,19 @@ A common feature may also be the connection to a load, including a precharge sys
 
 ### Centralised
 
-One single BMS is connected to every single cell of the battery, monitoring several states in parallel.
+One single BMS is connected to every single cell of the battery, monitoring several states in parallel. For standalone setups, where size is fixed and cells are rather uniform, this topology is easiest to implement. The systems developed by LibreSolar follow this centralized approach.
 
 <fig-caption src="system/bms_centralized.svg" caption="Centralized BMS layout" num="1" />
 
 
 ### Distributed
 
-One BMS is connected to each cell with a controller connected to the BMS.
+A monitoring unit is connected to each cell, reporting information about the cell to a central controller. A good OpenSource Project using this approach is Stuart Pittaways [diyBMS](https://github.com/stuartpittaway/diyBMSv4).
 
 <fig-caption src="system/bms_distributed.svg" caption="Distributed BMS layout" num="2" />
 
 ### Modular
 
-A mix of the above, where several controllers are connected to a number of BMS which each are connected to one or more cells.
+A modular setup is designed for larger battery packs. A specialized board is connected to 8 to 16 cells, measuring necessary data. Each of those units is than connected to a main BMS controller, who is responsible for the analysis of the data and has to take the appropriate steps. An OpenSource Project can be found [here](https://foxbms.org/).
 
+<fig-caption src="system/bms_modular.svg" caption="Modular BMS layout" num="3" />
