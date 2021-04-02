@@ -30,7 +30,7 @@ Before you can flash the software, the device needs to be powered, either via US
 
 The same pins of the SWD connector on both boards should be connected with jumper wires. Pin 1 is usually marked with a small dot next to the connector. The following table gives an overview of the connector pinout:
 
-| Pin function     | Nucleo board   | Libre Solar board   |
+| Pin function     | Nucleo board (CN4)   | Libre Solar board   |
 |:----------------:|:--------------:|:-------------------:|
 | VCC              | SWD pin 1      | SWD pin 1           |
 | SWCLK            | SWD pin 2      | SWD pin 2           |
