@@ -4,18 +4,16 @@ sidebarDepth: 2
 
 # Charge Controller
 
-A charge controller regulates the voltage and/or current flowing into batteries. By doing so, it prevents the batteries from overcharging and ensures good battery lifetime.
+A charge controller regulates the voltage and/or current flowing into batteries. By doing so, it prevents the batteries from overcharging and ensures good battery lifetime. There are mainly two different types of charge controllers, the Maximum Power Point Trackers (MPPT) and cheaper pulse-width modulated (PWM) series switch regulators.
 
 ## Solar
 
 Solar energy is the predominant method for off-grid electricity generation, as it does not require any moveable parts and is easily installed.
-PWM (Pulse Width Modulation) charge controller is in pratice a switch connected between solar panel and a battery. During bulk or constant current load, the switch is simply closed and the battery is charged with whatever current the panel can provide. The panel's voltage is pulled down which effectively lowers the panels efficiency since it is not operating in its **maximum power point**. After bulk charging, the pwm-controller will apply different duty cycles resulting in current boosts, effectively applying a constant voltage. The cycles are adapted depending on the the battery's charge state. The **interactive** example in Figure [1] shows the power effectively used for charging a battery with a given base voltage. The closer the rated battery voltage to the maximum power point voltage, the higher the overall efficiency.
+PWM (Pulse Width Modulation) charge controller is in practice a switch connected between solar panel and a battery. During bulk or constant current charging phase, the switch is simply closed and the battery is charged with whatever current the panel can provide. The panel's voltage is pulled down which effectively lowers the panels efficiency since it is not operating in its **maximum power point**. After bulk charging, the PWM charge controller will apply a defined duty cycle interrupting the current for short periods of time, which results in a constant average voltage. The cycles are adapted depending on the the battery's charge state. The **interactive** example in Figure 1 shows the power effectively used for charging a battery with a given base voltage. The closer the rated battery voltage to the maximum power point voltage, the higher the overall efficiency.
 
-As explained in the [Solar Panel](solar_panel.md) chapter, the voltage of a solar panel depends on the number of cells, the temperature, the irradiance and the amount current draw.
+As explained in the [Solar Panel](solar_panel.md) chapter, the voltage of a solar panel depends on the number of cells, the temperature, the irradiance and the amount of current draw.
 
-Most 12 V solar panels output 16-20 V in their maximum power point, whereas 12 V batteries usually need around 14-14.5 V to get fully charged. Direct connection of batteries to the solar panel without any regulation causes damage to the batteries as a result of overcharging.
-
-There are mainly two different types of charge controllers, the Maximum Power Point Trackers (MPPT) and cheaper pulse-width modulated (PWM) series switch regulators.
+Most 12 V solar panels output 16-20 V in their maximum power point, whereas 12 V batteries usually need around 14-14.5 V to get fully charged. Continuous connection of batteries to the solar panel without any regulation would cause damage to the batteries as a result of overcharging.
 
 ### Maximum Power Point Tracker
 
@@ -23,15 +21,15 @@ There are mainly two different types of charge controllers, the Maximum Power Po
 
 MPPT (Maximum Power Point Tracking) controllers contain a DC-DC converter which matches varying voltage at the solar panel input with the output at the battery side.
 
-Because of the typically high conversion efficiencies (>95%), power at input and output remains the same whereas the voltage and current varies correspondingly. In order to get the best out of solar panels, MPPT charge controller finds and operates at optimal current-voltage point. In contrast, PWM controllers operate at the voltage equal to that of battery voltage which is not an optimal current-voltage point resulting in wastage of power. There are many ways to implement the tracking, two will be described here.
+Because of the typically high conversion efficiencies (>95%), power at input and output remains the same whereas the voltage and current varies correspondingly. In order to get the highest power out of solar panels, an MPPT charge controller finds and operates at optimal current-voltage point. In contrast, PWM controllers operate at the voltage equal to that of battery voltage which is not an optimal current-voltage point resulting in wastage of power. There are many ways to implement the tracking, two will be described here.
 
 #### Fractional Open Circuit Voltage
 
 This methods uses a simple linear relationship between the open circuit and maximum powerpoint voltage:
 
-$$V_{MPP} = k \cdot V_{oc}$$
+$$ V_{MPP} = k \cdot V_{oc} $$
 
-The factor $k$ can be determined for a given solar panel than used to track the maximum. It is dependant on the panels' temperature though and has to be corrected accordingly. This method is simple to implement though the factor and its temperature dependency has to be adapted to every installation so that the controller itself is not that versatile.
+The factor $k$ can be determined for a given solar panel and afterwards used to track the maximum. It is dependent on the panel's temperature, though, and has to be corrected accordingly. This method is simple to implement, but the parameters have to be adapted for every installation so that the controller itself is not very versatile.
 
 #### Perturb and Observe
 
@@ -43,18 +41,7 @@ As described in the [DC/DC-Converter chapter](../development/dcdc_converter), a 
 
 PWM (Pulse Width Modulation) charge controller is in pratice a switch connected between solar panel and a battery. Instead of providing a steady output, it sends out a series of charging pulses to the battery. The controller constantly checks the state of the battery to determine the frequency and duty cycle of the pulse. In a fully discharged battery, the pulses would be continuous while at the end of the battery charging cycles, pulses get very short to reduce the average current. The controller checks the state of charge on the battery between pulses and adjusts itself each time.
 
-### Other types
-
-#### On/off regulators
-
-#### Shunt regulators
-
 ### MPPT vs. PWM comparison
-
-::: warning TODO
-- Characteristic curve of solar and what is good about it
-- Interactive graph to explain different performance of MPPT and PWM
-:::
 
 The current-voltage and power-voltage curves of the panels are given in the below interactive graph as shown in Fig.1
 
@@ -75,9 +62,9 @@ Since the maximum power point moved to the lower value, the power transferred wi
 
 ## Wind
 
-For small wind turbines without variable-pitch speed-controller, a charge-controller can be used to keep the turbine at optimal rotation speed. Especially for wind speeds below the rated optimal wind, it is beneficial to reduce the load so that the turbine is not slowed down too much. For most turbines, the power coefficient $c_p$ is linked to the ratio between blade tips and the wind speed (TSR or $\lambda$) as shown in Figure [3]. A MPPT can be implemented in different ways. One approach could be to measure wind, rotational speed and have a pre-calculated look-up table for the power coefficient and regulate the accordingly. A major drawback is the pre-calculated look-up table, which is specific to one turbine and has to be verified with measurements in controlled conditions like a wind tunnel. It is also necessary to measure the wind which adds to the complexity. 
+For small wind turbines without variable-pitch speed-controller, a charge-controller can be used to keep the turbine at optimal rotation speed. Especially for wind speeds below the rated optimal wind, it is beneficial to reduce the load so that the turbine is not slowed down too much. For most turbines, the power coefficient $c_p$ is linked to the ratio between blade tips and the wind speed (TSR or $\lambda$) as shown in Figure [3]. A MPPT can be implemented in different ways. One approach could be to measure wind, rotational speed and have a pre-calculated look-up table for the power coefficient and regulate the accordingly. A major drawback is the pre-calculated look-up table, which is specific to one turbine and has to be verified with measurements in controlled conditions like a wind tunnel. It is also necessary to measure the wind which adds to the complexity.
 
-Another, turbine-agnostic way is a dynamic approach where the duty cycle of the converter is permanently changed and the slope of the power production measured. Since the general curve is known (Figure [3]), this mehod will always approach the maximum point independently from any wind or rotational speed measurements. 
+Another, turbine-agnostic way is a dynamic approach where the duty cycle of the converter is permanently changed and the slope of the power production measured. Since the theoretical curve is known (Figure [3]), this mehod will always approach the maximum point independently from any wind or rotational speed measurements. One of the main differences of an MPTT controller is the goal. While solar MPPTs aim to run the cells in the maximum power point, wind MPPTs will also try to improve the acceleration phase and limit the rotational speed.
 
 <fig-caption src="system/cp_vs_tsr.png" caption="Power coefficient vs. Tip Speed Ratio  [1]" style="width:100%"  num="3" />
 
@@ -86,8 +73,6 @@ Another, turbine-agnostic way is a dynamic approach where the duty cycle of the 
 Since wind turbines require a [dump load](dump_load) to protect it from spinning free, the circuit has to be adopted so that the charge controller can use it.
 
 <fig-caption src="system/wind-mppt-charge-controller.svg" caption="Wind MPPT charge controller" num="4" />
-
-### PWM load diversion
 
 <h2>References</h2>
 

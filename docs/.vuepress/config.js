@@ -43,13 +43,13 @@ module.exports = {
           'battery',
           //'grid',
         ],
-      }, {
+      },/* {
         title: "Consumption",
         collapsable: false,
         children: [
           'dump_load',
         ],
-      }, {
+      }, */{
         title: "Power Electronics",
         collapsable: false,
         children: [
