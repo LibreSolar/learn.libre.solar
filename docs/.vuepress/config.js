@@ -63,6 +63,12 @@ module.exports = {
         ],
       }],
       '/development/': [{
+        title: "Collaboration",
+        collapsable: false,
+        children: [
+          'version_control',
+        ],
+      }, {
         title: "Hardware",
         collapsable: false,
         children: [
