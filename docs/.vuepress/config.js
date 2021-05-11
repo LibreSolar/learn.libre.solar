@@ -40,7 +40,7 @@ module.exports = {
           'battery',
           //'grid',
         ],
-      }, /*{
+      },/* {
         title: "Consumption",
         collapsable: false,
         children: [
