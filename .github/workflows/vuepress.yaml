@@ -1,0 +1,37 @@
+# Script based on following guide:
+# https://kaizendorks.github.io/2020/04/16/vuepress-github-actions/
+
+name: Deploy VuePress static site to GitHub pages
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Generate static vuepress files
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: yarn add -D vuepress
+    - run: ./deploy.sh
+
+    - name: Commit generated files
+      run: |
+        cd gh-pages
+        echo "learn.libre.solar" > CNAME
+        git init
+        git add -A
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m 'deploy'
+
+    - name: Force-push to destination branch
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        force: true
+        directory: ./gh-pages
