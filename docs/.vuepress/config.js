@@ -59,7 +59,6 @@ module.exports = {
         collapsable: false,
         children: [
           'wires_fuses',
-          'grounding',
         ],
       }],
       '/development/': [{

@@ -1,17 +1,11 @@
 <template>
-  <div style="overflow:auto">
+  <div>
     <div>
-      <line-chart :chart-data="chartData_efficiency" :options="chartOptions_efficiency"></line-chart>
+      <line-chart :chart-data="chartData_voltage_drop" :options="chartOptions_voltage_drop"></line-chart>
     </div>
     <p>
-    <div class="left">Specific Resistance:</div>
-    <div class="right"><input type="number" id="sr" step="0.001" value="0.017" min="0" @change="updateGraph_efficiency()"> Ω·mm²/m</div>
-
-    <div class="left">System voltage:</div>
-    <div class="right"><input type="number" id="v" step="1" value="24" min="0" @change="updateGraph_efficiency()"> V</div>
-
     <div class="left">Wire Length: </div>
-    <div class="right"><input type="number" id="wl" step="1" value="10" min="0" @change="updateGraph_efficiency()"> m</div>
+    <div class="right"><input type="number" id="wld" step="1" value="10" min="0" @change="createGraphValues()"> m</div>
     </p>
   </div>
 </template>
@@ -26,15 +20,15 @@ export default {
   },
   data () {
     return {
-      chartData_efficiency: null,
-      chartOptions_efficiency: null,
+      chartData_voltage_drop: null,
+      chartOptions_voltage_drop: null
     }
   },
   mounted () {
-    this.updateGraph_efficiency()
+    this.createGraphValues()
   },
   methods: {
-    updateGraph_efficiency() {
+    createGraphValues() {
       // cross-section areas in mm2
       var x_sec_1 = 1;
       var x_sec_1_5 = 1.5;
@@ -49,38 +43,37 @@ export default {
       var x_sec_10_steps = 30;
       var x_sec_50_steps = 38;
 
-      var points_total = [];
-
+        var points_total = [];
       var x_sec_50_points = [];
       for (var i = 0; i <= x_sec_50_steps; i++) {
-        points_total.push({x:i, y:this.efficiency(i,x_sec_50)});
-        x_sec_50_points.push({x:i, y:this.efficiency(i,x_sec_50)});
+        x_sec_50_points.push({x:i, y:this.voltage_drop(i,x_sec_50)});
+        points_total.push({x:i, y:this.voltage_drop(i,x_sec_50)});
       }
 
       var x_sec_10_points = [];
       for (var i = 0; i <= x_sec_10_steps; i++) {
-        x_sec_10_points.push({x:i, y:this.efficiency(i,x_sec_10)-points_total[i].y});
+        x_sec_10_points.push({x:i, y:this.voltage_drop(i,x_sec_10) - points_total[i].y});
         points_total[i].y += x_sec_10_points[i].y;
       }
 
       var x_sec_2_5_points = [];
       for (var i = 0; i <= x_sec_2_5_steps; i++) {
-        x_sec_2_5_points.push({x:i, y:this.efficiency(i,x_sec_2_5)-points_total[i].y});
+        x_sec_2_5_points.push({x:i, y:this.voltage_drop(i,x_sec_2_5) - points_total[i].y});
         points_total[i].y += x_sec_2_5_points[i].y;
       }
 
       var x_sec_1_5_points = [];
       for (var i = 0; i <= x_sec_1_5_steps; i++) {
-        x_sec_1_5_points.push({x:i, y:this.efficiency(i,x_sec_1_5)-points_total[i].y});
+        x_sec_1_5_points.push({x:i, y:this.voltage_drop(i,x_sec_1_5) - points_total[i].y});
         points_total[i].y += x_sec_1_5_points[i].y;
       }
 
       var x_sec_1_points = [];
       for (var i = 0; i <= x_sec_1_steps; i++) {
-        x_sec_1_points.push({x:i, y:this.efficiency(i,x_sec_1)-points_total[i].y});
+        x_sec_1_points.push({x:i, y:this.voltage_drop(i,x_sec_1) - points_total[i].y});
       }
 
-      this.chartData_efficiency = {
+      this.chartData_voltage_drop = {
         datasets: [
           {
             label: '50mm2',
@@ -130,7 +123,7 @@ export default {
           }
         ]
       },
-      this.chartOptions_efficiency = {
+      this.chartOptions_voltage_drop = {
         scales: {
           xAxes: [{
             type: "linear",
@@ -151,7 +144,7 @@ export default {
             display: true,
             stacked: true,
             scaleLabel: {
-              labelString: 'Efficiency loss (%)',
+              labelString: 'voltage drop (V)',
               fontSize: 14,
               display: true,
             },
@@ -180,15 +173,13 @@ export default {
 
     // Most calculations from Richtek AN005
 
-    efficiency(current,x_sec) {
-      var specific_resistance = document.getElementById("sr").value; // Ohm
-      var wire_length = document.getElementById("wl").value; // m
-      var voltage = document.getElementById("v").value; //v
+    voltage_drop(current,x_sec) {
+      var specific_resistance = 0.017
+      var wire_length = document.getElementById("wld").value; // m
 
       var resistance_milli = (specific_resistance * wire_length * 1000)/ x_sec;
-      var power_loss = (Math.pow(current,2) * resistance_milli)/1000;
 
-      return (power_loss * 100)/(voltage * current);
+      return (resistance_milli * current)/1000;
     }
   }
 }
