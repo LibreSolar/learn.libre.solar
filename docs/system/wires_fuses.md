@@ -64,7 +64,7 @@ The voltage drop across the wire has to be considered when the [charge controlle
     <wire-voltage-drop/>
     <br/>
 <center>
-    <figcaption><b>Figure 2.</b> Voltage drop across 20m long wires with different cross section area.</figcaption>
+    <figcaption><b>Figure 2.</b> Voltage drop across cables with different cross section.</figcaption>
 </center>
 </figure>
 
