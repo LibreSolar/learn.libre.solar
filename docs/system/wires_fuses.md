@@ -70,7 +70,7 @@ The voltage drop across the wire has to be considered when the [charge controlle
 
 ### Example
 
-The distance between the panels and the charge-controller shell be $D=5m$, which means a total length (two directions) of $l_{wire} = 10m$. For a copperwire with a diameter of $d=1.5mm$, the total resistance of the wire (for an ambient temperature of $30^{\circ}C$) is
+The distance between the panels and the charge-controller shall be $D=5m$, which means a total length (two directions) of $l_{wire} = 10m$. For a copper wire with a diameter of $d=1.5mm$, the total resistance of the wire (for an ambient temperature of $30^{\circ}C$) is
 
 $$R=\frac{0.0172 \cdot 10}{1.5} \Omega = 0.114 \Omega$$
 
