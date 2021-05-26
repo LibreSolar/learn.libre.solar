@@ -5,13 +5,13 @@
     </div>
     <p>
     <div class="left">Specific Resistance:</div>
-    <div class="right"><input type="number" id="sr" step="0.001" value="0.017" min="0" @change="updateGraph_efficiency(),updateGraph_voltage_drop()"> Ω·mm²/m</div>
+    <div class="right"><input type="number" id="sr" step="0.001" value="0.017" min="0" @change="updateGraph_efficiency()"> Ω·mm²/m</div>
 
     <div class="left">System voltage:</div>
-    <div class="right"><input type="number" id="v" step="1" value="24" min="0" @change="updateGraph_efficiency(),updateGraph_voltage_drop()"> V</div>
+    <div class="right"><input type="number" id="v" step="1" value="24" min="0" @change="updateGraph_efficiency()"> V</div>
 
     <div class="left">Wire Length: </div>
-    <div class="right"><input type="number" id="wl" step="1" value="10" min="0" @change="updateGraph_efficiency(),updateGraph_voltage_drop()"> m</div>
+    <div class="right"><input type="number" id="wl" step="1" value="10" min="0" @change="updateGraph_efficiency()"> m</div>
     </p>
   </div>
 </template>
@@ -183,7 +183,7 @@ export default {
     efficiency(current,x_sec) {
       var specific_resistance = document.getElementById("sr").value; // Ohm
       var wire_length = document.getElementById("wl").value; // m
-        var voltage = document.getElementById("v").value; //v
+      var voltage = document.getElementById("v").value; //v
 
       var resistance_milli = (specific_resistance * wire_length * 1000)/ x_sec;
       var power_loss = (Math.pow(current,2) * resistance_milli)/1000;

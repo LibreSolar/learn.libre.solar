@@ -1,7 +1,13 @@
 <template>
+  <div>
     <div>
       <line-chart :chart-data="chartData_voltage_drop" :options="chartOptions_voltage_drop"></line-chart>
     </div>
+    <p>
+    <div class="left">Wire Length: </div>
+    <div class="right"><input type="number" id="wld" step="1" value="10" min="0" @change="createGraphValues()"> m</div>
+    </p>
+  </div>
 </template>
 
 <script>
@@ -27,27 +33,27 @@ export default {
       var x_sec_1 = 1;
       var x_sec_1_5 = 1.5;
       var x_sec_2_5 = 2.5;
-      var x_sec_4 = 10;
-      var x_sec_6 = 50;
+      var x_sec_10 = 10;
+      var x_sec_50 = 50;
 
       //different current for different cross-section areas (x axis points)
       var x_sec_1_steps = 10;
       var x_sec_1_5_steps = 15;
       var x_sec_2_5_steps = 23;
-      var x_sec_4_steps = 30;
-      var x_sec_6_steps = 38;
+      var x_sec_10_steps = 30;
+      var x_sec_50_steps = 38;
 
         var points_total = [];
-      var x_sec_6_points = [];
-      for (var i = 0; i <= x_sec_6_steps; i++) {
-        x_sec_6_points.push({x:i, y:this.voltage_drop(i,x_sec_6)});
-        points_total.push({x:i, y:this.voltage_drop(i,x_sec_6)});
+      var x_sec_50_points = [];
+      for (var i = 0; i <= x_sec_50_steps; i++) {
+        x_sec_50_points.push({x:i, y:this.voltage_drop(i,x_sec_50)});
+        points_total.push({x:i, y:this.voltage_drop(i,x_sec_50)});
       }
 
-      var x_sec_4_points = [];
-      for (var i = 0; i <= x_sec_4_steps; i++) {
-        x_sec_4_points.push({x:i, y:this.voltage_drop(i,x_sec_4) - points_total[i].y});
-        points_total[i].y += x_sec_4_points[i].y;
+      var x_sec_10_points = [];
+      for (var i = 0; i <= x_sec_10_steps; i++) {
+        x_sec_10_points.push({x:i, y:this.voltage_drop(i,x_sec_10) - points_total[i].y});
+        points_total[i].y += x_sec_10_points[i].y;
       }
 
       var x_sec_2_5_points = [];
@@ -77,7 +83,7 @@ export default {
             borderColor: '#fbbe59',
             backgroundColor: '#fbbe59',
             fill: false,
-            data: x_sec_6_points
+            data: x_sec_50_points
           }, {
             label: '10mm2',
             yAxisID: 'loss',
@@ -86,7 +92,7 @@ export default {
             borderColor: '#070808',
             backgroundColor: '#070808',
             fill: false,
-            data: x_sec_4_points
+            data: x_sec_10_points
           }, {
             label: '2.5mm2',
             yAxisID: 'loss',
@@ -169,7 +175,7 @@ export default {
 
     voltage_drop(current,x_sec) {
       var specific_resistance = 0.017
-      var wire_length = 20
+      var wire_length = document.getElementById("wld").value; // m
 
       var resistance_milli = (specific_resistance * wire_length * 1000)/ x_sec;
 
