@@ -1,9 +1,7 @@
 <template>
-  <div style="overflow:auto">
-    <div class = "a">
+    <div>
       <line-chart :chart-data="chartData" :options="chartOptions"></line-chart>
     </div>
-  </div>
 </template>
 
 <script>
@@ -67,7 +65,7 @@ this.createGraph()
             yAxisID: 'current',
             pointRadius: 0,
             borderWidth: 2,
-            borderColor: '#ff5e85',
+            borderColor: '#005e85',
             backgroundColor: '#005e85',
             fill: false,
             data: ids
@@ -76,8 +74,8 @@ this.createGraph()
             yAxisID: 'voltage',
             pointRadius: 0,
             borderWidth: 2,
-            borderColor: '#00ff00',
-            backgroundColor: '#6b6b6b',
+            borderColor: '#fbbe59',
+            backgroundColor: '#fbbe59',
             fill: false,
             data: vd
           }, {
@@ -85,8 +83,8 @@ this.createGraph()
             yAxisID: 'voltage',
             pointRadius: 0,
             borderWidth: 2,
-            borderColor: '#5c9aaf',
-            backgroundColor: '#5c9aaf',
+            borderColor: '#d3d5cc',
+            backgroundColor: '#d3d5cc',
             fill: false,
             data: vg
           }, {
@@ -95,7 +93,7 @@ this.createGraph()
             pointRadius: 0,
             borderWidth: 2,
             borderDash:[3,3],
-            borderColor: '#ff90af',
+            borderColor: '#5c9aaf',
             backgroundColor: '#5c9aaf',
             fill: false,
             data: uth
