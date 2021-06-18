@@ -24,7 +24,7 @@ In order to keep the battery in a safe operational state, the thermal managmenen
 
 To optimize performance and lifetime of battery packs, balancing is used to distribute load and prevent localized over- or under-charging of cells. Since cells differ slightly in capacity depending on the quality of the manufacturing process and used materials or by cell-aging, cells connected in series can show different voltages. To normalize the SOC for each cell, a BMS can either actively transfer energy from higher charged cells to those with lower SOC or passivly, mostly by wasting energy from cells with 100% SOC until every cell is fully charged.
 
-Passive balancing can be done by converting excessive charge to heat over a resistor (R20). A transistor (Q5) is reponsible for dis-/connecting the resistor in parallel to the cell which has higher, thus excessive charge in comparsions to the other cells in series. Passive balancing increases the thermal energy dissipated by the pack and decreases the overall efficieny.
+Passive balancing can be done by converting excessive charge to heat over a resistor (R20). A transistor (Q5) is reponsible for dis-/connecting the resistor in parallel to the cell which has higher voltage, thus excessive charge in comparsions to the other cells in series. Passive balancing increases the thermal energy dissipated by the pack and decreases the overall efficieny.
 
 ![image](https://user-images.githubusercontent.com/13488510/122396568-660bb300-cf78-11eb-8798-1d3904f9fe4d.png)
 
