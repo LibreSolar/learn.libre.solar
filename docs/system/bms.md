@@ -5,11 +5,20 @@ In most cases, the battery comes in a **pack**, which consists of multiple **mod
 
 ## Main Functions
 
+### State of Charge
+
+The BMS will optimize the charging rate and determine when to stop dis-/charging based on the state of charge (SOC).
+
+The SOC of the cells are calculated by combining current and voltage measurements, sometimes temperature. The most simple SOC determination is done with a open circuit voltage (OCV) lookup table. 
+It has a significant deviation due to the OCV not being accurately measurable during current flow. A more sophisticated algorithm consists of combining the voltage measurement with a current measurement, accumulating the current into or out of a cell, also know as coulomb counting. 
+
+The current research on SOC estimation suggest, that a favourable algorithm to perform the combination of current and voltage is the extend kalman filter (EKF) or variation of it. This method is known as sensor fusion and is a well established. More advanced methods use an equivalent circuit model of the cell (ECM) in order to account for changing cell characteristics like internal resistance. This methods not only provides a better SOC, but also the state of health (SOH) of the battery. Good literature by Dr. Gregory L. Plett on implementation of such algorithms can be found [here](http://mocha-java.uccs.edu/ECE5720/index.html). 
+
 ### Electric Cell Protection
 
 As described in chapter ["Battery"](battery.md), different cells have different minimum and maximum voltage levels as well as different phases while charging/discharging.
-The BMS is responsible to measure the voltage, current and temperature and calculate the state of charge (SOC) of the cells are in order to apply the correct current or voltage.
-It will optimise the charging rate and determine when to stop charging/discharging.
+
+The BMS is responsible to measure the voltage, current and temperature and stop or reduce dis-/charging in other to stay within defined safety limits of the cells.
 
 To disconnect the battery from the load/charger, different types of switches can be used. For low current systems, a MOSFET switch is often easiest to use, while a mechanical or solid state relais can be necessary to switch higher voltages and currents.
 
