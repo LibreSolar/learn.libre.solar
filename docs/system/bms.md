@@ -9,7 +9,7 @@ In most cases, the battery comes in a **pack**, which consists of multiple **mod
 
 As described in chapter ["Battery"](battery.md), different cells have different minimum and maximum voltage levels as well as different phases while charging/discharging.
 The BMS is responsible to measure the voltage, current and temperature and calculate the state of charge (SOC) of the cells are in order to apply the correct current or voltage.
-It will optimise the charging rate and determine when to stop charging/discharging. 
+It will optimise the charging rate and determine when to stop charging/discharging.
 
 To disconnect the battery from the load/charger, different types of switches can be used. For low current systems, a MOSFET switch is often easiest to use, while a mechanical or solid state relais can be necessary to switch higher voltages and currents.
 
