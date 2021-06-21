@@ -1,7 +1,7 @@
 # Battery Management System
 
 A Battery Management System (BMS) is an electronic circuit that can manage a rechargeable device. Like most electronics, accumulators are limited in the voltage and current they can handle. While some are quite robust in terms of e.g. overvoltage or deep-discharge, it is vital especially for Li-on batteries, to monitor charge, discharge and charge cycles to ensure a long lifetime.
-In most cases, the battery comes in a **pack**, which consists of multiple **modules**, which each again consists of multiple **cells**. A single cell is the atomic unit of a battery and comes in different shapes ([1]). The cylindrical cell is most used in consumer electronics, as they are easy to connect and mechanically robust. In applications with higher energy demand, pouch cells are more common. Pouch cells need to be packed into modules, which includes a frame, sensors and sometimes features for cooling. Multiple modules are than stacked into a pack, which includes the BMS, cooling, fuses and necessary wiring amongst other components ([1]).
+In most cases, the battery comes in a **pack**, which consists of multiple **modules**, which each again consists of multiple **cells**. A single cell is the atomic unit of a battery and comes in different shapes ([1]). The pouch and prismatic cell shapes are most used in consumer electronics (mobile phones, laptops). In applications with higher energy demand, prismatic, cylindrical and pouch shaped cells are common. Pouch cells need to be packed into modules, which includes a frame, sensors and sometimes features for cooling. Multiple modules are than stacked into a pack, which includes the BMS, cooling, fuses and necessary wiring amongst other components ([1]).
 
 ## Main Functions
 
