@@ -34,7 +34,7 @@ A BMS can also feature communication capabilities to distribute information to o
 
 ### Bus precharge
 
-A common feature may also be the connection to a load, including a precharge system. Precharging protects the load against high inrush currents when the battery is connected. To slowly charge large capacities in the load circuit, the load is connected over a resistor for a short period of time. Afterwards, the resistor is removed and the load connected normally. 
+A common feature may also be a precharge system to protect a connected load. Precharging protects the large capacitors inside the load (inverter) against high inrush currents on battery connection. To slowly charge these capacitors, the load is connected over a resistor for a short period of time. Afterwards, the resistor is removed and the load connected normally. 
 
 ## Topologies
 
