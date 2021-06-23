@@ -20,7 +20,7 @@ The current research on SOC estimation suggest, that a favourable algorithm to p
 
 As described in chapter ["Battery"](battery.md), different cells have different minimum and maximum voltage levels as well as different phases while charging/discharging.
 
-The BMS is responsible to measure the voltage, current and temperature and stop or reduce dis-/charging in other to stay within defined safety limits of the cells.
+The BMS is responsible to measure the voltage, current and temperature and stop or reduce dis-/charging in order to stay within defined safety limits of the cells.
 
 To disconnect the battery from the load/charger, different types of switches can be used. For low current systems, a MOSFET switch is often easiest to use, while a mechanical or solid state relais can be necessary to switch higher voltages and currents.
 
