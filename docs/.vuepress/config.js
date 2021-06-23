@@ -38,7 +38,6 @@ module.exports = {
         collapsable: false,
         children: [
           'battery',
-          //'grid',
         ],
       },/* {
         title: "Consumption",
@@ -59,6 +58,12 @@ module.exports = {
         collapsable: false,
         children: [
           'wires_fuses',
+        ],
+      }, {
+        title: "DC Grid",
+        collapsable: false,
+        children: [
+          'grid_architecture'
         ],
       }],
       '/development/': [{
