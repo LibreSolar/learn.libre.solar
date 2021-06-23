@@ -14,7 +14,7 @@ The SOC of the cells is calculated by combining current and voltage measurements
 The most simple SOC determination is done with an open circuit voltage (OCV) lookup table. 
 It has a significant deviation due to the OCV not being accurately measurable during current flow. A more sophisticated algorithm consists of combining the voltage measurement with a current measurement, accumulating the current into or out of a cell, also known as coulomb counting. 
 
-The current research on SOC estimation suggest, that a favourable algorithm to perform the combination of current and voltage is the extend kalman filter (EKF) or variation of it. This method is known as sensor fusion and is a well established. More advanced methods use an equivalent circuit model of the cell (ECM) in order to account for changing cell characteristics like internal resistance. These methods not only provide a better SOC, but also the state of health (SOH) of the battery. Good literature by Dr. Gregory L. Plett on implementation of such algorithms can be found [here](http://mocha-java.uccs.edu/ECE5720/index.html). 
+The current research on SOC estimation suggests that a favorable algorithm to perform the combination of current and voltage is the extended Kalman filter (EKF) or variations of it. This method is known as sensor fusion and is well established. More advanced methods use an equivalent circuit model of the cell (ECM) in order to account for changing cell characteristics like internal resistance. These methods not only provide a better SOC, but also the state of health (SOH) of the battery. Good literature by Dr. Gregory L. Plett on implementation of such algorithms can be found [here](http://mocha-java.uccs.edu/ECE5720/index.html).
 
 ### Electric Cell Protection
 
