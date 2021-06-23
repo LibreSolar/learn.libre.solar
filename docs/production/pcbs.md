@@ -1,5 +1,11 @@
 # Printed Circuit Board
 
+A **printed circuit board (PCB)** is a carrier for electronic components. It serves for mechanical fastening and electrical connection. Almost every electronics device contains one or more printed circuit boards.
+
+When a printed circuit board is assembled with electronics parts, the term **PCB assembly (PCBA)** is used:
+
+<fig-caption src="production/pcb_vs_pcba.png" caption="PCB Assembly" num="1" />
+
 The first step to build up the hardware is ordering a PCB. Most of the PCBs for the Libre Solar devices are too complex to be produced yourself with etching or milling processes, so the PCBs will need to be ordered from a manufacturer. This guide shows how all necessary data are obtained for the fabrication.
 
 ## Native board files
@@ -12,9 +18,9 @@ Gerber is a standardized exchange format for PCBs, which is understood by all ma
 
 However, the Gerber export is a bit more complicated than providing native files and needs some correct settings. We will explain the export in KiCad.
 
-After the board is opened in Pcbnew, the solder mask clearance and min width must be set to zero. This is important because the manufacturers normally want to define the clearance themselves based on their process. Setting it to zero makes it easier for them to shrink/enlarge the pads for the solder mask. The dialogue can be found under *File > Board Setup* as shown in Figure 1.
+After the board is opened in Pcbnew, the solder mask clearance and min width must be set to zero. This is important because the manufacturers normally want to define the clearance themselves based on their process. Setting it to zero makes it easier for them to shrink/enlarge the pads for the solder mask. The dialogue can be found under *File > Board Setup* as shown in Figure 2.
 
-<fig-caption src="production/pcbs_kicad_pads_clearance.png" caption="Pads and Mask Clearance dialog (KiCad v5.1.4)" num="1" />
+<fig-caption src="production/pcbs_kicad_pads_clearance.png" caption="Pads and mask clearance dialog (KiCad v5.1.4)" num="2" />
 
 After that, open the Gerber export dialog under *File > Plot* and select at least the following layers for export:
 
@@ -33,10 +39,10 @@ After that, open the Gerber export dialog under *File > Plot* and select at leas
 
 Select a folder where your files should be saved and press *Plot*:
 
-<fig-caption src="production/pcbs_kicad_gerber_export.png" caption="Gerber Export Settings (KiCad v5.1.4)" num="2" />
+<fig-caption src="production/pcbs_kicad_gerber_export.png" caption="Gerber export settings (KiCad v5.1.4)" num="3" />
 
 After sucessful export, press *Generate Drill Files*. Then select the same output directory and make sure that *PTH and NPTH in single file* is **not** checked. Otherwise, your manufacturer doesn't know which holes are copper plated or not.
 
-<fig-caption src="production/pcbs_kicad_drill_file.png" caption="Drill Files Generation (KiCad v5.1.4)" num="3" />
+<fig-caption src="production/pcbs_kicad_drill_file.png" caption="Drill files generation (KiCad v5.1.4)" num="4" />
 
 After that you should have all necessary files ready for the PCB production. Compress all the files (gerber and drill files) to a .zip file and send them to the manufacturer.

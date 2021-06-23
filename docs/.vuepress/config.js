@@ -113,14 +113,14 @@ module.exports = {
         collapsable: false,
         children: [
           'smd',
-          'tht',
+          //'tht',
         ],
       }, {
         title: "Testing",
         collapsable: false,
         children: [
-          'visual_check',
-          'eol',
+          'manual_check',
+          //'eol',
         ],
       }]
     },
