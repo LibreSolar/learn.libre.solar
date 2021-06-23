@@ -10,10 +10,10 @@ A **laser cutter** uses a focused high power beam to cut materials or engrave su
 
 Below video shows the stencil cutting process using a 60 W Epilog Zing laser cutter.
 
-<video width="555" align="center" controls>
-    <source src="/videos/stencil.mp4" type="video/mp4">
-    Your browser does not support videos.
-</video>
+<center>
+<iframe src="https://player.vimeo.com/video/471677018" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<figcaption><b>Video 1.</b> Laser-cutting of solder paste stencil.</figcaption>
+</center>
 
 The following paragraphs provide some details about suitable file formats, materials and laser cutter settings.
 
