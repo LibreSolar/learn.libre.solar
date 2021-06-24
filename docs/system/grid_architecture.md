@@ -61,6 +61,8 @@ In this case, the grid voltage is a measure for the system state and can be used
 
 Load prioritization via different disconnect set-points is possible.
 
+The chapter [Droop Control](droop_control.md) further explains how power flows can be controlled based on the grid voltage measurement.
+
 ## Topologies
 
 This overview of different grid topologies assumes a DC grid with droop control where every producer and consumer is decoupled from the grid via a voltage converter.

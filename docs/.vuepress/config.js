@@ -63,7 +63,8 @@ module.exports = {
         title: "DC Grid",
         collapsable: false,
         children: [
-          'grid_architecture'
+          'grid_architecture',
+          'droop_control',
         ],
       }],
       '/development/': [{
